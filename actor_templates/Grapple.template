@@ -1,0 +1,22 @@
+{
+    "name": "Grapple",
+    "components": {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "Grapple",
+            "sorting_order": 0,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+        },
+        "2": {
+            "type": "Rigidbody",
+            "has_collider": false,
+            "gravity_scale": 0,
+            "trigger_width": 0.4,
+            "trigger_height": 0.4
+        },
+        "3": {
+            "type": "GrappleManager"
+        }
+    }
+}

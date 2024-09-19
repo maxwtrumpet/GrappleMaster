@@ -1,0 +1,8 @@
+{
+    "name": "StaticData",
+    "components": {
+        "1": {
+            "type": "StaticData"
+        }
+    }
+}

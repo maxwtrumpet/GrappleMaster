@@ -1,0 +1,8 @@
+{
+    "template": "Checkpoint",
+    "components": {
+        "1": {
+            "sprite": "hidden"
+        }
+    }
+}

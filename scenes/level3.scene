@@ -1,0 +1,15 @@
+{
+    "actors": [
+        {
+            "template": "LevelLoader",
+            "components": {
+                "1": {
+                    "current_scene": 3
+                }
+            }
+        },
+        {
+            "template": "Camera"
+        }
+    ]
+}

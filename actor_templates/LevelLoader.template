@@ -1,0 +1,8 @@
+{
+    "name": "LevelLoader",
+    "components": {
+        "1": {
+            "type": "LevelLoader"
+        }
+    }
+}

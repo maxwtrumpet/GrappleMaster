@@ -1,0 +1,24 @@
+{
+	"name": "Title",
+	"components": {
+		"1": {
+			"type": "SpriteRenderer",
+			"sprite": "title",
+			"sorting_order": 999,
+            "x_scale": 0.5,
+            "y_scale": 0.5,
+            "a": 0
+		},
+		"2": {
+			"type": "Rigidbody",
+			"body_type": "static",
+            "has_collider": false,
+            "has_trigger": false,
+			"ui": true,
+            "y": -3
+		},
+		"3": {
+			"type": "TitleFade"
+		}
+	}
+}

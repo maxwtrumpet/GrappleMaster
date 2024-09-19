@@ -1,0 +1,15 @@
+{
+    "template": "Button",
+    "name": "ButtonMenu",
+    "components": {
+        "4": {
+            "y": 2
+        },
+        "5": {
+            "text": "Main Menu"
+        },
+        "ButtonAction": {
+            "type": "ButtonMenu"
+        }
+    }
+}

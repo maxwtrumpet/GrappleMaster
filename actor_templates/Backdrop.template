@@ -1,0 +1,19 @@
+{
+    "name": "Backdrop",
+	"components": {
+        "1": {
+			"type": "SpriteRenderer",
+			"sprite": "Backdrop",
+			"sorting_order": 80,
+            "x_scale": 240,
+            "y_scale": 135
+		},
+        "2": {
+            "ui": true,
+            "type": "Rigidbody",
+            "has_collider": false,
+            "has_trigger": false,
+            "gravity_scale": 0
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Background",
+    "components":
+    {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "background",
+            "sorting_order": -9999,
+            "x_scale": 1.25,
+            "y_scale": 1.25
+        },
+        "2": {
+            "type": "Rigidbody",
+            "gravity_scale": 0,
+            "has_collider": false,
+            "has_trigger": false
+        },
+        "3": {
+            "type": "Scroller"
+        }
+    }
+}

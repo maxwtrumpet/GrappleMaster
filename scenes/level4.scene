@@ -1,0 +1,46 @@
+{
+    "actors": [
+        {
+            "template": "LevelLoader",
+            "components": {
+                "1": {
+                    "current_scene": 4
+                }
+            }
+        },
+        {
+            "template": "Camera"
+        },
+        {
+            "template": "Cursor",
+            "components": {
+                "1": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "name": "GrappleCollect",
+            "components": {
+                "1": {
+                    "type": "Rigidbody",
+                    "body_type": "static",
+                    "has_collider": false,
+                    "x": -4,
+                    "y": 0,
+                    "trigger_width": 0.5,
+                    "trigger_height": 0.5
+                },
+                "2": {
+                    "type": "SpriteRenderer",
+                    "sprite": "Grapple",
+                    "x_scale": 6.25,
+                    "y_scale": 6.25
+                },
+                "3": {
+                    "type": "GrappleCollect"
+                }
+            }
+        }
+    ]
+}

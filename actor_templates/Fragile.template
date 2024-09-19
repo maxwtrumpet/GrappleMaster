@@ -1,0 +1,21 @@
+{
+	"name": "Fragile",
+	"components": {
+		"1": {
+			"type": "SpriteRenderer",
+			"sprite": "Fragile",
+			"sorting_order": -999,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+		},
+		"2": {
+			"type": "Rigidbody",
+			"body_type": "kinematic"
+		},
+		"3": {
+			"type": "Block",
+			"climbable": -1,
+			"grappleable": -1
+		}
+	}
+}

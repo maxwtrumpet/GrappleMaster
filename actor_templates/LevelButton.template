@@ -1,0 +1,40 @@
+{
+    "template": "Button",
+    "name": "Level Button",
+    "components": {
+        "2": {
+			"sprite": "Level_clicked"
+		},
+        "3": {
+            "enabled": false
+        },
+        "ButtonAction": {
+            "type": "ButtonLevel"
+        },
+        "4": {
+			"trigger_width": 1
+		},
+        "5": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+        },
+        "6": {
+            "type": "SpriteRenderer",
+			"sprite": "Locked",
+			"sorting_order": 101,
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "enabled": false
+        },
+        "7": {
+            "type": "SpriteRenderer",
+			"sprite": "Secret_found",
+			"sorting_order": 101,
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "enabled": false
+        }
+    }
+
+}

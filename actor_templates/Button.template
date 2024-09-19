@@ -1,0 +1,37 @@
+{
+	"name": "Button",
+	"components": {
+		"1": {
+            "type": "ButtonManager"
+        },
+		"2": {
+			"type": "SpriteRenderer",
+			"sprite": "Button_clicked",
+			"sorting_order": 100,
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "enabled": false
+		},
+        "3": {
+			"type": "SpriteRenderer",
+			"sprite": "Button_unclicked",
+			"sorting_order": 99,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+		},
+		"4": {
+			"type": "Rigidbody",
+			"ui": true,
+            "has_collider": false,
+            "gravity_scale": 0,
+			"trigger_width": 3
+		},
+		"5": {
+			"type": "TextRenderer",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+			"sorting_order": 100
+		}
+	}
+}

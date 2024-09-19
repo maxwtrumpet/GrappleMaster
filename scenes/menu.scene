@@ -1,0 +1,269 @@
+{
+    "actors": [
+        {
+            "template": "Background",
+            "components":
+            {
+                "2": {
+                    "x": 4
+                }
+            }
+        },
+        {
+            "template": "Title"
+        },
+        {
+            "name": "Level Select",
+            "components": {
+                "1": {
+                    "type": "SpriteRenderer",
+                    "sprite": "Level_select",
+                    "sorting_order": 999,
+                    "x_scale": 0.5,
+                    "y_scale": 0.5,
+                    "enabled": false
+                },
+                "2": {
+                    "type": "Rigidbody",
+                    "body_type": "static",
+                    "has_collider": false,
+                    "has_trigger": false,
+                    "ui":true,
+                    "y": -3.75
+                }
+            }
+        },
+        {
+            "template": "Cursor",
+            "components": {
+                "3": {
+                    "restricted": false
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
+                    "text": "Start"
+                },
+                "ButtonAction": {
+                    "type": "ButtonStart"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
+                    "text": "Quit"
+                },
+                "4": {
+                    "x": 0,
+                    "y": 2
+                },
+                "ButtonAction": {
+                    "type": "ButtonQuit"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "3": {
+                    "enabled": false
+                },
+                "4": {
+                    "x": 0,
+                    "y": 3.65
+                },
+                "5": {
+                    "text": "Cancel"
+                },
+                "ButtonAction": {
+                    "type": "ButtonCancel"
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "3": {
+                    "sprite": "Steel"
+                },
+                "4": {
+                    "x": -3,
+                    "y": -2
+                },
+                "5": {
+                    "text": "1"
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "2"
+                },
+                "3": {
+                    "sprite": "Kill"
+                },
+                "4": {
+                    "x": -1,
+                    "y": -2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "3"
+                },
+                "3": {
+                    "sprite": "Hard_blank"
+                },
+                "4": {
+                    "x": 1,
+                    "y": -2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "4"
+                },
+                "3": {
+                    "sprite": "Brittle_blank"
+                },
+                "4": {
+                    "x": 3,
+                    "y": -2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "5"
+                },
+                "3": {
+                    "sprite": "Rocky_blank"
+                },
+                "4": {
+                    "x": -3,
+                    "y": 0
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "6"
+                },
+                "3": {
+                    "sprite": "Ice_blank"
+                },
+                "4": {
+                    "x": -1,
+                    "y": 0
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "7"
+                },
+                "3": {
+                    "sprite": "Normal_blank"
+                },
+                "4": {
+                    "x": 1,
+                    "y": 0
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "8"
+                },
+                "3": {
+                    "sprite": "gold"
+                },
+                "4": {
+                    "x": 3,
+                    "y": 0
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "9"
+                },
+                "3": {
+                    "sprite": "Organic_blank"
+                },
+                "4": {
+                    "x": -3,
+                    "y": 2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "10"
+                },
+                "3": {
+                    "sprite": "Dirt_blank"
+                },
+                "4": {
+                    "x": -1,
+                    "y": 2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "11"
+                },
+                "3": {
+                    "sprite": "Fragile"
+                },
+                "4": {
+                    "x": 1,
+                    "y": 2
+                }
+            }
+        },
+        {
+            "template": "LevelButton",
+            "components": {
+                "5": {
+                    "text": "12"
+                },
+                "3": {
+                    "sprite": "player"
+                },
+                "4": {
+                    "x": 3,
+                    "y": 2
+                }
+            }
+        }
+    ]
+}

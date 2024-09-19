@@ -1,0 +1,11 @@
+{
+    "template": "Button",
+    "components": {
+        "5": {
+            "text": "Resume"
+        },
+        "ButtonAction": {
+            "type": "ButtonResume"
+        }
+    }
+}

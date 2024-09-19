@@ -1,0 +1,33 @@
+{
+    "actors": [
+        {
+            "template": "LevelLoader",
+            "components": {
+                "1": {
+                    "current_scene": 10
+                }
+            }
+        },
+        {
+            "template": "Camera"
+        },
+        {
+            "template": "Cursor"
+        },
+        {
+            "template": "Checkpoint",
+            "components": {
+                "1": {
+                    "sprite": "hidden"
+                },
+                "2": {
+                    "x": -2,
+                    "y": -4
+                },
+                "4": {
+                    "type": "Level10secret"
+                }
+            }
+        }
+    ]
+}

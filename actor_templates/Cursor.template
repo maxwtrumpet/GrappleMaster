@@ -1,0 +1,22 @@
+{
+    "name": "Cursor",
+    "components": {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "Cursor",
+            "sorting_order": 1000,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+        },
+        "2": {
+            "type": "Rigidbody",
+            "has_collider": false,
+            "gravity_scale": 0,
+            "trigger_width": 0.4,
+            "trigger_height": 0.4
+        },
+        "3": {
+            "type": "CursorManager"
+        }
+    }
+}

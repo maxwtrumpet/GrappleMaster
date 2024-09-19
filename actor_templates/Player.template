@@ -1,0 +1,20 @@
+{
+    "name": "Player",
+    "components": {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "player",
+            "sorting_order": 1,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+        },
+        "2": {
+            "type": "Rigidbody",
+            "fixed_rotation": true,
+            "friction": 10.0
+        },
+        "3": {
+            "type": "PlayerManager"
+        }
+    }
+}

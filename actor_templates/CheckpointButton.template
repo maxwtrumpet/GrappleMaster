@@ -1,0 +1,21 @@
+{
+    "template": "Button",
+    "name": "Checkpoint Button",
+    "components": {
+        "2": {
+			"sprite": "Checkpoint_clicked"
+		},
+        "ButtonAction": {
+            "type": "ButtonLoad"
+        },
+        "4": {
+			"trigger_width": 1
+		},
+        "5": {
+            "r": 255,
+            "g": 252,
+            "b": 252
+        }
+    }
+
+}

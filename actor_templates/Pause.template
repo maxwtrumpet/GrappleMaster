@@ -1,0 +1,20 @@
+{
+	"name": "Pause",
+	"components": {
+		"1": {
+			"type": "SpriteRenderer",
+			"sprite": "Pause",
+			"sorting_order": 999,
+            "x_scale": 0.6,
+            "y_scale": 0.6
+		},
+        "2": {
+            "ui": true,
+            "type": "Rigidbody",
+            "has_collider": false,
+            "has_trigger": false,
+			"y": -3,
+            "gravity_scale": 0
+        }
+	}
+}
