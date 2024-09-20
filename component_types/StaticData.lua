@@ -2,6 +2,7 @@ StaticData = {
 
     secrets_found = {false, false, false, false, false, false, false, false, false, false, false, false},
     level_reached = 1,
+    mute_mode = true,
     controller_mode = false,
     blank_vector = Vector3(0,0,0),
     square_time = "event:/music/square_time",
@@ -43,12 +44,12 @@ StaticData = {
         Checkpoint = {Vector2(0,0),Vector2(10,-4),Vector2(6,-9),Vector2(-11,5),Vector2(-20,-8)},
         Pie = {Vector2(8,-15)},
         Secret = {Vector2(-29,-14)}},
-        {Steel = {Vector2(-5,2),Vector2(-4,2),Vector2(-3,2),Vector2(-2,2),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(1,-9),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(21,7),Vector2(22,7),Vector2(23,7),Vector2(24,7)},
-        Rocky = {Vector2(2,1),Vector2(2,0),Vector2(2,-1),Vector2(2,-2),Vector2(2,-3),Vector2(1,-6),Vector2(2,-6),Vector2(3,-6),Vector2(2,-9),Vector2(3,-9),Vector2(-8,-10),Vector2(24,1)},
-        Kill = {Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(24,6),Vector2(24,5),Vector2(24,4),Vector2(24,3),Vector2(24,2),Vector2(23,2)},
-        Checkpoint = {Vector2(0,0),Vector2(2,-8),Vector2(18,5)},
+        {Steel = {Vector2(-5,2),Vector2(-4,2),Vector2(-3,2),Vector2(-2,2),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(1,-9),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(21,7),Vector2(22,7),Vector2(23,7)},
+        Rocky = {Vector2(2,1),Vector2(2,0),Vector2(2,-1),Vector2(2,-2),Vector2(2,-3),Vector2(1,-6),Vector2(2,-6),Vector2(3,-6),Vector2(2,-9),Vector2(3,-9),Vector2(-8,-10),Vector2(24,1),Vector2(24,-3)},
+        Kill = {Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(24,6),Vector2(24,5),Vector2(24,4),Vector2(24,3),Vector2(24,2),Vector2(23,2),Vector2(24,7),Vector2(25,7),Vector2(26,7),Vector2(27,7),Vector2(28,7),Vector2(29,7),Vector2(30,7),Vector2(31,7),Vector2(32,7),Vector2(33,7),Vector2(34,7),Vector2(35,7),Vector2(36,7),Vector2(37,7),Vector2(38,7),Vector2(39,7),Vector2(4.5,-9),Vector2(30,-9),Vector2(32,-9)},
+        Checkpoint = {Vector2(0,0),Vector2(2,-8),Vector2(18,5),Vector2(24,-1),Vector2(24,-5)},
         Pie = {Vector2(-5,-14)},
-        Secret = {}},
+        Secret = {Vector2(31,-10)}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2)},
         Ice = {Vector2(2,-3),Vector2(-2,-7),Vector2(2,-11),Vector2(-2,-15),Vector2(-6,-16),Vector2(-10,-17)},
         Kill = {Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7)},
@@ -136,7 +137,7 @@ StaticData = {
         {location = 1, progress = 1, visible = 3, total = 6},
         {location = 1, progress = 1, visible = 3, total = 5},
         {location = 1, progress = 1, visible = 3, total = 5},
-        {location = 1, progress = 1, visible = 2, total = 3},
+        {location = 1, progress = 1, visible = 2, total = 5},
         {location = 1, progress = 1, visible = 1, total = 1},
         {location = 1, progress = 1, visible = 1, total = 1},
         {location = 1, progress = 1, visible = 2, total = 2},
@@ -165,27 +166,29 @@ StaticData = {
     end,
 
     UpdateMusic = function (self, level)
-        if not Audio.IsEventPlaying(self.square_time) then
-            Audio.LoadBank("Master Bank.strings")
-            Audio.LoadBank("Master Bank")
-            Audio.LoadBank("music")
-            Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
-        end
-        local all_found = true
-        for index, value in ipairs(self.secrets_found) do
-            if value == false then
-                all_found = false
-                break
+        if self.mute_mode == false then
+            if not Audio.IsEventPlaying(self.square_time) then
+                Audio.LoadBank("Master Bank.strings")
+                Audio.LoadBank("Master Bank")
+                Audio.LoadBank("music")
+                Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
             end
-        end
-        if level ~= 4 or all_found == true then
-            if all_found == true then
-                for parameter, values in pairs(self.secret_parameters) do
-                    Audio.SetEventParameter(self.square_time, parameter, values[level+1])
+            local all_found = true
+            for index, value in ipairs(self.secrets_found) do
+                if value == false then
+                    all_found = false
+                    break
                 end
-            else
-                for parameter, values in pairs(self.parameters) do
-                    Audio.SetEventParameter(self.square_time, parameter, values[level+1])
+            end
+            if level ~= 4 or all_found == true then
+                if all_found == true then
+                    for parameter, values in pairs(self.secret_parameters) do
+                        Audio.SetEventParameter(self.square_time, parameter, values[level+1])
+                    end
+                else
+                    for parameter, values in pairs(self.parameters) do
+                        Audio.SetEventParameter(self.square_time, parameter, values[level+1])
+                    end
                 end
             end
         end
@@ -261,14 +264,17 @@ StaticData = {
 
     EnableCheats = function (self)
         self.cheats_enabled = true
-        Audio.PlaySound("pie_collect.mp3", 4, false)
+        if self.mute_mode == false then
+            Audio.PlaySound("pie_collect.mp3", 4, false)
+            Audio.SetEventParameter(self.square_time, "Melody", 1)
+        end
         self.level_reached = 12
         self.secrets_found = {true, true, true, true, true, true, true, true, true, true, true, true}
         self.player_progress[1]["progress"] = 1
         self.player_progress[2]["progress"] = 6
         self.player_progress[3]["progress"] = 5
         self.player_progress[4]["progress"] = 5
-        self.player_progress[5]["progress"] = 3
+        self.player_progress[5]["progress"] = 5
         self.player_progress[6]["progress"] = 1
         self.player_progress[7]["progress"] = 1
         self.player_progress[8]["progress"] = 2
@@ -276,12 +282,14 @@ StaticData = {
         self.player_progress[10]["progress"] = 2
         self.player_progress[11]["progress"] = 3
         self.player_progress[12]["progress"] = 5
-        Audio.SetEventParameter(self.square_time, "Melody", 1)
     end,
 
     DisableCheats = function (self)
         self.cheats_enabled = false
-        Audio.PlaySound("death.mp3", 4, false)
+        if self.mute_mode == false then
+            Audio.PlaySound("death.mp3", 4, false)
+            Audio.SetEventParameter(self.square_time, "Melody", 0)
+        end
         self.level_reached = 1
         self.secrets_found = {false, false, false, false, false, false, false, false, false, false, false, false}
         self.player_progress[1]["progress"] = 1
@@ -308,7 +316,6 @@ StaticData = {
         self.player_progress[10]["location"] = 1
         self.player_progress[11]["location"] = 1
         self.player_progress[12]["location"] = 1
-        Audio.SetEventParameter(self.square_time, "Melody", 0)
     end
 
 }

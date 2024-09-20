@@ -9,6 +9,7 @@ PlayerManager = {
     smoothing_factor = 0.7,
 
     OnStart = function(self)
+        self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
         self.rb = self.actor:GetComponent("Rigidbody")
         self.sr = self.actor:GetComponent("SpriteRenderer")
         self.original_loc = self.rb:GetPosition()
@@ -76,7 +77,9 @@ PlayerManager = {
                     self.grapple = Actor.Instantiate("Grapple")
                     self.gm = self.grapple:GetComponent("GrappleManager")
                     self.gm:SetTarget(self.cursor:GetPosition())
-                    Audio.PlaySound("grapple.mp3", 16, false)
+                    if self.sd.mute_mode == false then
+                        Audio.PlaySound("grapple.mp3", 16, false)
+                    end
                 end
             elseif cur_grav == 0 then
                 if self.left_hold == true then
@@ -257,7 +260,9 @@ PlayerManager = {
                 if (left_hit ~= nil and left_hit.actor:GetName() ~= "Checkpoint" and left_hit.actor:GetName() ~= "Grapple" and left_hit.actor:GetName() ~= "Cursor") or (right_hit ~= nil and right_hit.actor:GetName() ~= "Checkpoint" and right_hit.actor:GetName() ~= "Grapple" and right_hit.actor:GetName() ~= "Cursor") then
                     if Input.IsKeyJustDown("space") or Input.IsJoyconJustDown("left trigger") or Input.IsJoyconJustDown("right major") then
                         self.rb:AddForce(Vector2(0,-667))
-                        Audio.PlaySound("jump.mp3", 16, false)
+                        if self.sd.mute_mode == false then
+                            Audio.PlaySound("jump.mp3", 16, false)
+                        end
                     end
                 else
                     self.rb:AddForce(Vector2(-5*velocity.x,0))
@@ -270,7 +275,9 @@ PlayerManager = {
                 self.grapple = Actor.Instantiate("Grapple")
                 self.gm = self.grapple:GetComponent("GrappleManager")
                 self.gm:SetTarget(self.cursor:GetPosition())
-                Audio.PlaySound("grapple.mp3", 16, false)
+                if self.sd.mute_mode == false then
+                    Audio.PlaySound("grapple.mp3", 16, false)
+                end
             end
             self.rb:SetVelocity(velocity)
             self.rb:SetPosition(position)
@@ -278,7 +285,9 @@ PlayerManager = {
     end,
 
     Die = function(self)
-        Audio.PlaySound("death.mp3", 4, false)
+        if self.sd.mute_mode == false then
+            Audio.PlaySound("death.mp3", 4, false)
+        end
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         ll:Respawn(self.original_loc, "Player")
     end

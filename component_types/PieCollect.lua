@@ -72,7 +72,9 @@ PieCollect = {
             if self.is_secret then
                 self.static_data.secrets_found[self.current_scene + 1] = true
             end
-            Audio.PlaySound("pie_collect.mp3", 4, false)
+            if self.static_data.mute_mode == false then
+                Audio.PlaySound("pie_collect.mp3", 4, false)
+            end
             self.player_sr = contact.other:GetComponent("SpriteRenderer")
             self.countdown = Application.GetFrame() + 180
             self.actor:GetComponent("SpriteRenderer").enabled = false
