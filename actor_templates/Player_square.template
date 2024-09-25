@@ -3,7 +3,7 @@
     "components": {
         "1": {
             "type": "SpriteRenderer",
-            "sprite": "player",
+            "sprite": "Player_blank",
             "sorting_order": 1,
             "x_scale": 6.25,
             "y_scale": 6.25

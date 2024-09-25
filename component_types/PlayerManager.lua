@@ -10,8 +10,13 @@ PlayerManager = {
 
     OnStart = function(self)
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
-        self.rb = self.actor:GetComponent("Rigidbody")
         self.sr = self.actor:GetComponent("SpriteRenderer")
+        if self.circle_mode then
+            self.sr.sprite = "goal"
+            self.sr.x_scale = 0.425
+            self.sr.y_scale = 0.425
+        end
+        self.rb = self.actor:GetComponent("Rigidbody")
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         self.can_grapple = ll.current_scene > 4 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
@@ -289,7 +294,11 @@ PlayerManager = {
             Audio.PlaySound("death.mp3", 4, false)
         end
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
-        ll:Respawn(self.original_loc, "Player")
+        if self.sd.circle_mode == true then
+            ll:Respawn(self.original_loc, "Player_circle")
+        else
+            ll:Respawn(self.original_loc, "Player_square")
+        end
     end
 
 }

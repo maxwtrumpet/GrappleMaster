@@ -10,6 +10,7 @@ ButtonCancel = {
         self.srs = self.actor:GetComponents("SpriteRenderer")
         self.tr = self.actor:GetComponent("TextRenderer")
         self.tr.enabled = false
+        self.rb = self.actor:GetComponent("Rigidbody")
 
         local buttons = Actor.FindAll("Button")
 
@@ -20,6 +21,10 @@ ButtonCancel = {
         self.quit_bm = buttons[2]:GetComponent("ButtonManager")
         self.quit_srs = buttons[2]:GetComponents("SpriteRenderer")
         self.quit_tr = buttons[2]:GetComponent("TextRenderer")
+
+        self.toggle_bm = buttons[4]:GetComponent("ButtonManager")
+        self.toggle_srs = buttons[4]:GetComponents("SpriteRenderer")
+        self.toggle_tr = buttons[4]:GetComponent("TextRenderer")
 
         self.levels = Actor.FindAll("Level Button")
         self.single_level_check = self.levels[1]:GetComponents("SpriteRenderer")[2]
@@ -43,12 +48,16 @@ ButtonCancel = {
             self.start_bm.enabled = true
             self.start_tr.enabled = true
 
+            self.toggle_srs[2].enabled = false
+            self.toggle_bm.enabled = false
+            self.toggle_tr.enabled = false
+
+            self.rb:SetUIPosition(Vector2(0,3.65))
+
             self.sd:HideLevelButtons(self.levels)
         else
             self.sd.RemoveCheckpointButtons()
             self.sd:ShowLevelButtons(self.levels)
         end
-
-        
     end
 }

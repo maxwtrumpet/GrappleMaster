@@ -3,7 +3,7 @@
     "name": "Level Button",
     "components": {
         "2": {
-			"sprite": "Level_clicked"
+			"sprite": "Level_blank"
 		},
         "3": {
             "enabled": false

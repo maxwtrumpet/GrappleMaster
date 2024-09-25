@@ -26,7 +26,12 @@ LevelLoader = {
 				end
 			end
 		end
-		local player = Actor.Instantiate("Player")
+		local player = nil
+		if data.circle_mode == true then
+			player = Actor.Instantiate("Player_circle")
+		else
+			player = Actor.Instantiate("Player_square")
+		end
 		local player_rb = player:GetComponent("Rigidbody")
 		player_rb:SetPosition(data.stage_layout[self.current_scene + 1]["Checkpoint"][data.player_progress[self.current_scene + 1]["location"]])
 		data:UpdateMusic(self.current_scene)
@@ -54,7 +59,7 @@ LevelLoader = {
 
 	Respawn = function(self, position, block_type)
 		local delay = 120
-		if block_type == "Player" then
+		if block_type == "Player_square" or block_type == "Player_circle" then
 			delay = 60
 		end
 		table.insert(self.respawn_blocks, {Application.GetFrame() + delay, position, block_type})

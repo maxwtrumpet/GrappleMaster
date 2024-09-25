@@ -38,6 +38,7 @@ PieCollect = {
                     Actor.Instantiate("ButtonMenu")
                     self.enabled = false
                 else
+                    self.static_data.player_progress[self.current_scene+2]["location"] = 1
                     Scene.Load(self.next_scene)
                 end
             else

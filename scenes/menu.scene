@@ -86,10 +86,29 @@
             }
         },
         {
+            "template": "Button",
+            "components": {
+                "3": {
+                    "enabled": false
+                },
+                "4": {
+                    "x": -2,
+                    "y": 3.65
+                },
+                "5": {
+                    "text": "Circle",
+                    "enabled": false
+                },
+                "ButtonAction": {
+                    "type": "ButtonToggle"
+                }
+            }
+        },
+        {
             "template": "LevelButton",
             "components": {
                 "3": {
-                    "sprite": "Steel"
+                    "sprite": "Steel_blank"
                 },
                 "4": {
                     "x": -3,
@@ -107,7 +126,7 @@
                     "text": "2"
                 },
                 "3": {
-                    "sprite": "Kill"
+                    "sprite": "Kill_blank"
                 },
                 "4": {
                     "x": -1,
@@ -197,7 +216,7 @@
                     "text": "8"
                 },
                 "3": {
-                    "sprite": "gold"
+                    "sprite": "Chunk_blank"
                 },
                 "4": {
                     "x": 3,
@@ -242,7 +261,7 @@
                     "text": "11"
                 },
                 "3": {
-                    "sprite": "Fragile"
+                    "sprite": "Fragile_blank"
                 },
                 "4": {
                     "x": 1,
@@ -257,7 +276,7 @@
                     "text": "12"
                 },
                 "3": {
-                    "sprite": "player"
+                    "sprite": "player_blank"
                 },
                 "4": {
                     "x": 3,

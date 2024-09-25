@@ -20,6 +20,12 @@ ButtonStart = {
         self.cancel_bm = buttons[3]:GetComponent("ButtonManager")
         self.cancel_srs = buttons[3]:GetComponents("SpriteRenderer")
         self.cancel_tr = buttons[3]:GetComponent("TextRenderer")
+        self.cancel_rb = buttons[3]:GetComponent("Rigidbody")
+
+        self.toggle_bm = buttons[4]:GetComponent("ButtonManager")
+        self.toggle_bt = buttons[4]:GetComponent("ButtonToggle")
+        self.toggle_srs = buttons[4]:GetComponents("SpriteRenderer")
+        self.toggle_tr = buttons[4]:GetComponent("TextRenderer")
 
         self.levels = Actor.FindAll("Level Button")
     end,
@@ -41,6 +47,23 @@ ButtonStart = {
         self.cancel_srs[2].enabled = true
         self.cancel_bm.enabled = true
         self.cancel_tr.enabled = true
+
+        local all_secrets = true
+        for index, value in ipairs(self.sd.secrets_found) do
+            if value == false then
+                all_secrets = false
+                break
+            end
+        end
+        if all_secrets == true then
+            self.toggle_srs[2].enabled = true
+            self.toggle_bm.enabled = true
+            self.toggle_tr.enabled = true
+            self.toggle_tr.text = self.toggle_bt.text[self.toggle_bt.current]
+            self.cancel_rb:SetUIPosition(Vector2(2, 3.65))
+        end
+        self.toggle_bt.current = 1
+        self.toggle_bt:ToggleLevels()
 
         self.sd:ShowLevelButtons(self.levels)
     end

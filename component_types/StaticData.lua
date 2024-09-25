@@ -2,8 +2,10 @@ StaticData = {
 
     secrets_found = {false, false, false, false, false, false, false, false, false, false, false, false},
     level_reached = 1,
-    mute_mode = true,
+    mute_mode = false,
+    circle_mode = false,
     controller_mode = false,
+    cheats_enabled = true,
     blank_vector = Vector3(0,0,0),
     square_time = "event:/music/square_time",
     parameters = {Chords = {1,1,1,1,1,1,1,1,0,0,0,1,1},
@@ -51,11 +53,11 @@ StaticData = {
         Pie = {Vector2(-5,-14)},
         Secret = {Vector2(31,-10.5)}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2)},
-        Ice = {Vector2(2,-3),Vector2(-2,-7),Vector2(2,-11),Vector2(-2,-15),Vector2(-6,-16),Vector2(-10,-17)},
+        Ice = {Vector2(2,-3),Vector2(-2,-7),Vector2(2,-11),Vector2(-2,-15),Vector2(-6,-16),Vector2(-10,-17),Vector2(-10,-26)},
         Kill = {Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7)},
-        Checkpoint = {Vector2(0,0)},
+        Checkpoint = {Vector2(0,0),Vector2(-10,-28)},
         Pie = {Vector2(-18,-16)},
-        Secret = {Vector2(-10,-26)}},
+        Secret = {}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,-9),Vector2(2,-11),Vector2(2,-12),Vector2(2,-13),Vector2(2,-14),Vector2(3,-14),Vector2(4,-14),Vector2(5,-14),Vector2(6,-14),Vector2(7,-14),Vector2(2,-15),Vector2(2,-16),Vector2(2,-17),Vector2(2,-18),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7)},
         Normal = {Vector2(3,-3),Vector2(2,-10),Vector2(8,-14)},
         Kill = {Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(21,7),Vector2(22,7),Vector2(23,7),Vector2(24,7),Vector2(25,7)},
@@ -84,23 +86,23 @@ StaticData = {
         Brittle = {Vector2(26,1),Vector2(27,1),Vector2(26,0),Vector2(27,0),Vector2(26,-1),Vector2(27,-1),Vector2(26,-2),Vector2(27,-2),Vector2(26,-3),Vector2(27,-3),Vector2(26,-4),Vector2(27,-4),Vector2(33,-4),Vector2(34,-4),Vector2(33,-3),Vector2(34,-3),Vector2(33,-2),Vector2(34,-2),Vector2(33,-1),Vector2(34,-1),Vector2(33,0),Vector2(34,0)},
         Fragile = {Vector2(3,1),Vector2(4,1),Vector2(5,1),Vector2(3,0),Vector2(4,0),Vector2(5,0),Vector2(3,-1),Vector2(4,-1),Vector2(5,-1),Vector2(11,1),Vector2(12,1),Vector2(13,1),Vector2(14,1),Vector2(15,1),Vector2(16,1),Vector2(17,1),Vector2(18,1),Vector2(19,1),Vector2(20,1),Vector2(11,2),Vector2(12,2),Vector2(13,2),Vector2(14,2),Vector2(15,2),Vector2(16,2),Vector2(17,2),Vector2(18,2),Vector2(19,2),Vector2(20,2)},
         Kill = {Vector2(11,3),Vector2(12,3),Vector2(13,3),Vector2(14,3),Vector2(15,3),Vector2(16,3),Vector2(17,3),Vector2(18,3),Vector2(19,3),Vector2(20,3),Vector2(10,0),Vector2(11,0),Vector2(12,0),Vector2(13,0),Vector2(14,0),Vector2(15,0),Vector2(16,0),Vector2(17,0),Vector2(18,0),Vector2(19,0),Vector2(20,0),Vector2(21,0),Vector2(25,0),Vector2(25,-1),Vector2(25,-2),Vector2(25,-3),Vector2(25,-4),Vector2(28,1),Vector2(28,0),Vector2(28,-1),Vector2(28,-2),Vector2(28,-3),Vector2(28,-4),Vector2(25,-7),Vector2(26,-7),Vector2(27,-7),Vector2(28,-7),Vector2(29,-7),Vector2(33,-7),Vector2(34,-7),Vector2(35,-7),Vector2(35,-6),Vector2(35,-5),Vector2(35,-4),Vector2(32,-3),Vector2(35,-3),Vector2(32,-2),Vector2(35,-2),Vector2(32,-1),Vector2(35,-1),Vector2(32,0),Vector2(35,0),Vector2(32,1),Vector2(35,1),Vector2(32,2),Vector2(35,2),Vector2(32,3),Vector2(33,3),Vector2(34,3),Vector2(35,3),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7)},
-        Checkpoint = {Vector2(0,0),Vector2(23,0),Vector2(31,-6)},
+        Checkpoint = {Vector2(0,0),Vector2(23,0),Vector2(31,-6),Vector2(31,-13)},
         Pie = {Vector2(33.5,1.5)},
-        Secret = {Vector2(31,-13)}},
+        Secret = {}},
         {Steel = {Vector2(-2,2),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(3,-16),Vector2(2,-16),Vector2(1,-16),Vector2(0,-16),Vector2(-1,-16),Vector2(-9,-26),Vector2(-10,-26),Vector2(-11,-26),Vector2(-25,-26),Vector2(-26,-26),Vector2(-27,-26),Vector2(-31,-26),Vector2(-32,-26),Vector2(-33,-26),Vector2(-60,7),Vector2(-59,7),Vector2(-58,7)},
         Hard = {Vector2(2,1),Vector2(2,0),Vector2(2,-1),Vector2(2,-2),Vector2(2,-3)},
         Brittle = {Vector2(-2,-5),Vector2(-2,-6),Vector2(-2,-7),Vector2(-2,-8),Vector2(-2,-9)},
         Rocky = {Vector2(7,-14),Vector2(7,-15),Vector2(7,-16),Vector2(7,-17),Vector2(7,-18)},
-        Ice = {Vector2(0,-22)},
+        Ice = {Vector2(0,-22),Vector2(-62.5,7)},
         Chunk = {Vector2(-35,-27),Vector2(-35,-28)},
         Organic = {Vector2(-37,-27),Vector2(-37,-28)},
         Normal = {Vector2(-8,-26)},
-        Dirt = {Vector2(-13,-26),Vector2(-16,-26),Vector2(-20,-26),Vector2(-23,-26)},
+        Dirt = {Vector2(-13,-26),Vector2(-16,-26),Vector2(-20,-26),Vector2(-23,-26),Vector2(-62.5,9)},
         Fragile = {Vector2(-28,-28),Vector2(-29,-28),Vector2(-30,-28)},
-        Kill = {Vector2(2,-4),Vector2(-2,-10),Vector2(7,-19),Vector2(0,-23),Vector2(1,-23),Vector2(1,-22),Vector2(-8,-28.5),Vector2(-12,-28.5),Vector2(-13,-28.5),Vector2(-14,-28.5),Vector2(-15,-28.5),Vector2(-16,-28.5),Vector2(-17,-28.5),Vector2(-18,-28.5),Vector2(-19,-28.5),Vector2(-20,-28.5),Vector2(-21,-28.5),Vector2(-22,-28.5),Vector2(-23,-28.5),Vector2(-24,-28.5),Vector2(-8,-25),Vector2(-12,-25),Vector2(-13,-25),Vector2(-14,-25),Vector2(-15,-25),Vector2(-16,-25),Vector2(-17,-25),Vector2(-18,-25),Vector2(-19,-25),Vector2(-20,-25),Vector2(-21,-25),Vector2(-22,-25),Vector2(-23,-25),Vector2(-24,-25),Vector2(-30,-26),Vector2(-29,-26),Vector2(-28,-26),Vector2(-30,-29),Vector2(-29,-29),Vector2(-28,-29),Vector2(-34,-26),Vector2(-35,-26),Vector2(-36,-26),Vector2(-37,-26),Vector2(-38,-26),Vector2(-34,-29),Vector2(-35,-29),Vector2(-36,-29),Vector2(-37,-29),Vector2(-38,-29),Vector2(-57,7),Vector2(-56,7),Vector2(-55,7),Vector2(-54,7),Vector2(-53,7),Vector2(-52,7),Vector2(-51,7),Vector2(-50,7),Vector2(-49,7),Vector2(-48,7),Vector2(-47,7),Vector2(-46,7),Vector2(-45,7),Vector2(-44,7),Vector2(-43,7),Vector2(-42,7),Vector2(-41,7),Vector2(-40,7),Vector2(-39,7),Vector2(-38,7),Vector2(-37,7),Vector2(-36,7),Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7)},
-        Checkpoint = {Vector2(0,0),Vector2(2,-18),Vector2(-10,-28),Vector2(-26,-28),Vector2(-32,-28)},
+        Kill = {Vector2(2,-4),Vector2(-2,-10),Vector2(7,-19),Vector2(0,-23),Vector2(1,-23),Vector2(1,-22),Vector2(-8,-28.5),Vector2(-12,-28.5),Vector2(-13,-28.5),Vector2(-14,-28.5),Vector2(-15,-28.5),Vector2(-16,-28.5),Vector2(-17,-28.5),Vector2(-18,-28.5),Vector2(-19,-28.5),Vector2(-20,-28.5),Vector2(-21,-28.5),Vector2(-22,-28.5),Vector2(-23,-28.5),Vector2(-24,-28.5),Vector2(-8,-25),Vector2(-12,-25),Vector2(-13,-25),Vector2(-14,-25),Vector2(-15,-25),Vector2(-16,-25),Vector2(-17,-25),Vector2(-18,-25),Vector2(-19,-25),Vector2(-20,-25),Vector2(-21,-25),Vector2(-22,-25),Vector2(-23,-25),Vector2(-24,-25),Vector2(-30,-26),Vector2(-29,-26),Vector2(-28,-26),Vector2(-30,-29),Vector2(-29,-29),Vector2(-28,-29),Vector2(-34,-26),Vector2(-35,-26),Vector2(-36,-26),Vector2(-37,-26),Vector2(-38,-26),Vector2(-34,-29),Vector2(-35,-29),Vector2(-36,-29),Vector2(-37,-29),Vector2(-38,-29),Vector2(-57,7),Vector2(-56,7),Vector2(-55,7),Vector2(-54,7),Vector2(-53,7),Vector2(-52,7),Vector2(-51,7),Vector2(-50,7),Vector2(-49,7),Vector2(-48,7),Vector2(-47,7),Vector2(-46,7),Vector2(-45,7),Vector2(-44,7),Vector2(-43,7),Vector2(-42,7),Vector2(-41,7),Vector2(-40,7),Vector2(-39,7),Vector2(-38,7),Vector2(-37,7),Vector2(-36,7),Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(-61,7),Vector2(-64,7)},
+        Checkpoint = {Vector2(0,0),Vector2(2,-18),Vector2(-10,-28),Vector2(-26,-28),Vector2(-32,-28),Vector2(-59,5)},
         Pie = {Vector2(-41,-27.5)},
-        Secret = {Vector2(-59,5)}},
+        Secret = {}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2)},
         Checkpoint = {Vector2(0,0)}}
     },
@@ -110,7 +112,7 @@ StaticData = {
         {Vector2(0,0),Vector2(1,0),Vector2(-1,0),Vector2(-2,0),Vector2(-1,-1),Vector2(-2,-1),Vector2(-1,1),Vector2(-2,1),Vector2(0,1),Vector2(1,1),Vector2(0,-1),Vector2(1,-1),Vector2(0,-2),Vector2(-1,-2)},
         {Vector2(0,0),Vector2(0,1),Vector2(0,-1),Vector2(1,0),Vector2(1,1),Vector2(1,-1),Vector2(-1,0),Vector2(-1,1),Vector2(-1,-1),Vector2(-1,-2),Vector2(-1,2)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(2,1),Vector2(2,0),Vector2(2,-1)},
-        {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(-2,0),Vector2(-2,-1),Vector2(-2,1)},
+        {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(-2,0),Vector2(-2,-1),Vector2(-2,1),Vector2(0,-2),Vector2(-1,-2)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
@@ -138,17 +140,16 @@ StaticData = {
         {location = 1, progress = 1, visible = 3, total = 5},
         {location = 1, progress = 1, visible = 3, total = 5},
         {location = 1, progress = 1, visible = 2, total = 5},
+        {location = 1, progress = 1, visible = 1, total = 2},
         {location = 1, progress = 1, visible = 1, total = 1},
-        {location = 1, progress = 1, visible = 1, total = 1},
         {location = 1, progress = 1, visible = 2, total = 2},
         {location = 1, progress = 1, visible = 2, total = 2},
         {location = 1, progress = 1, visible = 2, total = 2},
-        {location = 1, progress = 1, visible = 3, total = 3},
-        {location = 1, progress = 1, visible = 5, total = 5},
+        {location = 1, progress = 1, visible = 3, total = 4},
+        {location = 1, progress = 1, visible = 5, total = 6},
     },
 
     OnStart = function(self)
-        self.cheats_enabled = false
         Scene.DontDestroy(self.actor)
         if Input.NumControllersAvailable() > 0 then
             Input.ActivateControllers(1)
@@ -156,6 +157,9 @@ StaticData = {
             Debug.Log("Controller detected and activated")
         else
             Debug.Log("No controller, keyboard mode")
+        end
+        if self.cheats_enabled == true then
+            self:EnableCheats()
         end
     end,
 
@@ -275,13 +279,13 @@ StaticData = {
         self.player_progress[3]["progress"] = 5
         self.player_progress[4]["progress"] = 5
         self.player_progress[5]["progress"] = 5
-        self.player_progress[6]["progress"] = 1
+        self.player_progress[6]["progress"] = 2
         self.player_progress[7]["progress"] = 1
         self.player_progress[8]["progress"] = 2
         self.player_progress[9]["progress"] = 2
         self.player_progress[10]["progress"] = 2
-        self.player_progress[11]["progress"] = 3
-        self.player_progress[12]["progress"] = 5
+        self.player_progress[11]["progress"] = 4
+        self.player_progress[12]["progress"] = 6
     end,
 
     DisableCheats = function (self)
