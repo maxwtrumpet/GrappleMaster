@@ -21,7 +21,6 @@ TextRenderer = {
     end,
 
     OnUpdate = function (self)
-        
         self.rb = self.actor:GetComponent("Rigidbody")
 		if self.rb ~= nil then
 			local cur_pos = self.rb:GetPosition()
@@ -29,7 +28,6 @@ TextRenderer = {
 			self.y = cur_pos.y
 			self.rot_degrees = self.rb:GetRotation()
 		end
-        
-        Text.DrawEx(self.text, self.font_name, self.x + self.x_offset, self.y + self.y_offset, self.rotation, self.size, self.x_pivot, self.y_pivot, self.r, self.g, self.b, self.a, self.sorting_order)
+        Text.Draw(self.text, self.font_name, self.x + self.x_offset, self.y + self.y_offset, self.rotation, self.size, self.x_pivot, self.y_pivot, self.r, self.g, self.b, self.a, self.sorting_order)
     end
 }
