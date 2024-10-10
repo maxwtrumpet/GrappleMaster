@@ -28,6 +28,6 @@ SpriteRenderer = {
 			self.rot_degrees = self.rb:GetRotation()
 		end
 		
-		Image.DrawEx(self.sprite, self.x + self.x_offset, self.y + self.y_offset, self.rot_degrees, self.x_scale, self.y_scale, self.x_pivot, self.y_pivot, self.r, self.g, self.b, self.a, self.sorting_order)
+		Image.Draw(self.sprite, self.x + self.x_offset, self.y + self.y_offset, self.rot_degrees, self.x_scale, self.y_scale, self.x_pivot, self.y_pivot, self.r, self.g, self.b, self.a, self.sorting_order)
 	end
 }
