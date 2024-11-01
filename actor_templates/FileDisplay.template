@@ -1,0 +1,29 @@
+{
+	"name": "File Display",
+	"components": {
+        "1": {
+			"type": "SpriteRenderer",
+			"sprite": "file_display",
+			"sorting_order": 99,
+            "x_scale": 6.25,
+            "y_scale": 6.25
+		},
+		"2": {
+			"type": "Rigidbody",
+			"ui": true,
+            "has_collider": false,
+            "gravity_scale": 0,
+			"trigger_width": 3
+		},
+		"3": {
+			"type": "TextRenderer",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+			"sorting_order": 100
+		},
+        "4": {
+            "type": "FileDisplay"
+        }
+	}
+}

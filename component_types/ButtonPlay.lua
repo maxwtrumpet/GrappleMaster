@@ -1,4 +1,4 @@
-ButtonLoad = {
+ButtonPlay = {
 
     level = 0,
 
@@ -12,7 +12,7 @@ ButtonLoad = {
     end,
 
     OnClick = function (self)
-        self.sd.player_progress[self.level]["location"] = self.checkpoint
+        self.sd.level_layout[self.level]["location"] = self.checkpoint
         Scene.Load("level" .. tostring(self.level - 1))
     end
 }

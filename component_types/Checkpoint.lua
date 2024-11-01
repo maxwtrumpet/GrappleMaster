@@ -20,8 +20,8 @@ Checkpoint = {
             pm.original_loc = self.position
             local sd = Actor.Find("StaticData"):GetComponent("StaticData")
             local level = Actor.Find("LevelLoader"):GetComponent("LevelLoader").current_scene + 1
-            if sd.player_progress[level]["progress"][self.player_type] < self.number then
-                sd.player_progress[level]["progress"][self.player_type] = self.number
+            if sd.player_progress[level][self.player_type] < self.number then
+                sd.player_progress[level][self.player_type] = self.number
             end
             self.enabled = false
         end

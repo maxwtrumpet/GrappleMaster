@@ -33,7 +33,7 @@ LevelLoader = {
 			player = Actor.Instantiate("Player_square")
 		end
 		local player_rb = player:GetComponent("Rigidbody")
-		player_rb:SetPosition(data.stage_layout[self.current_scene + 1]["Checkpoint"][data.player_progress[self.current_scene + 1]["location"]])
+		player_rb:SetPosition(data.stage_layout[self.current_scene + 1]["Checkpoint"][data.level_layout[self.current_scene + 1]["location"]])
 		local player_type = nil
 		if player:GetComponent("CircleManager") == nil then
 			player_type = "Square"

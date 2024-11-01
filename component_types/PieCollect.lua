@@ -9,7 +9,10 @@ PieCollect = {
         self.is_secret = self.actor:GetName() == "Secret"
         self.current_scene = Actor.Find("LevelLoader"):GetComponent("LevelLoader").current_scene
         self.next_scene = self.next_scene .. tostring(self.current_scene + 1)
-        self.player_circle = Actor.Find("Player"):GetComponent("CircleManager") ~= nil
+        self.player_type = "Square"
+        if Actor.Find("Player"):GetComponent("CircleManager") ~= nil then
+            self.player_type = "Circle"
+        end
     end,
 
     OnUpdate = function(self)
@@ -25,7 +28,7 @@ PieCollect = {
                         Actor.Instantiate("TrueEnding")
                         self.player_sr.sprite = "true_goal"
                         for index, value in ipairs(self.static_data.secrets_found) do
-                            if value == false then
+                            if value[self.player_type] == false then
                                 Actor.Destroy("TrueEnding")
                                 Actor.Instantiate("NormalEnding")
                                 self.player_sr.sprite = "goal"
@@ -39,20 +42,20 @@ PieCollect = {
                     Actor.Instantiate("ButtonMenu")
                     self.enabled = false
                 else
-                    self.static_data.player_progress[self.current_scene+2]["location"] = 1
+                    self.static_data.level_layout[self.current_scene+2]["location"] = 1
                     Scene.Load(self.next_scene)
                 end
             else
                 local is_alt = ((self.countdown - cur_frame) % 60) < 30
                 if self.is_secret then
                     if is_alt then
-                        if self.player_circle then
+                        if self.player_type == "Circle" then
                             self.player_sr.sprite = "true_goal"
                         else
                             self.player_sr.sprite = "gold"
                         end
                     else
-                        if self.player_circle then
+                        if self.player_type == "Circle" then
                             self.player_sr.sprite = "Player_circle"
                         else
                             self.player_sr.sprite = "player"
@@ -73,12 +76,8 @@ PieCollect = {
 
     OnTriggerEnter = function(self, contact)
         if contact.other:GetName() == "Player" then
-            local player_type = "Square"
-            if self.player_circle then
-                player_type = "Circle"
-            end
-            if self.current_scene + 1 == self.static_data.level_reached[player_type] then
-                self.static_data.level_reached[player_type] = self.static_data.level_reached[player_type] + 1
+            if self.current_scene + 1 == self.static_data.level_reached[self.player_type] then
+                self.static_data.level_reached[self.player_type] = self.static_data.level_reached[self.player_type] + 1
             end
             local grapple = Actor.Find("Grapple")
             local player_rb = contact.other:GetComponent("Rigidbody")
@@ -86,10 +85,10 @@ PieCollect = {
                 Actor.Destroy(grapple)
             end
             if self.is_secret then
-                if self.player_circle then
-                    self.static_data.secrets_found["Circle"][self.current_scene + 1] = true
+                if self.player_type == "Circle" then
+                    self.static_data.secrets_found[self.current_scene + 1]["Circle"] = true
                 else
-                    self.static_data.secrets_found["Square"][self.current_scene + 1] = true
+                    self.static_data.secrets_found[self.current_scene + 1]["Square"] = true
                 end
             end
             if self.static_data.mute_mode == false then

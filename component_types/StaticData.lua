@@ -1,12 +1,36 @@
 StaticData = {
 
+    deaths = 0,
     secrets_found = {
-        Square = {false, false, false, false, false, false, false, false, false, false, false, false},
-        Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
+        {Circle = false, Square = false},
     },
     level_reached = {Circle = 1, Square = 1},
+    player_progress = {
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+        {Circle = 1, Square = 1},
+    },
     mute_mode = false,
-    circle_mode = false,
     controller_mode = false,
     cheat_status = -1,
     blank_vector = Vector3(0,0,0),
@@ -136,19 +160,19 @@ StaticData = {
         {Vector2(-3,-2),Vector2(-1,-2),Vector2(1,-2),Vector2(3,-2),Vector2(-3,0),Vector2(-1,0),Vector2(1,0),Vector2(3,0),Vector2(-3,2),Vector2(-1,2),Vector2(1,2)},
         {Vector2(-3,-2),Vector2(-1,-2),Vector2(1,-2),Vector2(3,-2),Vector2(-3,0),Vector2(-1,0),Vector2(1,0),Vector2(3,0),Vector2(-3,2),Vector2(-1,2),Vector2(1,2),Vector2(3,2)}
     },
-    player_progress = {
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 1},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 6},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 5},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 5},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 5},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 2},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 1},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 4},
-        {location = 1, progress = {Circle = 1, Square = 1}, visible = 5, total = 6},
+    level_layout = {
+        {location = 1, visible = 1, total = 1},
+        {location = 1, visible = 3, total = 6},
+        {location = 1, visible = 3, total = 5},
+        {location = 1, visible = 3, total = 5},
+        {location = 1, visible = 2, total = 5},
+        {location = 1, visible = 1, total = 2},
+        {location = 1, visible = 1, total = 1},
+        {location = 1, visible = 2, total = 2},
+        {location = 1, visible = 2, total = 2},
+        {location = 1, visible = 2, total = 2},
+        {location = 1, visible = 3, total = 4},
+        {location = 1, visible = 5, total = 6},
     },
 
     OnStart = function(self)
@@ -181,14 +205,7 @@ StaticData = {
                 Audio.LoadBank("music")
                 Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
             end
-            local all_found = true
-            for index, value in ipairs(self.secrets_found) do
-                if value == false then
-                    all_found = false
-                    break
-                end
-            end
-            if level ~= 4 or all_found == true then
+            if level ~= 4 then
                 for parameter, values in pairs(self.parameters[player_type]) do
                     Audio.SetEventParameter(self.square_time, parameter, values[level+1])
                 end
@@ -219,7 +236,7 @@ StaticData = {
                 bm.clickable = true
                 value:GetComponent("TextRenderer").enabled = true
             end
-            if self.secrets_found[player_mode][bl.level] then
+            if self.secrets_found[bl.level][player_mode] then
                 srs[4].enabled = true
             end
         end
@@ -240,16 +257,16 @@ StaticData = {
 
     LoadCheckpointButtons = function (self, level, player_type)
         local count
-        if self.player_progress[level]["progress"][player_type] > self.player_progress[level]["visible"] then
-            count = self.player_progress[level]["total"]
+        if self.player_progress[level][player_type] > self.level_layout[level]["visible"] then
+            count = self.level_layout[level]["total"]
         else
-            count = self.player_progress[level]["visible"]
+            count = self.level_layout[level]["visible"]
         end
         for index, value in ipairs(self.checkpoint_layouts[count]) do
                 local cur_cp = Actor.Instantiate("CheckpointButton")
-                cur_cp:GetComponent("ButtonLoad").level = level
+                cur_cp:GetComponent("ButtonPlay").level = level
                 cur_cp:GetComponent("Rigidbody"):SetPosition(value)
-                if index > self.player_progress[level]["progress"][player_type] then
+                if index > self.player_progress[level][player_type] then
                     cur_cp:GetComponent("TextRenderer").enabled = false
                     cur_cp:GetComponents("SpriteRenderer")[2].sprite = "checkpoint"
                 else
@@ -275,12 +292,22 @@ StaticData = {
         self.level_reached["Square"] = 12
         self.level_reached["Circle"] = 12
         self.secrets_found = {
-            Square = {true, true, true, true, true, true, true, true, true, true, true, true},
-            Circle = {true, true, true, true, true, true, true, true, true, true, true, true}
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
+            {Circle = true, Square = true},
         }
         for index, value in ipairs(self.player_progress) do
-            self.player_progress[index]["progress"]["Square"] = self.player_progress[index]["total"]
-            self.player_progress[index]["progress"]["Circle"] = self.player_progress[index]["total"]
+            value["Square"] = self.level_layout[index]["total"]
+            value["Circle"] = self.level_layout[index]["total"]
         end
     end,
 
@@ -297,12 +324,22 @@ StaticData = {
         self.level_reached["Square"] = 12
         self.level_reached["Circle"] = 1
         self.secrets_found = {
-            Square = {true, true, true, true, true, true, true, true, true, true, true, true},
-            Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
+            {Circle = false, Square = true},
         }
         for index, value in ipairs(self.player_progress) do
-            self.player_progress[index]["progress"]["Square"] = self.player_progress[index]["total"]
-            self.player_progress[index]["progress"]["Circle"] = 1
+            value["Square"] = self.level_layout[index]["total"]
+            value["Circle"] = 1
         end
     end,
 
@@ -315,13 +352,47 @@ StaticData = {
         self.level_reached["Square"] = 1
         self.level_reached["Circle"] = 1
         self.secrets_found = {
-            Square = {false, false, false, false, false, false, false, false, false, false, false, false},
-            Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
+            {Circle = false, Square = false},
         }
         for index, value in ipairs(self.player_progress) do
-            self.player_progress[index]["progress"]["Square"] = 1
-            self.player_progress[index]["progress"]["Circle"] = 1
-            self.player_progress[index]["location"] = 1
+            value["Square"] = 1
+            value["Circle"] = 1
+            self.level_layout[index]["location"] = 1
+        end
+    end,
+
+    LoadFileMenu = function (self, mode)
+        for i = 1, 3, 1 do
+            local fd = Actor.Instantiate("FileDisplay")
+            local fb = Actor.Instantiate("FileButton")
+            fb:GetComponent("Rigidbody"):SetPosition(Vector2(-6.35,i*2-4))
+            local fb_bf = fb:GetComponent("ButtonFile")
+            fb_bf.mode = mode
+            fb_bf.file = i
+            fd:GetComponent("Rigidbody"):SetPosition(Vector2(1.95,i*2-4))
+            fd:GetComponent("FileDisplay").file = i
+        end
+    end,
+
+    RemoveFileMenu = function (self)
+        local fbs = Actor.FindAll("FileButton")
+        local fds = Actor.FindAll("File Display")
+        for key, value in pairs(fbs) do
+            Actor.Destroy(value)
+        end
+        for key, value in pairs(fds) do
+            Actor.Destroy(value)
         end
     end
 

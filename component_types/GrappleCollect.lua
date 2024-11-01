@@ -2,7 +2,7 @@ GrappleCollect = {
 
     OnStart = function (self)
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
-        if self.sd.player_progress[5]["location"] > 1 then
+        if self.sd.level_layout[5]["location"] > 1 then
             self:EnableGrapple()
         end
     end,

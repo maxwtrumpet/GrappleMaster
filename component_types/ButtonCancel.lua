@@ -1,76 +1,85 @@
 ButtonCancel = {
 
+    menu = "home",
+
     OnStart = function (self)
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
         self.title = Actor.Find("Title"):GetComponent("SpriteRenderer")
         self.level_select = Actor.Find("Level Select"):GetComponent("SpriteRenderer")
-
-        self.bm = self.actor:GetComponent("ButtonManager")
-        self.bm.enabled = false
-        self.srs = self.actor:GetComponents("SpriteRenderer")
-        self.tr = self.actor:GetComponent("TextRenderer")
-        self.tr.enabled = false
+        self.file_menu = Actor.Find("File Menu"):GetComponent("SpriteRenderer")
         self.rb = self.actor:GetComponent("Rigidbody")
 
-        local buttons = Actor.FindAll("Button")
-
-        self.start_bm = buttons[1]:GetComponent("ButtonManager")
-        self.start_srs = buttons[1]:GetComponents("SpriteRenderer")
-        self.start_tr = buttons[1]:GetComponent("TextRenderer")
-
-        self.quit_bm = buttons[2]:GetComponent("ButtonManager")
-        self.quit_srs = buttons[2]:GetComponents("SpriteRenderer")
-        self.quit_tr = buttons[2]:GetComponent("TextRenderer")
-
-        self.toggle_bm = buttons[4]:GetComponent("ButtonManager")
-        self.toggle_bt = buttons[4]:GetComponent("ButtonToggle")
-        self.toggle_srs = buttons[4]:GetComponents("SpriteRenderer")
-        self.toggle_tr = buttons[4]:GetComponent("TextRenderer")
+        local button_actors = Actor.FindAll("Button")
+        self.buttons = {}
+        for index, value in ipairs(button_actors) do
+            local tr = value:GetComponent("TextRenderer")
+            local text = tr.text
+            if text == "Circle" then
+                text = "Toggle"
+                self.buttons["Toggle"] = {}
+            end
+            self.buttons[text] = {}
+            self.buttons[text]["sr"] = value:GetComponents("SpriteRenderer")[2]
+            self.buttons[text]["tr"] = tr
+            self.buttons[text]["bm"] = value:GetComponent("ButtonManager")
+        end
+        self.hover_sr = self.actor:GetComponent("SpriteRenderer")
+        self.buttons["Toggle"]["bt"] = self.buttons["Toggle"]["bm"].actor:GetComponent("ButtonToggle")
+        self.buttons["Cancel"]["bm"].enabled = false
 
         self.levels = Actor.FindAll("Level Button")
-        self.single_level_check = self.levels[1]:GetComponents("SpriteRenderer")[2]
+    end,
+
+    ReturnToHome = function (self)
+        self.menu = "home"
+        self.title.enabled = true
+        self.level_select.enabled = false
+        self.file_menu.enabled = false
+        self.hover_sr.enabled = false
+
+        for key, value in pairs(self.buttons) do
+            value["sr"].enabled = true
+            value["tr"].enabled = true
+            value["bm"].enabled = true
+        end
+
+        self.buttons["Cancel"]["sr"].enabled = false
+        self.buttons["Cancel"]["tr"].enabled = false
+        self.buttons["Cancel"]["bm"].enabled = false
+
+        self.buttons["Toggle"]["sr"].enabled = false
+        self.buttons["Toggle"]["tr"].enabled = false
+        self.buttons["Toggle"]["bm"].enabled = false
+
+        self.rb:SetUIPosition(Vector2(0,3.65))
+
+        self.sd:HideLevelButtons(self.levels)
+        self.sd:RemoveFileMenu()
+    end,
+
+    ReturnToLevel = function (self)
+        self.menu = "level"
+        local all_found = true
+        for index, value in ipairs(self.sd.secrets_found) do
+            if value["Square"] == false then
+                all_found = false
+                break
+            end
+        end
+        if all_found == true then
+            self.buttons["Toggle"]["sr"].enabled = true
+            self.buttons["Toggle"]["tr"].enabled = true
+            self.buttons["Toggle"]["bm"].enabled = true
+        end
+        self.sd.RemoveCheckpointButtons()
+        self.sd:ShowLevelButtons(self.levels, self.buttons["Toggle"]["bt"].text[self.buttons["Toggle"]["bt"].current % 2 + 1])
     end,
 
     OnClick = function (self)
-        if self.single_level_check.enabled then
-            self.title.enabled = true
-            self.level_select.enabled = false
-
-            self.srs[1].enabled = false
-            self.srs[2].enabled = false
-            self.bm.enabled = false
-            self.tr.enabled = false
-
-            self.quit_srs[2].enabled = true
-            self.quit_bm.enabled = true
-            self.quit_tr.enabled = true
-
-            self.start_srs[2].enabled = true
-            self.start_bm.enabled = true
-            self.start_tr.enabled = true
-
-            self.toggle_srs[2].enabled = false
-            self.toggle_bm.enabled = false
-            self.toggle_tr.enabled = false
-
-            self.rb:SetUIPosition(Vector2(0,3.65))
-
-            self.sd:HideLevelButtons(self.levels)
+        if self.menu == "level" or self.menu == "file" then
+            self:ReturnToHome()
         else
-            local all_found = true
-            for index, value in ipairs(self.sd.secrets_found["Square"]) do
-                if value == false then
-                    all_found = false
-                    break
-                end
-            end
-            if all_found == true then
-                self.toggle_srs[2].enabled = true
-                self.toggle_bm.enabled = true
-                self.toggle_tr.enabled = true
-            end
-            self.sd.RemoveCheckpointButtons()
-            self.sd:ShowLevelButtons(self.levels, self.toggle_bt.text[self.toggle_bt.current % 2 + 1])
+            self:ReturnToLevel()
         end
     end
 }

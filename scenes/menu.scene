@@ -47,6 +47,10 @@
                 "5": {
                     "text": "Start"
                 },
+                "4": {
+                    "x": -2,
+                    "y": 0
+                },
                 "ButtonAction": {
                     "type": "ButtonStart"
                 }
@@ -59,11 +63,43 @@
                     "text": "Quit"
                 },
                 "4": {
-                    "x": 0,
+                    "x": -2,
                     "y": 2
                 },
                 "ButtonAction": {
                     "type": "ButtonQuit"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
+                    "text": "Save"
+                },
+                "4": {
+                    "x": 2,
+                    "y": 0
+                },
+                "ButtonAction": {
+                    "type": "ButtonFileMenu",
+                    "mode": "save"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
+                    "text": "Load"
+                },
+                "4": {
+                    "x": 2,
+                    "y": 2
+                },
+                "ButtonAction": {
+                    "type": "ButtonFileMenu",
+                    "mode": "load"
                 }
             }
         },
@@ -78,7 +114,8 @@
                     "y": 3.65
                 },
                 "5": {
-                    "text": "Cancel"
+                    "text": "Cancel",
+                    "enabled": false
                 },
                 "ButtonAction": {
                     "type": "ButtonCancel"
@@ -281,6 +318,27 @@
                 "4": {
                     "x": 3,
                     "y": 2
+                }
+            }
+        },
+        {
+            "name": "File Menu",
+            "components": {
+                "1": {
+                    "type": "SpriteRenderer",
+                    "sprite": "file_menu",
+                    "sorting_order": 999,
+                    "x_scale": 0.5,
+                    "y_scale": 0.5,
+                    "enabled": false
+                },
+                "2": {
+                    "type": "Rigidbody",
+                    "body_type": "static",
+                    "has_collider": false,
+                    "has_trigger": false,
+                    "ui":true,
+                    "y": -3.75
                 }
             }
         }

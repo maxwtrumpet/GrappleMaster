@@ -27,13 +27,6 @@ ButtonToggle = {
         else
             self.sd.circle_mode = false
         end
-        local all_secrets = true
-        for index, value in ipairs(self.sd.secrets_found) do
-            if value == false then
-                all_secrets = false
-                break
-            end
-        end
         for index, value in ipairs(self.levels) do
             if index > self.sd.level_reached[self.text[self.current % 2 + 1]] then
                 value[3].enabled = true
@@ -55,7 +48,7 @@ ButtonToggle = {
             value[4].sprite = "Secret_found" .. postfix
             value[4].x_scale = scale
             value[4].y_scale = scale
-            value[4].enabled = self.sd.secrets_found[self.text[self.current % 2 + 1]][index]
+            value[4].enabled = self.sd.secrets_found[index][self.text[self.current % 2 + 1]]
             value[5].x_scale = scale
             value[5].y_scale = scale
             value[5].sprite = "silhouette" .. postfix

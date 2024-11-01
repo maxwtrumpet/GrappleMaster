@@ -1,0 +1,15 @@
+{
+    "template": "Button",
+    "name": "FileButton",
+    "components": {
+        "4": {
+            "x": -2
+        },
+        "5": {
+            "text": "File "
+        },
+        "ButtonAction": {
+            "type": "ButtonFile"
+        }
+    }
+}

@@ -6,7 +6,7 @@
 			"sprite": "Checkpoint_clicked"
 		},
         "ButtonAction": {
-            "type": "ButtonLoad"
+            "type": "ButtonPlay"
         },
         "4": {
 			"trigger_width": 1

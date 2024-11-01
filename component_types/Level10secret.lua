@@ -3,7 +3,7 @@ Level10secret = {
     OnStart = function(self)
         self.cp = self.actor:GetComponent("Checkpoint")
         self.blocks = {Vector2(31,-6),Vector2(31,-7),Vector2(31,-8),Vector2(31,-9),Vector2(31,-10),Vector2(31,-11)}
-        if Actor.Find("StaticData"):GetComponent("StaticData").player_progress[11]["location"] > 3 then
+        if Actor.Find("StaticData"):GetComponent("StaticData").level_layout[11]["location"] > 3 then
             self.cp.enabled = false
             self:SpawnBlocks()
         end

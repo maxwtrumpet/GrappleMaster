@@ -265,6 +265,7 @@ SquareManager = {
         if self.sd.mute_mode == false then
             Audio.PlaySound("death.mp3", 4, false)
         end
+        self.sd.deaths = self.sd.deaths + 1
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         ll:Respawn(self.original_loc, "Player_square")
     end

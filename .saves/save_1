@@ -1,0 +1,9 @@
+Deaths: 74
+Square:
+    Reached: 5
+    Progress: 1 6 5 5 5 1 1 1 1 1 1 1
+    Secrets: true true true true false false false false false false false false
+Circle:
+    Reached: 1
+    Progress: 1 1 1 1 1 1 1 1 1 1 1 1
+    Secrets: false false false false false false false false false false false false

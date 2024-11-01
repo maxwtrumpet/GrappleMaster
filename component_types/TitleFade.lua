@@ -8,8 +8,8 @@ TitleFade = {
         self.sd = self.sd:GetComponent("StaticData")
         self.sr = self.actor:GetComponent("SpriteRenderer")
         local all_found = true
-        for index, value in ipairs(self.sd.secrets_found["Circle"]) do
-            if value == false then
+        for index, value in ipairs(self.sd.secrets_found) do
+            if value["Circle"] == false then
                 all_found = false
                 break
             end
