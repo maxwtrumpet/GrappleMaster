@@ -34,7 +34,13 @@ LevelLoader = {
 		end
 		local player_rb = player:GetComponent("Rigidbody")
 		player_rb:SetPosition(data.stage_layout[self.current_scene + 1]["Checkpoint"][data.player_progress[self.current_scene + 1]["location"]])
-		data:UpdateMusic(self.current_scene)
+		local player_type = nil
+		if player:GetComponent("CircleManager") == nil then
+			player_type = "Square"
+		else
+			player_type = "Circle"
+		end
+		data:UpdateMusic(self.current_scene, player_type)
 		for index, value in ipairs(data.background_layout[self.current_scene + 1]) do
 			local bg = Actor.Instantiate("Background"):GetComponent("Rigidbody")
 			bg:SetPosition(Vector2(value.x * 16, value.y * 9))

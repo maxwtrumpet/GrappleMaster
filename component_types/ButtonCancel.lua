@@ -23,6 +23,7 @@ ButtonCancel = {
         self.quit_tr = buttons[2]:GetComponent("TextRenderer")
 
         self.toggle_bm = buttons[4]:GetComponent("ButtonManager")
+        self.toggle_bt = buttons[4]:GetComponent("ButtonToggle")
         self.toggle_srs = buttons[4]:GetComponents("SpriteRenderer")
         self.toggle_tr = buttons[4]:GetComponent("TextRenderer")
 
@@ -56,8 +57,20 @@ ButtonCancel = {
 
             self.sd:HideLevelButtons(self.levels)
         else
+            local all_found = true
+            for index, value in ipairs(self.sd.secrets_found["Square"]) do
+                if value == false then
+                    all_found = false
+                    break
+                end
+            end
+            if all_found == true then
+                self.toggle_srs[2].enabled = true
+                self.toggle_bm.enabled = true
+                self.toggle_tr.enabled = true
+            end
             self.sd.RemoveCheckpointButtons()
-            self.sd:ShowLevelButtons(self.levels)
+            self.sd:ShowLevelButtons(self.levels, self.toggle_bt.text[self.toggle_bt.current % 2 + 1])
         end
     end
 }

@@ -20,7 +20,7 @@ Block = {
         if self.name == "Kill" then
             local player = Actor.Find("Player")
             if player ~= nil then
-                player:GetComponent("PlayerManager"):Die()
+                player:GetComponentByKey("Manager"):Die()
                 Actor.Destroy(player)
             end
         elseif (self.name == "Dirt" or self.name == "Fragile") and self.death_frame == -1 then

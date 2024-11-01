@@ -13,8 +13,8 @@
             "fixed_rotation": true,
             "friction": 10.0
         },
-        "3": {
-            "type": "PlayerManager"
+        "Manager": {
+            "type": "SquareManager"
         }
     }
 }

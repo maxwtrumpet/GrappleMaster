@@ -5,19 +5,19 @@
             "type": "SpriteRenderer",
             "sprite": "Player_circle",
             "sorting_order": 1,
-            "x_scale": 0.425,
-            "y_scale": 0.425
+            "x_scale": 0.375,
+            "y_scale": 0.375
         },
         "2": {
             "type": "Rigidbody",
             "collider_type": "circle",
             "trigger_type": "circle",
             "friction": 10.0,
-            "angular_friction": 10.0,
+            "angular_friction": 15.0,
             "density": 1.273239544735163
         },
-        "3": {
-            "type": "PlayerManager"
+        "Manager": {
+            "type": "CircleManager"
         }
     }
 }

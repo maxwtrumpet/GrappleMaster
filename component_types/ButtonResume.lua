@@ -11,7 +11,7 @@ ButtonResume = {
     end,
 
     OnClick = function (self)
-        self.player:GetComponent("PlayerManager").enabled = true
+        self.player:GetComponentByKey("Manager").enabled = true
         self.player:GetComponent("Rigidbody"):SetVelocity(self.previous_velocity)
         local scene_num = tonumber(string.sub(Scene.GetCurrent(),6))
         if scene_num < 4 then

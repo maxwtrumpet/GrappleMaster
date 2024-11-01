@@ -49,7 +49,7 @@ ButtonStart = {
         self.cancel_tr.enabled = true
 
         local all_secrets = true
-        for index, value in ipairs(self.sd.secrets_found) do
+        for index, value in ipairs(self.sd.secrets_found["Square"]) do
             if value == false then
                 all_secrets = false
                 break
@@ -65,7 +65,7 @@ ButtonStart = {
         self.toggle_bt.current = 1
         self.toggle_bt:ToggleLevels()
 
-        self.sd:ShowLevelButtons(self.levels)
+        self.sd:ShowLevelButtons(self.levels, "Square")
     end
 
 }

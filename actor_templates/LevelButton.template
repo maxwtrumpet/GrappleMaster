@@ -21,8 +21,8 @@
         },
         "6": {
             "type": "SpriteRenderer",
-			"sprite": "Locked",
-			"sorting_order": 101,
+			"sprite": "Lock",
+			"sorting_order": 102,
             "x_scale": 6.25,
             "y_scale": 6.25,
             "enabled": false
@@ -30,6 +30,14 @@
         "7": {
             "type": "SpriteRenderer",
 			"sprite": "Secret_found",
+			"sorting_order": 101,
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "enabled": false
+        },
+        "8": {
+            "type": "SpriteRenderer",
+			"sprite": "silhouette_blank",
 			"sorting_order": 101,
             "x_scale": 6.25,
             "y_scale": 6.25,

@@ -66,7 +66,11 @@ GrappleManager = {
             local player_rb = player:GetComponent("Rigidbody")
             if player_rb:GetGravityScale() == 0 then
                 player_rb:SetGravityScale(1)
-                player:GetComponent("SpriteRenderer").sprite = "player"
+                if player:GetComponent("SquareManager") == nil then
+                    player:GetComponent("SpriteRenderer").sprite = "Player_circle"
+                else
+                    player:GetComponent("SpriteRenderer").sprite = "player"
+                end
                 player_rb:SetColliderDimensions(Vector2(1,1))
             end
         end

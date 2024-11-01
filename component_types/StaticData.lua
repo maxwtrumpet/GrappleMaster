@@ -1,28 +1,30 @@
 StaticData = {
 
-    secrets_found = {false, false, false, false, false, false, false, false, false, false, false, false},
-    level_reached = 1,
+    secrets_found = {
+        Square = {false, false, false, false, false, false, false, false, false, false, false, false},
+        Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+    },
+    level_reached = {Circle = 1, Square = 1},
     mute_mode = false,
     circle_mode = false,
     controller_mode = false,
-    cheats_enabled = true,
+    cheat_status = -1,
     blank_vector = Vector3(0,0,0),
     square_time = "event:/music/square_time",
-    parameters = {Chords = {1,1,1,1,1,1,1,1,0,0,0,1,1},
-                  ChordType = {0,0,1,1,1,1,0,0,1,1,1,1,0},
-                  Bass = {0,1,1,1,1,1,1,1,0,0,0,0,0},
-                  Melody = {0,0,1,1,1,0,0,0,0,1,1,1,0},
-                  Groove = {0,0,0,1,1,1,1,0,0,0,1,1,1},
-                  Sustain = {0,0,0,0,0,0,0,1,1,1,1,1,0},
-                  Harp = {0,0,0,0,1,1,0,0,1,1,1,1,0}
-    },
-    secret_parameters = {Chords = {0,0,1,1,0,0,0,0,0,0,0,1,1},
-                        ChordType = {1,1,1,1,1,1,1,1,1,1,1,1,1},
-                        Bass = {1,1,1,1,1,1,1,1,0,0,1,1,0},
-                        Melody = {1,1,1,1,1,1,1,0,0,1,1,1,1},
-                        Groove = {0,0,0,0,0,0,1,1,1,1,1,1,1},
-                        Sustain = {0,1,1,1,1,0,1,1,0,0,1,1,0},
-                        Harp = {0,0,0,1,1,1,0,0,1,1,1,1,0}
+    parameters = {Square = {Chords = {1,1,1,1,1,1,1,1,0,0,0,1,1},
+                            ChordType = {0,0,1,1,1,1,0,0,1,1,1,1,0},
+                            Bass = {0,1,1,1,1,1,1,1,0,0,0,0,0},
+                            Melody = {0,0,1,1,1,0,0,0,0,1,1,1,0},
+                            Groove = {0,0,0,1,1,1,1,0,0,0,1,1,1},
+                            Sustain = {0,0,0,0,0,0,0,1,1,1,1,1,0},
+                            Harp = {0,0,0,0,1,1,0,0,1,1,1,1,0}},
+                  Circle = {Chords = {0,0,1,1,0,0,0,0,0,0,0,1,1},
+                            ChordType = {1,1,1,1,1,1,1,1,1,1,1,1,1},
+                            Bass = {1,1,1,1,1,1,1,1,0,0,1,1,0},
+                            Melody = {1,1,1,1,1,1,1,0,0,1,1,1,1},
+                            Groove = {0,0,0,0,0,0,1,1,1,1,1,1,1},
+                            Sustain = {0,1,1,1,1,0,1,1,0,0,1,1,0},
+                            Harp = {0,0,0,1,1,1,0,0,1,1,1,1,0}}
     },
     stage_layout = {
         {Steel = {Vector2(28,-4),Vector2(28,-5),Vector2(28,-6),Vector2(28,-7),Vector2(-3,0),Vector2(-3,1),Vector2(-3,2),Vector2(-2,2),Vector2(-3,-1),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(3,2),Vector2(4,2),Vector2(5,2),Vector2(6,2),Vector2(7,2),Vector2(8,2),Vector2(9,2),Vector2(10,2),Vector2(11,2),Vector2(12,2),Vector2(13,2),Vector2(14,2),Vector2(15,2),Vector2(16,2),Vector2(17,2),Vector2(18,2),Vector2(19,2),Vector2(20,2),Vector2(21,2),Vector2(22,2),Vector2(23,2),Vector2(23,1),Vector2(23,0),Vector2(23,-1),Vector2(23,-2),Vector2(23,-3),Vector2(24,-3),Vector2(25,-3),Vector2(26,-3),Vector2(27,-3),Vector2(3,1),Vector2(28,-3),Vector2(9,0),Vector2(9,1),Vector2(10,0),Vector2(11,0),Vector2(12,0),Vector2(10,1),Vector2(11,1),Vector2(12,1),Vector2(13,1),Vector2(13,0),Vector2(14,1),Vector2(17,-1),Vector2(20,-2),Vector2(-11,-4),Vector2(-11,-3),Vector2(-11,-2),Vector2(-11,-1),Vector2(-11,0),Vector2(-11,1),Vector2(-11,2),Vector2(-11,3),Vector2(-11,4),Vector2(-11,5),Vector2(-11,6),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(6,7),Vector2(-4,8),Vector2(6,8),Vector2(-4,9),Vector2(6,9),Vector2(-4,10),Vector2(6,10),Vector2(-4,11),Vector2(6,11),Vector2(-4,12),Vector2(6,12),Vector2(-4,13),Vector2(6,13),Vector2(-4,14),Vector2(6,14),Vector2(-4,18),Vector2(6,15),Vector2(6,16),Vector2(6,17),Vector2(-3,18),Vector2(-2,18),Vector2(6,18),Vector2(5,18),Vector2(4,18),Vector2(3,18),Vector2(2,18),Vector2(1,18),Vector2(0,18),Vector2(-1,18),Vector2(-5,18),Vector2(-6,18),Vector2(-7,18),Vector2(-8,18),Vector2(-8,16),Vector2(-9,18),Vector2(-10,18),Vector2(-11,18),Vector2(-12,18),Vector2(-13,18),Vector2(-13,14),Vector2(-14,18),Vector2(-15,18),Vector2(-16,18),Vector2(-17,18),Vector2(-18,18),Vector2(-18,12),Vector2(-19,18),Vector2(-20,18),Vector2(-21,18),Vector2(-22,18),Vector2(-23,18),Vector2(-23,17),Vector2(-23,16),Vector2(-23,15),Vector2(-23,14),Vector2(-23,13),Vector2(-23,12),Vector2(-23,11),Vector2(-23,10),Vector2(-24,10),Vector2(-25,10),Vector2(-26,10),Vector2(-27,10),Vector2(-28,10),Vector2(-26,9),Vector2(-26,8),Vector2(-26,7),Vector2(-29,10),Vector2(-30,10),Vector2(-31,10),Vector2(-32,10),Vector2(-32,9),Vector2(-32,8),Vector2(-32,7),Vector2(-32,6),Vector2(-32,5),Vector2(-32,4),Vector2(-32,3)},
@@ -135,18 +137,18 @@ StaticData = {
         {Vector2(-3,-2),Vector2(-1,-2),Vector2(1,-2),Vector2(3,-2),Vector2(-3,0),Vector2(-1,0),Vector2(1,0),Vector2(3,0),Vector2(-3,2),Vector2(-1,2),Vector2(1,2),Vector2(3,2)}
     },
     player_progress = {
-        {location = 1, progress = 1, visible = 1, total = 1},
-        {location = 1, progress = 1, visible = 3, total = 6},
-        {location = 1, progress = 1, visible = 3, total = 5},
-        {location = 1, progress = 1, visible = 3, total = 5},
-        {location = 1, progress = 1, visible = 2, total = 5},
-        {location = 1, progress = 1, visible = 1, total = 2},
-        {location = 1, progress = 1, visible = 1, total = 1},
-        {location = 1, progress = 1, visible = 2, total = 2},
-        {location = 1, progress = 1, visible = 2, total = 2},
-        {location = 1, progress = 1, visible = 2, total = 2},
-        {location = 1, progress = 1, visible = 3, total = 4},
-        {location = 1, progress = 1, visible = 5, total = 6},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 1},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 6},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 5},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 5},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 5},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 2},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 1, total = 1},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 2, total = 2},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 3, total = 4},
+        {location = 1, progress = {Circle = 1, Square = 1}, visible = 5, total = 6},
     },
 
     OnStart = function(self)
@@ -158,8 +160,10 @@ StaticData = {
         else
             Debug.Log("No controller, keyboard mode")
         end
-        if self.cheats_enabled == true then
-            self:EnableCheats()
+        if self.cheat_status == 1 then
+            self:EnableCircleCheats()
+        elseif self.cheat_status == 0 then
+            self:EnableSquareCheats()
         end
     end,
 
@@ -169,7 +173,7 @@ StaticData = {
         end
     end,
 
-    UpdateMusic = function (self, level)
+    UpdateMusic = function (self, level, player_type)
         if self.mute_mode == false then
             if not Audio.IsEventPlaying(self.square_time) then
                 Audio.LoadBank("Master Bank.strings")
@@ -185,14 +189,8 @@ StaticData = {
                 end
             end
             if level ~= 4 or all_found == true then
-                if all_found == true then
-                    for parameter, values in pairs(self.secret_parameters) do
-                        Audio.SetEventParameter(self.square_time, parameter, values[level+1])
-                    end
-                else
-                    for parameter, values in pairs(self.parameters) do
-                        Audio.SetEventParameter(self.square_time, parameter, values[level+1])
-                    end
+                for parameter, values in pairs(self.parameters[player_type]) do
+                    Audio.SetEventParameter(self.square_time, parameter, values[level+1])
                 end
             end
         end
@@ -205,22 +203,23 @@ StaticData = {
         end
     end,
 
-    ShowLevelButtons = function(self, levels)
+    ShowLevelButtons = function(self, levels, player_mode)
         for index, value in ipairs(levels) do
             local bm = value:GetComponent("ButtonManager")
             bm.enabled = true
             local srs = value:GetComponents("SpriteRenderer")
             srs[2].enabled = true
             local bl = value:GetComponent("ButtonLevel")
-            if bl.level > self.level_reached then
+            if bl.level > self.level_reached[player_mode] then
                 srs[3].enabled = true
+                srs[5].enabled = true
                 bm.clickable = false
                 value:GetComponent("TextRenderer").enabled = false
             else
                 bm.clickable = true
                 value:GetComponent("TextRenderer").enabled = true
             end
-            if self.secrets_found[bl.level] then
+            if self.secrets_found[player_mode][bl.level] then
                 srs[4].enabled = true
             end
         end
@@ -235,12 +234,13 @@ StaticData = {
             srs[2].enabled = false
             srs[3].enabled = false
             srs[4].enabled = false
+            srs[5].enabled = false
         end
     end,
 
-    LoadCheckpointButtons = function (self, level)
+    LoadCheckpointButtons = function (self, level, player_type)
         local count
-        if self.player_progress[level]["progress"] > self.player_progress[level]["visible"] then
+        if self.player_progress[level]["progress"][player_type] > self.player_progress[level]["visible"] then
             count = self.player_progress[level]["total"]
         else
             count = self.player_progress[level]["visible"]
@@ -249,7 +249,7 @@ StaticData = {
                 local cur_cp = Actor.Instantiate("CheckpointButton")
                 cur_cp:GetComponent("ButtonLoad").level = level
                 cur_cp:GetComponent("Rigidbody"):SetPosition(value)
-                if index > self.player_progress[level]["progress"] then
+                if index > self.player_progress[level]["progress"][player_type] then
                     cur_cp:GetComponent("TextRenderer").enabled = false
                     cur_cp:GetComponents("SpriteRenderer")[2].sprite = "checkpoint"
                 else
@@ -266,60 +266,63 @@ StaticData = {
         end
     end,
 
-    EnableCheats = function (self)
-        self.cheats_enabled = true
+    EnableCircleCheats = function (self)
+        self.cheat_status = 1
         if self.mute_mode == false then
             Audio.PlaySound("pie_collect.mp3", 4, false)
             Audio.SetEventParameter(self.square_time, "Melody", 1)
         end
-        self.level_reached = 12
-        self.secrets_found = {true, true, true, true, true, true, true, true, true, true, true, true}
-        self.player_progress[1]["progress"] = 1
-        self.player_progress[2]["progress"] = 6
-        self.player_progress[3]["progress"] = 5
-        self.player_progress[4]["progress"] = 5
-        self.player_progress[5]["progress"] = 5
-        self.player_progress[6]["progress"] = 2
-        self.player_progress[7]["progress"] = 1
-        self.player_progress[8]["progress"] = 2
-        self.player_progress[9]["progress"] = 2
-        self.player_progress[10]["progress"] = 2
-        self.player_progress[11]["progress"] = 4
-        self.player_progress[12]["progress"] = 6
+        self.level_reached["Square"] = 12
+        self.level_reached["Circle"] = 12
+        self.secrets_found = {
+            Square = {true, true, true, true, true, true, true, true, true, true, true, true},
+            Circle = {true, true, true, true, true, true, true, true, true, true, true, true}
+        }
+        for index, value in ipairs(self.player_progress) do
+            self.player_progress[index]["progress"]["Square"] = self.player_progress[index]["total"]
+            self.player_progress[index]["progress"]["Circle"] = self.player_progress[index]["total"]
+        end
+    end,
+
+    EnableSquareCheats = function (self)
+        if self.mute_mode == false then
+            if self.cheat_status == 1 then
+                Audio.PlaySound("death.mp3", 4, false)
+            else
+                Audio.PlaySound("pie_collect.mp3", 4, false)
+            end
+            Audio.SetEventParameter(self.square_time, "Melody", 0)
+        end
+        self.cheat_status = 0
+        self.level_reached["Square"] = 12
+        self.level_reached["Circle"] = 1
+        self.secrets_found = {
+            Square = {true, true, true, true, true, true, true, true, true, true, true, true},
+            Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+        }
+        for index, value in ipairs(self.player_progress) do
+            self.player_progress[index]["progress"]["Square"] = self.player_progress[index]["total"]
+            self.player_progress[index]["progress"]["Circle"] = 1
+        end
     end,
 
     DisableCheats = function (self)
-        self.cheats_enabled = false
+        self.cheat_status = -1
         if self.mute_mode == false then
             Audio.PlaySound("death.mp3", 4, false)
             Audio.SetEventParameter(self.square_time, "Melody", 0)
         end
-        self.level_reached = 1
-        self.secrets_found = {false, false, false, false, false, false, false, false, false, false, false, false}
-        self.player_progress[1]["progress"] = 1
-        self.player_progress[2]["progress"] = 1
-        self.player_progress[3]["progress"] = 1
-        self.player_progress[4]["progress"] = 1
-        self.player_progress[5]["progress"] = 1
-        self.player_progress[6]["progress"] = 1
-        self.player_progress[7]["progress"] = 1
-        self.player_progress[8]["progress"] = 1
-        self.player_progress[9]["progress"] = 1
-        self.player_progress[10]["progress"] = 1
-        self.player_progress[11]["progress"] = 1
-        self.player_progress[12]["progress"] = 1
-        self.player_progress[1]["location"] = 1
-        self.player_progress[2]["location"] = 1
-        self.player_progress[3]["location"] = 1
-        self.player_progress[4]["location"] = 1
-        self.player_progress[5]["location"] = 1
-        self.player_progress[6]["location"] = 1
-        self.player_progress[7]["location"] = 1
-        self.player_progress[8]["location"] = 1
-        self.player_progress[9]["location"] = 1
-        self.player_progress[10]["location"] = 1
-        self.player_progress[11]["location"] = 1
-        self.player_progress[12]["location"] = 1
+        self.level_reached["Square"] = 1
+        self.level_reached["Circle"] = 1
+        self.secrets_found = {
+            Square = {false, false, false, false, false, false, false, false, false, false, false, false},
+            Circle = {false, false, false, false, false, false, false, false, false, false, false, false}
+        }
+        for index, value in ipairs(self.player_progress) do
+            self.player_progress[index]["progress"]["Square"] = 1
+            self.player_progress[index]["progress"]["Circle"] = 1
+            self.player_progress[index]["location"] = 1
+        end
     end
 
 }
