@@ -1,8 +1,8 @@
-Deaths: 172
+Deaths: 245
 Square:
     Reached: 13
-    Progress: 1 6 5 5 5 4 2 5 5 2 3 6
-    Secrets: true true true true true true true true true false false false
+    Progress: 1 6 5 5 5 4 2 5 5 5 3 5
+    Secrets: true true true true true true true true true true false false
 Circle:
     Reached: 1
     Progress: 1 1 1 1 1 1 1 1 1 1 1 1
