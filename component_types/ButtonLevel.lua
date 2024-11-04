@@ -16,11 +16,12 @@ ButtonLevel = {
     end,
 
     OnClick = function (self)
-        if self.sd.stage_layout[self.level]["Checkpoint"][2] == nil then
+        local player_type = self.toggle_bt.text[self.toggle_bt.current % 2 + 1]
+        if self.sd.player_progress[self.level][player_type] == 1 then
             Scene.Load("level" .. tostring(self.level - 1))
         else
             self.sd:HideLevelButtons(self.levels)
-            self.sd:LoadCheckpointButtons(self.level, self.toggle_bt.text[self.toggle_bt.current % 2 + 1])
+            self.sd:LoadCheckpointButtons(self.level, player_type)
             self.toggle_sr.enabled = false
             self.toggle_bm.enabled = false
             self.toggle_tr.enabled = false
