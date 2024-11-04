@@ -4,6 +4,8 @@ GrappleCollect = {
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
         if self.sd.level_layout[5]["location"] > 1 then
             self:EnableGrapple()
+        elseif self.sd.mute_mode == false then
+            Audio.SetEventParameter(self.sd.square_time, "Harp", 0)
         end
     end,
 

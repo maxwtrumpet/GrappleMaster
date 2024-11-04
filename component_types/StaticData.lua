@@ -32,7 +32,6 @@ StaticData = {
     },
     mute_mode = false,
     controller_mode = false,
-    cheat_status = -1,
     blank_vector = Vector3(0,0,0),
     square_time = "event:/music/square_time",
     parameters = {Square = {Chords = {1,1,1,1,1,1,1,1,0,0,0,1,1},
@@ -76,14 +75,14 @@ StaticData = {
         Rocky = {Vector2(2,1),Vector2(2,0),Vector2(2,-1),Vector2(2,-2),Vector2(2,-3),Vector2(1,-6),Vector2(2,-6),Vector2(3,-6),Vector2(2,-9),Vector2(3,-9),Vector2(-8,-10),Vector2(24,1),Vector2(24,-3),Vector2(20,7)},
         Kill = {Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(24,6),Vector2(24,5),Vector2(24,4),Vector2(24,3),Vector2(24,2),Vector2(23,2),Vector2(24,7),Vector2(25,7),Vector2(26,7),Vector2(27,7),Vector2(28,7),Vector2(29,7),Vector2(30,7),Vector2(31,7),Vector2(32,7),Vector2(33,7),Vector2(34,7),Vector2(35,7),Vector2(36,7),Vector2(37,7),Vector2(38,7),Vector2(39,7),Vector2(40,7),Vector2(41,7),Vector2(42,7),Vector2(43,7),Vector2(44,7),Vector2(45,7),Vector2(46,7),Vector2(47,7),Vector2(4.5,-9),Vector2(30,-9),Vector2(32,-9)},
         Checkpoint = {Vector2(0,0),Vector2(2,-8),Vector2(18,5),Vector2(24,-1),Vector2(24,-5)},
-        Pie = {Vector2(-5,-14)},
+        Pie = {Vector2(-5,-14.5)},
         Secret = {Vector2(31,-10.5)}},
-        {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2)},
-        Ice = {Vector2(2,-3),Vector2(-2,-7),Vector2(2,-11),Vector2(-2,-15),Vector2(-6,-16),Vector2(-10,-17),Vector2(-10,-26)},
-        Kill = {Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7)},
-        Checkpoint = {Vector2(0,0),Vector2(-10,-28)},
+        {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(-0.5,-29),Vector2(0.5,-29),Vector2(1.5,-29),Vector2(5,-29),Vector2(10,-29),Vector2(11,-29),Vector2(12,-29),Vector2(13,-29),Vector2(14,-29),Vector2(15,-29),Vector2(16,-29),Vector2(17,-29),Vector2(18,-29),Vector2(19,-29),Vector2(20,-29),Vector2(15,-33),Vector2(14,-33),Vector2(13,-33),Vector2(12,-34),Vector2(11,-35),Vector2(10,-36),Vector2(9,-36),Vector2(8,-36)},
+        Ice = {Vector2(2,-3),Vector2(-2,-7),Vector2(2,-11),Vector2(-2,-15),Vector2(-6,-16),Vector2(-10,-17),Vector2(-10,-26),Vector2(-4,-30),Vector2(0.5,-36),Vector2(24,-35)},
+        Kill = {Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(21,7),Vector2(22,7),Vector2(23,7),Vector2(24,7),Vector2(25,7),Vector2(26,7),Vector2(27,7),Vector2(28,7),Vector2(29,7),Vector2(30,7),Vector2(31,7),Vector2(32,7),Vector2(33,7),Vector2(34,7),Vector2(35,7),Vector2(36,7),Vector2(37,7),Vector2(38,7),Vector2(39,7),Vector2(40,7),Vector2(41,7),Vector2(42,7),Vector2(43,7),Vector2(44,7),Vector2(45,7),Vector2(46,7),Vector2(47,7),Vector2(48,7),Vector2(49,7),Vector2(50,7),Vector2(-4,-29),Vector2(-4,-31.5),Vector2(-3,-29),Vector2(-3,-31.5),Vector2(2.5,-29),Vector2(2.5,-30),Vector2(2.5,-31),Vector2(2.5,-32),Vector2(2.5,-33),Vector2(2.5,-34),Vector2(2.5,-35),Vector2(2.5,-36.5),Vector2(7.5,-29),Vector2(7.5,-30),Vector2(7.5,-31),Vector2(7.5,-32),Vector2(7.5,-33),Vector2(24,-36),Vector2(25,-35),Vector2(25,-36),Vector2(22,-33.5),Vector2(21,-34.5),Vector2(20,-35.5),Vector2(19,-35),Vector2(18,-34.5),Vector2(7,-36),Vector2(7,-37),Vector2(7,-38),Vector2(7,-39)},
+        Checkpoint = {Vector2(0,0),Vector2(-10,-28),Vector2(0.5,-31),Vector2(20,-31)},
         Pie = {Vector2(-18,-16)},
-        Secret = {}},
+        Secret = {Vector2(9,-38)}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,-9),Vector2(2,-11),Vector2(2,-12),Vector2(2,-13),Vector2(2,-14),Vector2(3,-14),Vector2(4,-14),Vector2(5,-14),Vector2(6,-14),Vector2(7,-14),Vector2(2,-15),Vector2(2,-16),Vector2(2,-17),Vector2(2,-18),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7)},
         Normal = {Vector2(3,-3),Vector2(2,-10),Vector2(8,-14)},
         Kill = {Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(21,7),Vector2(22,7),Vector2(23,7),Vector2(24,7),Vector2(25,7)},
@@ -115,18 +114,18 @@ StaticData = {
         Checkpoint = {Vector2(0,0),Vector2(23,0),Vector2(31,-6),Vector2(31,-13)},
         Pie = {Vector2(33.5,1.5)},
         Secret = {}},
-        {Steel = {Vector2(-2,2),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(3,-16),Vector2(2,-16),Vector2(1,-16),Vector2(0,-16),Vector2(-1,-16),Vector2(-9,-26),Vector2(-10,-26),Vector2(-11,-26),Vector2(-25,-26),Vector2(-26,-26),Vector2(-27,-26),Vector2(-31,-26),Vector2(-32,-26),Vector2(-33,-26),Vector2(-60,7),Vector2(-59,7),Vector2(-58,7)},
+        {Steel = {Vector2(-2,2),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(3,-16),Vector2(2,-16),Vector2(1,-16),Vector2(0,-16),Vector2(-1,-16),Vector2(-9,-26),Vector2(-10,-26),Vector2(-11,-26),Vector2(-25,-26),Vector2(-26,-26),Vector2(-27,-26),Vector2(-31,-26),Vector2(-32,-26),Vector2(-33,-26),Vector2(-60,7),Vector2(-59,7),Vector2(-58,7),Vector2(-64,10),Vector2(-63,10),Vector2(-62,10),Vector2(-61,10),Vector2(-60,10)},
         Hard = {Vector2(2,1),Vector2(2,0),Vector2(2,-1),Vector2(2,-2),Vector2(2,-3)},
         Brittle = {Vector2(-2,-5),Vector2(-2,-6),Vector2(-2,-7),Vector2(-2,-8),Vector2(-2,-9)},
         Rocky = {Vector2(7,-14),Vector2(7,-15),Vector2(7,-16),Vector2(7,-17),Vector2(7,-18)},
-        Ice = {Vector2(0,-22),Vector2(-62.5,7)},
-        Chunk = {Vector2(-35,-27),Vector2(-35,-28)},
+        Ice = {Vector2(0,-22),Vector2(-62,3)},
+        Chunk = {Vector2(-35,-27),Vector2(-35,-28),Vector2(-61,6),Vector2(-61,5),Vector2(-61,4),Vector2(-62,6),Vector2(-62,5),Vector2(-62,4)},
         Organic = {Vector2(-37,-27),Vector2(-37,-28)},
         Normal = {Vector2(-8,-26)},
-        Dirt = {Vector2(-13,-26),Vector2(-16,-26),Vector2(-20,-26),Vector2(-23,-26),Vector2(-62.5,9)},
+        Dirt = {Vector2(-13,-26),Vector2(-16,-26),Vector2(-20,-26),Vector2(-23,-26),Vector2(-61,3)},
         Fragile = {Vector2(-28,-28),Vector2(-29,-28),Vector2(-30,-28)},
-        Kill = {Vector2(2,-4),Vector2(-2,-10),Vector2(7,-19),Vector2(0,-23),Vector2(1,-23),Vector2(1,-22),Vector2(-8,-28.5),Vector2(-12,-28.5),Vector2(-13,-28.5),Vector2(-14,-28.5),Vector2(-15,-28.5),Vector2(-16,-28.5),Vector2(-17,-28.5),Vector2(-18,-28.5),Vector2(-19,-28.5),Vector2(-20,-28.5),Vector2(-21,-28.5),Vector2(-22,-28.5),Vector2(-23,-28.5),Vector2(-24,-28.5),Vector2(-8,-25),Vector2(-12,-25),Vector2(-13,-25),Vector2(-14,-25),Vector2(-15,-25),Vector2(-16,-25),Vector2(-17,-25),Vector2(-18,-25),Vector2(-19,-25),Vector2(-20,-25),Vector2(-21,-25),Vector2(-22,-25),Vector2(-23,-25),Vector2(-24,-25),Vector2(-30,-26),Vector2(-29,-26),Vector2(-28,-26),Vector2(-30,-29),Vector2(-29,-29),Vector2(-28,-29),Vector2(-34,-26),Vector2(-35,-26),Vector2(-36,-26),Vector2(-37,-26),Vector2(-38,-26),Vector2(-34,-29),Vector2(-35,-29),Vector2(-36,-29),Vector2(-37,-29),Vector2(-38,-29),Vector2(-57,7),Vector2(-56,7),Vector2(-55,7),Vector2(-54,7),Vector2(-53,7),Vector2(-52,7),Vector2(-51,7),Vector2(-50,7),Vector2(-49,7),Vector2(-48,7),Vector2(-47,7),Vector2(-46,7),Vector2(-45,7),Vector2(-44,7),Vector2(-43,7),Vector2(-42,7),Vector2(-41,7),Vector2(-40,7),Vector2(-39,7),Vector2(-38,7),Vector2(-37,7),Vector2(-36,7),Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(-61,7),Vector2(-64,7)},
-        Checkpoint = {Vector2(0,0),Vector2(2,-18),Vector2(-10,-28),Vector2(-26,-28),Vector2(-32,-28),Vector2(-59,5)},
+        Kill = {Vector2(2,-4),Vector2(-2,-10),Vector2(7,-19),Vector2(0,-23),Vector2(1,-23),Vector2(1,-22),Vector2(-8,-28.5),Vector2(-12,-28.5),Vector2(-13,-28.5),Vector2(-14,-28.5),Vector2(-15,-28.5),Vector2(-16,-28.5),Vector2(-17,-28.5),Vector2(-18,-28.5),Vector2(-19,-28.5),Vector2(-20,-28.5),Vector2(-21,-28.5),Vector2(-22,-28.5),Vector2(-23,-28.5),Vector2(-24,-28.5),Vector2(-8,-25),Vector2(-12,-25),Vector2(-13,-25),Vector2(-14,-25),Vector2(-15,-25),Vector2(-16,-25),Vector2(-17,-25),Vector2(-18,-25),Vector2(-19,-25),Vector2(-20,-25),Vector2(-21,-25),Vector2(-22,-25),Vector2(-23,-25),Vector2(-24,-25),Vector2(-30,-26),Vector2(-29,-26),Vector2(-28,-26),Vector2(-30,-29),Vector2(-29,-29),Vector2(-28,-29),Vector2(-34,-26),Vector2(-35,-26),Vector2(-36,-26),Vector2(-37,-26),Vector2(-38,-26),Vector2(-34,-29),Vector2(-35,-29),Vector2(-36,-29),Vector2(-37,-29),Vector2(-38,-29),Vector2(-57,7),Vector2(-56,7),Vector2(-55,7),Vector2(-54,7),Vector2(-53,7),Vector2(-52,7),Vector2(-51,7),Vector2(-50,7),Vector2(-49,7),Vector2(-48,7),Vector2(-47,7),Vector2(-46,7),Vector2(-45,7),Vector2(-44,7),Vector2(-43,7),Vector2(-42,7),Vector2(-41,7),Vector2(-40,7),Vector2(-39,7),Vector2(-38,7),Vector2(-37,7),Vector2(-36,7),Vector2(-35,7),Vector2(-34,7),Vector2(-33,7),Vector2(-32,7),Vector2(-31,7),Vector2(-30,7),Vector2(-29,7),Vector2(-28,7),Vector2(-27,7),Vector2(-26,7),Vector2(-25,7),Vector2(-24,7),Vector2(-23,7),Vector2(-22,7),Vector2(-21,7),Vector2(-20,7),Vector2(-19,7),Vector2(-18,7),Vector2(-17,7),Vector2(-16,7),Vector2(-15,7),Vector2(-14,7),Vector2(-13,7),Vector2(-12,7),Vector2(-11,7),Vector2(-10,7),Vector2(-9,7),Vector2(-8,7),Vector2(-7,7),Vector2(-6,7),Vector2(-5,7),Vector2(-4,7),Vector2(-3,7),Vector2(-2,7),Vector2(-1,7),Vector2(0,7),Vector2(1,7),Vector2(2,7),Vector2(3,7),Vector2(4,7),Vector2(5,7),Vector2(6,7),Vector2(7,7),Vector2(8,7),Vector2(9,7),Vector2(10,7),Vector2(11,7),Vector2(12,7),Vector2(13,7),Vector2(14,7),Vector2(15,7),Vector2(16,7),Vector2(17,7),Vector2(18,7),Vector2(19,7),Vector2(20,7),Vector2(-61,7),Vector2(-63.5,3),Vector2(-63.5,4),Vector2(-63.5,5),Vector2(-63.5,6),Vector2(-63.5,7),Vector2(-63.5,8),Vector2(-63.5,9)},
+        Checkpoint = {Vector2(0,0),Vector2(2,-18),Vector2(-10,-28),Vector2(-26,-28),Vector2(-32,-28),Vector2(-59,5),Vector2(-62,8)},
         Pie = {Vector2(-41,-27.5)},
         Secret = {}},
         {Steel = {Vector2(-1,2),Vector2(0,2),Vector2(1,2)},
@@ -138,7 +137,7 @@ StaticData = {
         {Vector2(0,0),Vector2(1,0),Vector2(-1,0),Vector2(-2,0),Vector2(-1,-1),Vector2(-2,-1),Vector2(-1,1),Vector2(-2,1),Vector2(0,1),Vector2(1,1),Vector2(0,-1),Vector2(1,-1),Vector2(0,-2),Vector2(-1,-2)},
         {Vector2(0,0),Vector2(0,1),Vector2(0,-1),Vector2(1,0),Vector2(1,1),Vector2(1,-1),Vector2(-1,0),Vector2(-1,1),Vector2(-1,-1),Vector2(-1,-2),Vector2(-1,2)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(2,1),Vector2(2,0),Vector2(2,-1)},
-        {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(-2,0),Vector2(-2,-1),Vector2(-2,1),Vector2(0,-2),Vector2(-1,-2)},
+        {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(-2,0),Vector2(-2,-1),Vector2(-2,1),Vector2(0,-2),Vector2(-1,-2),Vector2(1,-2),Vector2(2,-2),Vector2(2,-1),Vector2(2,0),Vector2(2,1)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1)},
@@ -166,7 +165,7 @@ StaticData = {
         {location = 1, visible = 3, total = 5},
         {location = 1, visible = 3, total = 5},
         {location = 1, visible = 2, total = 5},
-        {location = 1, visible = 1, total = 2},
+        {location = 1, visible = 1, total = 4},
         {location = 1, visible = 1, total = 1},
         {location = 1, visible = 2, total = 2},
         {location = 1, visible = 2, total = 2},
@@ -184,11 +183,6 @@ StaticData = {
         else
             Debug.Log("No controller, keyboard mode")
         end
-        if self.cheat_status == 1 then
-            self:EnableCircleCheats()
-        elseif self.cheat_status == 0 then
-            self:EnableSquareCheats()
-        end
     end,
 
     OnUpdate = function(self)
@@ -205,10 +199,8 @@ StaticData = {
                 Audio.LoadBank("music")
                 Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
             end
-            if level ~= 4 then
-                for parameter, values in pairs(self.parameters[player_type]) do
-                    Audio.SetEventParameter(self.square_time, parameter, values[level+1])
-                end
+            for parameter, values in pairs(self.parameters[player_type]) do
+                Audio.SetEventParameter(self.square_time, parameter, values[level+1])
             end
         end
     end,
@@ -280,95 +272,6 @@ StaticData = {
         local buttons = Actor.FindAll("Checkpoint Button")
         for index, value in ipairs(buttons) do
             Actor.Destroy(value)
-        end
-    end,
-
-    EnableCircleCheats = function (self)
-        self.cheat_status = 1
-        if self.mute_mode == false then
-            Audio.PlaySound("pie_collect.mp3", 4, false)
-            Audio.SetEventParameter(self.square_time, "Melody", 1)
-        end
-        self.level_reached["Square"] = 12
-        self.level_reached["Circle"] = 12
-        self.secrets_found = {
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-            {Circle = true, Square = true},
-        }
-        for index, value in ipairs(self.player_progress) do
-            value["Square"] = self.level_layout[index]["total"]
-            value["Circle"] = self.level_layout[index]["total"]
-        end
-    end,
-
-    EnableSquareCheats = function (self)
-        if self.mute_mode == false then
-            if self.cheat_status == 1 then
-                Audio.PlaySound("death.mp3", 4, false)
-            else
-                Audio.PlaySound("pie_collect.mp3", 4, false)
-            end
-            Audio.SetEventParameter(self.square_time, "Melody", 0)
-        end
-        self.cheat_status = 0
-        self.level_reached["Square"] = 12
-        self.level_reached["Circle"] = 1
-        self.secrets_found = {
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-            {Circle = false, Square = true},
-        }
-        for index, value in ipairs(self.player_progress) do
-            value["Square"] = self.level_layout[index]["total"]
-            value["Circle"] = 1
-        end
-    end,
-
-    DisableCheats = function (self)
-        self.cheat_status = -1
-        if self.mute_mode == false then
-            Audio.PlaySound("death.mp3", 4, false)
-            Audio.SetEventParameter(self.square_time, "Melody", 0)
-        end
-        self.level_reached["Square"] = 1
-        self.level_reached["Circle"] = 1
-        self.secrets_found = {
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-            {Circle = false, Square = false},
-        }
-        for index, value in ipairs(self.player_progress) do
-            value["Square"] = 1
-            value["Circle"] = 1
-            self.level_layout[index]["location"] = 1
         end
     end,
 

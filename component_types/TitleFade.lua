@@ -22,15 +22,6 @@ TitleFade = {
     end,
 
     OnUpdate = function (self)
-        if self.sd.cheat_status ~= 1 and Input.IsKeyDown("lalt") and Input.IsKeyDown("lshift") and Input.IsKeyDown("c") then
-            self.sd:EnableCircleCheats()
-        end
-        if self.sd.cheat_status ~= 0 and Input.IsKeyDown("lalt") and Input.IsKeyDown("lshift") and Input.IsKeyDown("s") then
-            self.sd:EnableSquareCheats()
-        end
-        if self.sd.cheat_status ~= -1 and Input.IsKeyDown("lalt") and Input.IsKeyDown("lshift") and Input.IsKeyDown("r") then
-            self.sd:DisableCheats()
-        end
         if self.sr.a < 254 then
             self.sr.a = self.sr.a + 2
         end
