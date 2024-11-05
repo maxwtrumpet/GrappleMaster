@@ -23,6 +23,10 @@ LevelLoader = {
 				end
 				if block_type == "Checkpoint" then
 					block:GetComponent("Checkpoint").number = index
+					if self.current_scene == 10 and index == 4 then
+						block:GetComponent("SpriteRenderer").sprite = "hidden"
+						block:AddComponent("Level10Secret")
+					end
 				end
 			end
 		end

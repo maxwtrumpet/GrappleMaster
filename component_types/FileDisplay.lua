@@ -34,7 +34,7 @@ FileDisplay = {
         {Circle = 1, Square = 1},
     },
     completion = 0,
-    total = 130,
+    total = 136,
 
     UpdateData = function (self)
         local save = io.open("resources/.saves/save_" .. tostring(self.file), "r")
