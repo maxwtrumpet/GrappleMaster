@@ -13,8 +13,8 @@ SquareManager = {
         self.rb = self.actor:GetComponent("Rigidbody")
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
-        self.can_grapple = ll.current_scene > 1 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
-        if ll.current_scene > 1 then
+        self.can_grapple = ll.current_scene > 3 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
+        if ll.current_scene > 3 then
             self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
         end
     end,
@@ -158,8 +158,6 @@ SquareManager = {
                         if bottom_hit ~= nil then
                             bottom_hit:Climb()
                         end
-                    elseif velocity.y < 0 then
-                        velocity.y = 0
                     end
                 end
             elseif Input.IsKeyDown("a") then
@@ -202,8 +200,6 @@ SquareManager = {
                         if bottom_hit ~= nil then
                             bottom_hit:Climb()
                         end
-                    elseif velocity.y < 0 then
-                        velocity.y = 0
                     end
                 end
             end

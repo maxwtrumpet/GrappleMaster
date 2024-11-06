@@ -56,9 +56,9 @@ LevelLoader = {
 		local to_remove = {}
 		for i, v in ipairs(self.respawn_blocks) do
 			if Application.GetFrame() >= v[1] then
-				local block = Actor.Instantiate(v[3])
-				local block_rb = block:GetComponent("Rigidbody")
-				block_rb:SetPosition(v[2])
+				if (v[3] ~= "Player_square" and v[3] ~= "Player_circle") or Actor.Find("Player") == nil then
+					Actor.Instantiate(v[3]):GetComponent("Rigidbody"):SetPosition(v[2])
+				end
 				table.insert(to_remove, i)
 			end
 		end

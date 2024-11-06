@@ -159,8 +159,6 @@ CircleManager = {
                         if bottom_hit ~= nil then
                             bottom_hit:Climb()
                         end
-                    elseif velocity.y < 0 then
-                        velocity.y = 0
                     end
                 end
             elseif Input.IsKeyDown("a") then
@@ -204,8 +202,6 @@ CircleManager = {
                         if bottom_hit ~= nil then
                             bottom_hit:Climb()
                         end
-                    elseif velocity.y < 0 then
-                        velocity.y = 0
                     end
                 end
             end
