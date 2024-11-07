@@ -48,7 +48,7 @@ SquareManager = {
         local position = self.rb:GetPosition()
         local cur_grav = self.rb:GetGravityScale()
         if self.grapple ~= nil and self.gm.attached then
-            if Input.IsKeyJustDown("space") then
+            if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
                 Actor.Destroy(self.grapple)
             elseif self.can_grapple and (Input.IsMouseJustDown("left")) then
                 Actor.Destroy(self.grapple)
@@ -232,7 +232,7 @@ SquareManager = {
             local left_hit = Physics.Raycast(position, self.down, .555)
             position.x = position.x + 0.5
             if (left_hit ~= nil and left_hit.actor:GetName() ~= "Checkpoint" and left_hit.actor:GetName() ~= "Grapple" and left_hit.actor:GetName() ~= "Cursor" and left_hit.actor:GetName() ~= "Player") or (right_hit ~= nil and right_hit.actor:GetName() ~= "Checkpoint" and right_hit.actor:GetName() ~= "Grapple" and right_hit.actor:GetName() ~= "Cursor" and right_hit.actor:GetName() ~= "Player") then
-                if Input.IsKeyJustDown("space") then
+                if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
                     self.rb:AddForce(Vector2(0,-667))
                     if self.sd.mute_mode == false then
                         Audio.PlaySound("jump.mp3", 16, false)
@@ -240,7 +240,7 @@ SquareManager = {
                 end
             else
                 self.rb:AddForce(Vector2(-5*velocity.x,0))
-                if Input.IsKeyDown("space") == false and velocity.y < 0 then
+                if Input.IsKeyDown("space") == false and Input.IsMouseDown("right") == false and velocity.y < 0 then
                     self.rb:AddForce(Vector2(0,30))
                 end
             end
@@ -261,7 +261,6 @@ SquareManager = {
         if self.sd.mute_mode == false then
             Audio.PlaySound("death.mp3", 4, false)
         end
-        self.sd.deaths = self.sd.deaths + 1
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         ll:Respawn(self.original_loc, "Player_square")
     end

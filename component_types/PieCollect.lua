@@ -25,11 +25,19 @@ PieCollect = {
                     self.player_sr.x_scale = 0.425
                     self.player_sr.y_scale = 0.425
                     if self.is_secret then
-                        Actor.Instantiate("TrueEnding")
+                        if self.player_type == "Circle" then
+                            Actor.Instantiate("FinalEnding")
+                        else
+                            Actor.Instantiate("TrueEnding")
+                        end
                         self.player_sr.sprite = "true_goal"
                         for index, value in ipairs(self.static_data.secrets_found) do
                             if value[self.player_type] == false then
-                                Actor.Destroy("TrueEnding")
+                                if self.player_type == "Circle" then
+                                    Actor.Destroy("FinalEnding")
+                                else
+                                    Actor.Destroy("TrueEnding")
+                                end
                                 Actor.Instantiate("NormalEnding")
                                 self.player_sr.sprite = "goal"
                                 break

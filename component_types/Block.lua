@@ -12,14 +12,18 @@ Block = {
 
     OnStart = function(self)
         self.sr = self.actor:GetComponent("SpriteRenderer")
+        self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
         self.name = self.actor:GetName()
         self.position = self.actor:GetComponent("Rigidbody"):GetPosition()
+        self.pie = Actor.Find("Pie"):GetComponent("PieCollect")
+        self.secret = Actor.Find("Secret"):GetComponent("PieCollect")
     end,
 
     OnCollisionEnter = function(self, contact)
         if self.name == "Kill" then
             local player = Actor.Find("Player")
-            if player ~= nil then
+            if player ~= nil and self.pie.countdown == -1 and self.secret.countdown == -1 then
+                self.sd.deaths = self.sd.deaths + 1
                 player:GetComponentByKey("Manager"):Die()
                 Actor.Destroy(player)
             end

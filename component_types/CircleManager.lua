@@ -48,7 +48,7 @@ CircleManager = {
         local position = self.rb:GetPosition()
         local cur_grav = self.rb:GetGravityScale()
         if self.grapple ~= nil and self.gm.attached then
-            if Input.IsKeyJustDown("space") then
+            if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
                 Actor.Destroy(self.grapple)
             elseif self.can_grapple and (Input.IsMouseJustDown("left")) then
                 Actor.Destroy(self.grapple)
@@ -62,9 +62,9 @@ CircleManager = {
         elseif cur_grav == 0 then
             if self.left_hold == true then
                 position.y = position.y - 0.15
-                local top_hit = Physics.Raycast(position, self.left, .435)
+                local top_hit = Physics.Raycast(position, self.left, .55)
                 position.y = position.y + 0.3
-                local bottom_hit = Physics.Raycast(position, self.left, .435)
+                local bottom_hit = Physics.Raycast(position, self.left, .55)
                 position.y = position.y - 0.15
                 if top_hit ~= nil then
                     top_hit = top_hit.actor:GetComponent("Block")
@@ -73,6 +73,7 @@ CircleManager = {
                     bottom_hit = bottom_hit.actor:GetComponent("Block")
                 end
                 if (Input.IsKeyDown("a")) and ((top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1)) then
+                    velocity.x = 0
                     velocity.y = 0
                     if top_hit ~= nil then
                         top_hit:Climb()
@@ -86,13 +87,14 @@ CircleManager = {
                     self.rb:AddForce(Vector2(0,1))
                     self.rb:SetColliderRadius(0.5)
                     self.rb:SetTriggerRadius(0.5)
+                    position.x = position.x + 0.125
                     cur_grav = 1
                 end
             elseif self.left_hold == false then
                 position.y = position.y - 0.15
-                local top_hit = Physics.Raycast(position, self.right, .435)
+                local top_hit = Physics.Raycast(position, self.right, .55)
                 position.y = position.y + 0.3
-                local bottom_hit = Physics.Raycast(position, self.right, .435)
+                local bottom_hit = Physics.Raycast(position, self.right, .55)
                 position.y = position.y - 0.15
                 if top_hit ~= nil then
                     top_hit = top_hit.actor:GetComponent("Block")
@@ -101,6 +103,7 @@ CircleManager = {
                     bottom_hit = bottom_hit.actor:GetComponent("Block")
                 end
                 if (Input.IsKeyDown("d")) and ((top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1)) then
+                    velocity.x = 0
                     velocity.y = 0
                     if top_hit ~= nil then
                         top_hit:Climb()
@@ -114,6 +117,7 @@ CircleManager = {
                     self.rb:AddForce(Vector2(0,1))
                     self.rb:SetColliderRadius(0.5)
                     self.rb:SetTriggerRadius(0.5)
+                    position.x = position.x - 0.125
                     cur_grav = 1
                 end
             end
@@ -208,14 +212,14 @@ CircleManager = {
         end
         if cur_grav == 0 then
             if Input.IsKeyDown("w") then
-                velocity.y = -5.5
+                velocity.y = -6.5
                 if self.left_hold then
                     self.rb:SetRotation(self.rb:GetRotation() - 5)
                 else
                     self.rb:SetRotation(self.rb:GetRotation() + 5)
                 end
             elseif Input.IsKeyDown("s") then
-                velocity.y = 5.5
+                velocity.y = 6.5
                 if self.left_hold then
                     self.rb:SetRotation(self.rb:GetRotation() + 5)
                 else
@@ -239,12 +243,27 @@ CircleManager = {
                 self.crouched = false
             end
             position.x = position.x + 0.15
-            local right_hit = Physics.Raycast(position, self.down, .555)
+            local right_hit = Physics.RaycastAll(position, self.down, .555)
             position.x = position.x - 0.3
-            local left_hit = Physics.Raycast(position, self.down, .555)
+            local left_hit = Physics.RaycastAll(position, self.down, .555)
             position.x = position.x + 0.15
-            if (left_hit ~= nil and left_hit.actor:GetName() ~= "Checkpoint" and left_hit.actor:GetName() ~= "Grapple" and left_hit.actor:GetName() ~= "Cursor" and left_hit.actor:GetName() ~= "Player") or (right_hit ~= nil and right_hit.actor:GetName() ~= "Checkpoint" and right_hit.actor:GetName() ~= "Grapple" and right_hit.actor:GetName() ~= "Cursor" and right_hit.actor:GetName() ~= "Player") then
-                if Input.IsKeyJustDown("space") then
+            local valid = false
+            for index, value in ipairs(right_hit) do
+                if value ~= nil and value.actor:GetName() ~= "Checkpoint" and value.actor:GetName() ~= "Grapple" and value.actor:GetName() ~= "Cursor" and value.actor:GetName() ~= "Player" then
+                    valid = true
+                    break
+                end
+            end
+            if valid == false then
+                for index, value in ipairs(left_hit) do
+                    if value ~= nil and value.actor:GetName() ~= "Checkpoint" and value.actor:GetName() ~= "Grapple" and value.actor:GetName() ~= "Cursor" and value.actor:GetName() ~= "Player" then
+                        valid = true
+                        break
+                    end
+                end
+            end
+            if valid == true then
+                if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
                     self.rb:AddForce(Vector2(0,-667))
                     if self.sd.mute_mode == false then
                         Audio.PlaySound("jump.mp3", 16, false)
@@ -252,7 +271,7 @@ CircleManager = {
                 end
             else
                 self.rb:AddForce(Vector2(-5*velocity.x,0))
-                if Input.IsKeyDown("space") == false and velocity.y < 0 then
+                if Input.IsKeyDown("space") == false and Input.IsMouseDown("right") == false and velocity.y < 0 then
                     self.rb:AddForce(Vector2(0,30))
                 end
             end
