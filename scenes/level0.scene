@@ -10,6 +10,9 @@
         },
         {
             "template": "Camera"
+        },
+        {
+            "template": "Cursor"
         }
     ]
 }

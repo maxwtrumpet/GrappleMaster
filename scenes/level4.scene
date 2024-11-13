@@ -12,12 +12,7 @@
             "template": "Camera"
         },
         {
-            "template": "Cursor",
-            "components": {
-                "1": {
-                    "enabled": false
-                }
-            }
+            "template": "Cursor"
         },
         {
             "name": "GrappleCollect",

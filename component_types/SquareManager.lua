@@ -13,10 +13,8 @@ SquareManager = {
         self.rb = self.actor:GetComponent("Rigidbody")
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
-        self.can_grapple = ll.current_scene > 3 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
-        if ll.current_scene > 3 then
-            self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
-        end
+        self.can_grapple = ll.current_scene > 4 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
+        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
     end,
 
     LoadPauseMenu = function (self)

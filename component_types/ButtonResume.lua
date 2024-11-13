@@ -12,13 +12,7 @@ ButtonResume = {
 
     OnClick = function (self)
         self.player:GetComponentByKey("Manager").enabled = true
-        self.player:GetComponent("Rigidbody"):SetVelocity(self.previous_velocity)
-        local scene_num = tonumber(string.sub(Scene.GetCurrent(),6))
-        if scene_num < 4 then
-            Actor.Destroy(self.cursor)
-        else
-            self.cursor:GetComponent("CursorManager").restricted = true
-        end
+        self.cursor:GetComponent("CursorManager").restricted = true
         Actor.Destroy(self.backdrop)
         Actor.Destroy(self.pause)
         Actor.Destroy(self.menu)

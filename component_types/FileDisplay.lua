@@ -37,7 +37,8 @@ FileDisplay = {
     total = 148,
 
     UpdateData = function (self)
-        local save = io.open("resources/.saves/save_" .. tostring(self.file), "r")
+        local file_path = Application.FullPath("resources/.saves/save_" .. tostring(self.file))
+        local save = io.open(file_path, "r")
         if save == nil then
             self.tr.text = "Empty"
             self.exists = false
