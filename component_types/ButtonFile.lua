@@ -15,7 +15,8 @@ ButtonFile = {
             if self.sd.mute_mode == false then
                 Audio.PlaySound("pie_collect.mp3", 4, false)
             end
-            local save = io.open("resources/.saves/save_" .. tostring(self.file), "w")
+            local file_path = Application.FullPath("resources/.saves/save_" .. tostring(self.file))
+            local save = io.open(file_path, "w")
             assert(save ~= nil, "Problem opening save")
             io.output(save)
             io.write("Deaths: " .. self.sd.deaths .. "\n")
