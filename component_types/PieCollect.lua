@@ -47,7 +47,7 @@ PieCollect = {
                         Actor.Instantiate("NormalEnding")
                         self.player_sr.sprite = "goal"
                     end
-                    Actor.Instantiate("ButtonMenu")
+                    Actor.Instantiate("ButtonMenu"):GetComponent("Rigidbody"):SetPosition(Vector2(0,2))
                     self.enabled = false
                 else
                     self.static_data.level_layout[self.current_scene+2]["location"] = 1
@@ -83,7 +83,7 @@ PieCollect = {
     end,
 
     OnTriggerEnter = function(self, contact)
-        if contact.other:GetName() == "Player" then
+        if contact.other:GetName() == "Player" and Actor.Find("Player") ~= nil then
             if self.current_scene + 1 == self.static_data.level_reached[self.player_type] then
                 self.static_data.level_reached[self.player_type] = self.static_data.level_reached[self.player_type] + 1
             end

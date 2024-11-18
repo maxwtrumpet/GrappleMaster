@@ -1,0 +1,14 @@
+{
+    "name": "Hint",
+    "components":
+    {
+        "1": {
+            "type": "Rigidbody",
+            "ui": true,
+            "has_collider": false,
+            "has_trigger": false,
+            "gravity_scale": 0,
+            "y": -1
+        }
+    }
+}

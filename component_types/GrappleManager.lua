@@ -22,7 +22,7 @@ GrappleManager = {
         local cur_pos = self.rb:GetPosition()
         if self.returning == false then
             local distance = Vector2(self.target.x - cur_pos.x, self.target.y - cur_pos.y)
-            if distance:Length() < 0.1 then
+            if distance:Length() < 0.1 and self.attached == nil then
                 self.returning = true
             end
         end

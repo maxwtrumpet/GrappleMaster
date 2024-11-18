@@ -15,26 +15,14 @@ CircleManager = {
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         self.can_grapple = ll.current_scene > 4 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
         self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
-    end,
-
-    LoadPauseMenu = function (self)
-        Actor.Instantiate("Backdrop")
-        local cursor = Actor.Find("Cursor")
-        if cursor == nil then
-            cursor = Actor.Instantiate("Cursor")
-        elseif cursor:GetComponent("SpriteRenderer").enabled == false then
-            cursor:GetComponent("SpriteRenderer").enabled = true
+        if Actor.Find("Pause") ~= nil then
+            self.enabled = false
         end
-        cursor:GetComponent("CursorManager").restricted = false
-        Actor.Instantiate("Pause")
-        Actor.Instantiate("ButtonResume")
-        Actor.Instantiate("ButtonMenu")
-        self.enabled = false
     end,
 
     OnUpdate = function(self)
         if Input.IsKeyJustDown("escape") then
-            self:LoadPauseMenu()
+            self.sd:LoadPauseMenu(self)
             return
         end
         if Input.IsKeyJustDown("enter") then
@@ -154,7 +142,7 @@ CircleManager = {
                         self.left_hold = false
                         self.rb:SetColliderRadius(0.375)
                         self.rb:SetTriggerRadius(0.375)
-                        position.x = position.x + 0.125
+                        position.x = math.floor(position.x*2+0.5)/2+0.1
                         if top_hit ~= nil then
                             top_hit:Climb()
                         end
@@ -197,7 +185,7 @@ CircleManager = {
                         self.left_hold = true
                         self.rb:SetColliderRadius(0.375)
                         self.rb:SetTriggerRadius(0.375)
-                        position.x = position.x - 0.125
+                        position.x = math.floor(position.x*2+0.5)/2-0.1
                         if top_hit ~= nil then
                             top_hit:Climb()
                         end

@@ -15,26 +15,14 @@ SquareManager = {
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         self.can_grapple = ll.current_scene > 4 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
         self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
-    end,
-
-    LoadPauseMenu = function (self)
-        Actor.Instantiate("Backdrop")
-        local cursor = Actor.Find("Cursor")
-        if cursor == nil then
-            cursor = Actor.Instantiate("Cursor")
-        elseif cursor:GetComponent("SpriteRenderer").enabled == false then
-            cursor:GetComponent("SpriteRenderer").enabled = true
+        if Actor.Find("Pause") ~= nil then
+            self.enabled = false
         end
-        cursor:GetComponent("CursorManager").restricted = false
-        Actor.Instantiate("Pause")
-        Actor.Instantiate("ButtonResume")
-        Actor.Instantiate("ButtonMenu")
-        self.enabled = false
     end,
 
     OnUpdate = function(self)
         if Input.IsKeyJustDown("escape") then
-            self:LoadPauseMenu()
+            self.sd:LoadPauseMenu(self)
             return
         end
         if Input.IsKeyJustDown("enter") then
@@ -60,9 +48,9 @@ SquareManager = {
         elseif cur_grav == 0 then
             if self.left_hold == true then
                 position.y = position.y - 0.5
-                local top_hit = Physics.Raycast(position, self.left, .55)
+                local top_hit = Physics.Raycast(position, self.left, .585)
                 position.y = position.y + 1
-                local bottom_hit = Physics.Raycast(position, self.left, .55)
+                local bottom_hit = Physics.Raycast(position, self.left, .585)
                 position.y = position.y - 0.5
                 if top_hit ~= nil then
                     top_hit = top_hit.actor:GetComponent("Block")
@@ -88,9 +76,9 @@ SquareManager = {
                 end
             elseif self.left_hold == false then
                 position.y = position.y - 0.5
-                local top_hit = Physics.Raycast(position, self.right, .55)
+                local top_hit = Physics.Raycast(position, self.right, .585)
                 position.y = position.y + 1
-                local bottom_hit = Physics.Raycast(position, self.right, .55)
+                local bottom_hit = Physics.Raycast(position, self.right, .585)
                 position.y = position.y - 0.5
                 if top_hit ~= nil then
                     top_hit = top_hit.actor:GetComponent("Block")
@@ -121,15 +109,15 @@ SquareManager = {
                 local bottom_hit = nil
                 if self.crouched then
                     position.y = position.y - 0.375
-                    top_hit = Physics.Raycast(position, self.right, .55)
+                    top_hit = Physics.Raycast(position, self.right, .555)
                     position.y = position.y + .75
-                    bottom_hit = Physics.Raycast(position, self.right, .55)
+                    bottom_hit = Physics.Raycast(position, self.right, .555)
                     position.y = position.y - 0.375
                 else
                     position.y = position.y - 0.5
-                    top_hit = Physics.Raycast(position, self.right, .55)
+                    top_hit = Physics.Raycast(position, self.right, .555)
                     position.y = position.y + 1
-                    bottom_hit = Physics.Raycast(position, self.right, .55)
+                    bottom_hit = Physics.Raycast(position, self.right, .555)
                     position.y = position.y - 0.5
                 end
                 if top_hit ~= nil then
@@ -150,6 +138,7 @@ SquareManager = {
                         self.left_hold = false
                         self.rb:SetColliderDimensions(Vector2(0.75,1))
                         self.rb:SetTriggerDimensions(Vector2(0.75,1))
+                        position.x = math.floor(position.x*2+0.5)/2-0.025
                         if top_hit ~= nil then
                             top_hit:Climb()
                         end
@@ -163,15 +152,15 @@ SquareManager = {
                 local bottom_hit = nil
                 if self.crouched then
                     position.y = position.y - 0.375
-                    top_hit = Physics.Raycast(position, self.left, .55)
+                    top_hit = Physics.Raycast(position, self.left, .555)
                     position.y = position.y + .75
-                    bottom_hit = Physics.Raycast(position, self.left, .55)
+                    bottom_hit = Physics.Raycast(position, self.left, .555)
                     position.y = position.y - 0.375
                 else
                     position.y = position.y - 0.5
-                    top_hit = Physics.Raycast(position, self.left, .55)
+                    top_hit = Physics.Raycast(position, self.left, .555)
                     position.y = position.y + 1
-                    bottom_hit = Physics.Raycast(position, self.left, .55)
+                    bottom_hit = Physics.Raycast(position, self.left, .555)
                     position.y = position.y - 0.5
                 end
                 if top_hit ~= nil then
@@ -192,6 +181,7 @@ SquareManager = {
                         self.left_hold = true
                         self.rb:SetColliderDimensions(Vector2(0.75,1))
                         self.rb:SetTriggerDimensions(Vector2(0.75,1))
+                        position.x = math.floor(position.x*2+0.5)/2+0.025
                         if top_hit ~= nil then
                             top_hit:Climb()
                         end

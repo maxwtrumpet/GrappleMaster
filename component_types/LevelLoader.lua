@@ -22,10 +22,15 @@ LevelLoader = {
 					block_rb:SetRotation(30*(self.current_scene))
 				end
 				if block_type == "Checkpoint" then
-					block:GetComponent("Checkpoint").number = index
+					local b_c = block:GetComponent("Checkpoint")
+					b_c.number = index
 					if self.current_scene == 10 and index == 4 then
 						block:GetComponent("SpriteRenderer").sprite = "hidden"
 						block:AddComponent("Level10Secret")
+					end
+					if index < data.level_layout[self.current_scene + 1]["location"] then
+						b_c.enabled = false
+						block:GetComponent("SpriteRenderer").sprite = "respawn"
 					end
 				end
 			end

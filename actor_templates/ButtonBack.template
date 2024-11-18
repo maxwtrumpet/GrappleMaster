@@ -1,0 +1,19 @@
+{
+    "template": "Button",
+    "name": "ButtonBack",
+    "components": {
+        "3": {
+            "enabled": false
+        },
+        "4": {
+            "y": 3
+        },
+        "5": {
+            "text": "Back",
+            "enabled": false
+        },
+        "ButtonAction": {
+            "type": "ButtonBack"
+        }
+    }
+}
