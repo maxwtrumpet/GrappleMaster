@@ -33,6 +33,13 @@
                     "y_scale": 6.25
                 },
                 "3": {
+                    "type": "SpriteRenderer",
+                    "sprite": "halo",
+                    "sorting_order": -1,
+                    "x_scale": 0.75,
+                    "y_scale": 0.75
+                },
+                "4": {
                     "type": "GrappleCollect"
                 }
             }
