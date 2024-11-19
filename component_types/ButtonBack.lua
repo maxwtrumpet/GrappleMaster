@@ -1,7 +1,10 @@
+-- The ButtonAction component for the Back Button when viewing a hint.
+
 ButtonBack = {
 
+    -- On Start function:
+    -- Get SpriteRenderer, TextRenderer, and ButtonManager components for each button in the menu. 
     OnStart = function (self)
-        self.pause = Actor.Find("Pause")
         local local_srs = self.actor:GetComponents("SpriteRenderer")
         self.hover_sprite = local_srs[1]
         self.srs = {Back = local_srs[2]}
@@ -20,8 +23,10 @@ ButtonBack = {
         self.srs["Resume"] = resume:GetComponents("SpriteRenderer")[2]
         self.trs["Resume"] = resume:GetComponent("TextRenderer")
         self.bms["Resume"] = resume:GetComponent("ButtonManager")
-    end,
+    end, -- ON START
 
+    -- On Click function:
+    -- Enable all the main pause menu buttons, didable this button, and destroy the hint.
     OnClick = function(self)
         self.srs["Resume"].enabled = true
         self.trs["Resume"].enabled = true
@@ -37,5 +42,6 @@ ButtonBack = {
         self.trs["Back"].enabled = false
         self.bms["Back"].enabled = false
         Actor.Destroy(Actor.Find("Hint"))
-    end
-}
+    end -- ON CLICK
+
+} -- BUTTON BACK
