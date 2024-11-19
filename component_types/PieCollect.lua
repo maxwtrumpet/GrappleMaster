@@ -92,6 +92,19 @@ PieCollect = {
             if grapple ~= nil then
                 Actor.Destroy(grapple)
             end
+            local pause = Actor.Find("Pause")
+            if pause ~= nil then
+                Actor.Destroy(pause)
+                Actor.Destroy(Actor.Find("Backdrop"))
+                Actor.Destroy(Actor.Find("ButtonMenu"))
+                Actor.Destroy(Actor.Find("ButtonHint"))
+                Actor.Destroy(Actor.Find("ButtonBack"))
+                Actor.Destroy(Actor.Find("ButtonResume"))
+                local hint = Actor.Find("Hint")
+                if hint ~= nil then
+                    Actor.Destroy(hint)
+                end
+            end
             if self.is_secret then
                 if self.player_type == "Circle" then
                     self.static_data.secrets_found[self.current_scene + 1]["Circle"] = true
