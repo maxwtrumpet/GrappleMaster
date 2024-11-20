@@ -31,14 +31,12 @@ ButtonToggle = {
     -- Update each level's sprites and ButtonManager/TextRenderer based on mode/level data.
     ToggleLevels = function (self)
 
+        self.sd.player_type = self.text[self.current % 2 + 1]
         local postfix = "_blank"
         local scale = 6.25
         if self.current == 2 then
             postfix = "_circle"
             scale = 0.425
-            self.sd.circle_mode = true
-        else
-            self.sd.circle_mode = false
         end -- CURRENT TOGGLE CHECK
 
         for index, value in ipairs(self.levels) do

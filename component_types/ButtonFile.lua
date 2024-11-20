@@ -81,9 +81,12 @@ ButtonFile = {
                     end -- SECRET NOT FOUND
                 end -- SECRETS LOOP
                 if all_found == true then
-                    self.sd:UpdateMusic(12, "Circle")
+                    self.sd.player_type = "Circle"
+                    self.sd:UpdateMusic(12)
+                    self.sd.player_type = "Square"
                 else
-                    self.sd:UpdateMusic(12, "Square")
+                    self.sd.player_type = "Square"
+                    self.sd:UpdateMusic(12)
                 end -- MENU MUSIC UPDATE
                 Audio.PlaySound("pie_collect.mp3", 4, false)
 

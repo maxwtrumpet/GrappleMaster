@@ -1,256 +1,303 @@
+-- The component for handling square player controls.
+
 SquareManager = {
 
+    -- Grapple actor.
     grapple = nil,
-    down = Vector2(0,1),
-    left = Vector2(-1,0),
-    right = Vector2(1,0),
+
+    -- Status booleans.
     left_hold = false,
     crouched = false,
 
+    -- On Start function:
+    -- Get Static Data and Cursor.
+    -- Get SpriteRenderer and Rigidbody components.
+    -- Set original location and grapple status.
+    -- Disable self if in the pause menu.
     OnStart = function(self)
+
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
+        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
+
         self.sr = self.actor:GetComponent("SpriteRenderer")
         self.rb = self.actor:GetComponent("Rigidbody")
+
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
         self.can_grapple = ll.current_scene > 4 or (ll.current_scene == 4 and Actor.Find("GrappleCollect") == nil)
-        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
+
         if Actor.Find("Pause") ~= nil then
             self.enabled = false
-        end
-    end,
+        end -- IN PAUSE MENU
 
+    end, -- ON START
+
+    -- On Update function:
     OnUpdate = function(self)
+
+        -- If player pressed escape, load the pause menu and return early.
         if Input.IsKeyJustDown("escape") then
             self.sd:LoadPauseMenu(self)
             return
-        end
+        end -- ESC DOWN
+
+        -- If player pressed enter, reset the scene and return early.
         if Input.IsKeyJustDown("enter") then
             Scene.Load("level" .. tostring(Actor.Find("LevelLoader"):GetComponent("LevelLoader").current_scene))
             return
-        end
+        end -- ENTER DOWN
+
+        -- Initialize grapple actor and Rigidbody properties.
         self.grapple = Actor.Find("Grapple")
         local velocity = self.rb:GetVelocity()
         local position = self.rb:GetPosition()
         local cur_grav = self.rb:GetGravityScale()
+
+        -- If currently grappling to a block:
+        -- If player had jump input, just destroy the grapple.
+        -- If player can grapple and mouse was clicked, re-grapple.
         if self.grapple ~= nil and self.gm.attached then
+
             if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
                 Actor.Destroy(self.grapple)
+
             elseif self.can_grapple and (Input.IsMouseJustDown("left")) then
                 Actor.Destroy(self.grapple)
-                self.grapple = Actor.Instantiate("Grapple")
-                self.gm = self.grapple:GetComponent("GrappleManager")
-                self.gm:SetTarget(self.cursor:GetPosition())
-                if self.sd.mute_mode == false then
-                    Audio.PlaySound("grapple.mp3", 16, false)
-                end
-            end
+                self:Grapple()
+            end -- CHANGE GRAPPLE STATUS CHECK
+
+        -- Otherwise, if climbing:
         elseif cur_grav == 0 then
-            if self.left_hold == true then
-                position.y = position.y - 0.5
-                local top_hit = Physics.Raycast(position, self.left, .585)
-                position.y = position.y + 1
-                local bottom_hit = Physics.Raycast(position, self.left, .585)
-                position.y = position.y - 0.5
+
+            -- Set the raycast direction, pressed key, and offset based on hold direction.
+            local direction = self.sd.left
+            local key = "a"
+            if self.left_hold == false then
+                direction = self.sd.right
+                key = "d"
+            end -- RIGHT HOLD
+
+            -- Raycast twice equidistant from the player center.
+            position.y = position.y - 0.5
+            local top_hit = Physics.Raycast(position, direction, .585)
+            position.y = position.y + 1
+            local bottom_hit = Physics.Raycast(position, direction, .585)
+            position.y = position.y - 0.5
+
+             -- If either is a hit, attempt to get its block component.
+             if top_hit ~= nil then
+                top_hit = top_hit.actor:GetComponent("Block")
+            end -- TOP HAD HIT
+            if bottom_hit ~= nil then
+                bottom_hit = bottom_hit.actor:GetComponent("Block")
+            end -- BOTTOM HAD HIT
+
+            -- If key is down and either hit is a climbable block:
+            -- Set the velocity to 0.
+            -- Run the climb function on what blocks are being climbed.
+            if (Input.IsKeyDown(key)) and ((top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1)) then
+
+                velocity.y = 0
+
                 if top_hit ~= nil then
-                    top_hit = top_hit.actor:GetComponent("Block")
-                end
+                    top_hit:Climb()
+                end -- TOP HAD HIT
                 if bottom_hit ~= nil then
-                    bottom_hit = bottom_hit.actor:GetComponent("Block")
-                end
-                if (Input.IsKeyDown("a")) and ((top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1)) then
-                    velocity.y = 0
-                    if top_hit ~= nil then
-                        top_hit:Climb()
-                    end
-                    if bottom_hit ~= nil then
-                        bottom_hit:Climb()
-                    end
-                else
-                    self.rb:SetGravityScale(1)
-                    self.sr.sprite = "player"
-                    self.rb:AddForce(Vector2(0,1))
-                    self.rb:SetColliderDimensions(Vector2(1,1))
-                    self.rb:SetTriggerDimensions(Vector2(1,1))
-                    cur_grav = 1
-                end
-            elseif self.left_hold == false then
-                position.y = position.y - 0.5
-                local top_hit = Physics.Raycast(position, self.right, .585)
-                position.y = position.y + 1
-                local bottom_hit = Physics.Raycast(position, self.right, .585)
-                position.y = position.y - 0.5
-                if top_hit ~= nil then
-                    top_hit = top_hit.actor:GetComponent("Block")
-                end
-                if bottom_hit ~= nil then
-                    bottom_hit = bottom_hit.actor:GetComponent("Block")
-                end
-                if (Input.IsKeyDown("d")) and ((top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1)) then
-                    velocity.y = 0
-                    if top_hit ~= nil then
-                        top_hit:Climb()
-                    end
-                    if bottom_hit ~= nil then
-                        bottom_hit:Climb()
-                    end
-                else
-                    self.rb:SetGravityScale(1)
-                    self.sr.sprite = "player"
-                    self.rb:AddForce(Vector2(0,1))
-                    self.rb:SetColliderDimensions(Vector2(1,1))
-                    self.rb:SetTriggerDimensions(Vector2(1,1))
-                    cur_grav = 1
-                end
-            end
+                    bottom_hit:Climb()
+                end -- BOTTOM HAD HIT
+
+            -- Otherwise, reset gravity/sprite/hitboxes and adjust position.
+            else
+                self.rb:SetGravityScale(1)
+                cur_grav = 1
+                self.sr.sprite = "player"
+                self.rb:SetColliderDimensions(Vector2(1,1))
+                self.rb:SetTriggerDimensions(Vector2(1,1))
+            end -- CURRENT CLIMB STATUS
+
+        -- Otherwise, if either a or d is pressed:
         else
-            if Input.IsKeyDown("d") then
+            if Input.IsKeyDown("a") or Input.IsKeyDown("d") then
+
+                -- Set the raycast direction, sprite, and offset based on pressed direction.
+                local sprite = "squished_left"
+                local direction = self.sd.left
+                local offset = 0.025
+                if Input.IsKeyDown("d") then
+                    sprite = "squished_right"
+                    direction = self.sd.right
+                    offset = -0.025
+                end -- RIGHT PRESS
+
+                -- Raycast twice equidistant from the player center.
+                -- The raycast length is dependent on if the player is crouching.
                 local top_hit = nil
                 local bottom_hit = nil
                 if self.crouched then
                     position.y = position.y - 0.375
-                    top_hit = Physics.Raycast(position, self.right, .555)
+                    top_hit = Physics.Raycast(position, direction, .555)
                     position.y = position.y + .75
-                    bottom_hit = Physics.Raycast(position, self.right, .555)
+                    bottom_hit = Physics.Raycast(position, direction, .555)
                     position.y = position.y - 0.375
                 else
                     position.y = position.y - 0.5
-                    top_hit = Physics.Raycast(position, self.right, .555)
+                    top_hit = Physics.Raycast(position, direction, .555)
                     position.y = position.y + 1
-                    bottom_hit = Physics.Raycast(position, self.right, .555)
+                    bottom_hit = Physics.Raycast(position, direction, .555)
                     position.y = position.y - 0.5
-                end
+                end -- CROUCH STATUS
+
+                -- If either is a hit, attempt to get its block component.
                 if top_hit ~= nil then
                     top_hit = top_hit.actor:GetComponent("Block")
-                end
+                end -- TOP HAD HIT
                 if bottom_hit ~= nil then
                     bottom_hit = bottom_hit.actor:GetComponent("Block")
-                end
+                end -- BOTTOM HAD HIT
+
+                -- If both blocks are kill blocks or don't exist, give the player velocity in the direction pressed.
                 if (top_hit == nil or top_hit.actor:GetName() == "Kill") and (bottom_hit == nil or bottom_hit.actor:GetName() == "Kill") then
-                    velocity.x = 5.5
+                    velocity.x = offset * -220
+
+                -- Otherwise:
                 else
+
+                    -- Set the x velocity to zero.
                     velocity.x = 0
+
+                    -- If either hit is a climbable block:
+                    -- Set the y velocity, round the x position, and gravity scale to 0.
+                    -- Update the sprite and hitboxes.
+                    -- Determine which direction the hold was in climb the blocks.
                     if (top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1) then
+
                         velocity.y = 0
+                        position.x = math.floor(position.x*2+0.5)/2+offset
                         self.rb:SetGravityScale(0)
-                        self.sr.sprite = "squished_right"
                         cur_grav = 0
-                        self.left_hold = false
+
+                        self.sr.sprite = sprite
                         self.rb:SetColliderDimensions(Vector2(0.75,1))
                         self.rb:SetTriggerDimensions(Vector2(0.75,1))
-                        position.x = math.floor(position.x*2+0.5)/2-0.025
+
+                        self.left_hold = (offset == 0.025)
                         if top_hit ~= nil then
                             top_hit:Climb()
-                        end
+                        end -- TOP HAD HIT
                         if bottom_hit ~= nil then
                             bottom_hit:Climb()
-                        end
-                    end
-                end
-            elseif Input.IsKeyDown("a") then
-                local top_hit = nil
-                local bottom_hit = nil
-                if self.crouched then
-                    position.y = position.y - 0.375
-                    top_hit = Physics.Raycast(position, self.left, .555)
-                    position.y = position.y + .75
-                    bottom_hit = Physics.Raycast(position, self.left, .555)
-                    position.y = position.y - 0.375
-                else
-                    position.y = position.y - 0.5
-                    top_hit = Physics.Raycast(position, self.left, .555)
-                    position.y = position.y + 1
-                    bottom_hit = Physics.Raycast(position, self.left, .555)
-                    position.y = position.y - 0.5
-                end
-                if top_hit ~= nil then
-                    top_hit = top_hit.actor:GetComponent("Block")
-                end
-                if bottom_hit ~= nil then
-                    bottom_hit = bottom_hit.actor:GetComponent("Block")
-                end
-                if (top_hit == nil or top_hit.actor:GetName() == "Kill") and (bottom_hit == nil or bottom_hit.actor:GetName() == "Kill") then
-                    velocity.x = -5.5
-                else
-                    velocity.x = 0
-                    if (top_hit ~= nil and top_hit.climbable ~= -1) or (bottom_hit ~= nil and bottom_hit.climbable ~= -1) then
-                        velocity.y = 0
-                        self.rb:SetGravityScale(0)
-                        self.sr.sprite = "squished_left"
-                        cur_grav = 0
-                        self.left_hold = true
-                        self.rb:SetColliderDimensions(Vector2(0.75,1))
-                        self.rb:SetTriggerDimensions(Vector2(0.75,1))
-                        position.x = math.floor(position.x*2+0.5)/2+0.025
-                        if top_hit ~= nil then
-                            top_hit:Climb()
-                        end
-                        if bottom_hit ~= nil then
-                            bottom_hit:Climb()
-                        end
-                    end
-                end
-            end
-        end
+                        end -- BOTTOM HAD HIT
+
+                    end -- INITIATE CLIMB
+
+                end -- RAYCAST RESULTS
+
+            end -- A OR D PRESSED
+
+        end  -- GRAPPLE/CLIMB STATUS
+
+        -- If current climbing and either w or s is pressed, move the player in that direction.
         if cur_grav == 0 then
             if Input.IsKeyDown("w") then
                 velocity.y = -5.5
             elseif Input.IsKeyDown("s") then
                 velocity.y = 5.5
-            end
+            end -- W OR S PRESSED
+
+        -- Otherwise:
         else
+
+            -- If player swaps crouching statuses:
+            -- Update the sprite and hitboxes.
+            -- Update the density and position.
+            -- Update the crocuhing variable.
             if self.crouched == false and (Input.IsKeyDown("s")) then
+
                 self.sr.sprite = "squished_down"
                 self.rb:SetColliderDimensions(Vector2(1,0.75))
                 self.rb:SetTriggerDimensions(Vector2(1,0.75))
+
                 self.rb:SetDensity(4.0/3.0)
                 position.y = position.y + 0.125
+
                 self.crouched = true
+
             elseif self.crouched and Input.IsKeyDown("s") == false then
+
                 self.sr.sprite = "player"
                 self.rb:SetColliderDimensions(Vector2(1,1))
                 self.rb:SetTriggerDimensions(Vector2(1,1))
+
                 self.rb:SetDensity(1)
                 position.y = position.y - 0.125
+
                 self.crouched = false
-            end
+
+            end -- CROUCH STATUS SWAPS
+
+            -- Raycast twice equidistant from the player center.
             position.x = position.x + 0.5
-            local right_hit = Physics.Raycast(position, self.down, .555)
+            local right_hit = Physics.Raycast(position, self.sd.down, .555)
             position.x = position.x - 1
-            local left_hit = Physics.Raycast(position, self.down, .555)
+            local left_hit = Physics.Raycast(position, self.sd.down, .555)
             position.x = position.x + 0.5
+
+            -- If a valid jumping block was hit:
+            -- Confirm the player has a valid jump input.
+            -- Add a vertical force and play the jump sound.
             if (left_hit ~= nil and left_hit.actor:GetName() ~= "Checkpoint" and left_hit.actor:GetName() ~= "Grapple" and left_hit.actor:GetName() ~= "Cursor" and left_hit.actor:GetName() ~= "Player") or (right_hit ~= nil and right_hit.actor:GetName() ~= "Checkpoint" and right_hit.actor:GetName() ~= "Grapple" and right_hit.actor:GetName() ~= "Cursor" and right_hit.actor:GetName() ~= "Player") then
+
                 if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
+
                     self.rb:AddForce(Vector2(0,-667))
-                    if self.sd.mute_mode == false then
-                        Audio.PlaySound("jump.mp3", 16, false)
-                    end
-                end
+                    Audio.PlaySound("jump.mp3", 16, false)
+
+                end -- VALID JUMP INPUT
+
+            -- Otherwise: 
+            -- Add a drag force.
+            -- If player is no longer jumping but has upward velocity, slow them down.
             else
+
                 self.rb:AddForce(Vector2(-5*velocity.x,0))
+
                 if Input.IsKeyDown("space") == false and Input.IsMouseDown("right") == false and velocity.y < 0 then
                     self.rb:AddForce(Vector2(0,30))
-                end
-            end
-        end
+                end -- NO LONGER JUMPING
+
+            end -- VALID STATUS
+
+        end -- GRAPPLE/CLIMB STATUS
+
+        -- If player can grapple and has pressed the input to do so, grapple.
         if self.can_grapple and (Input.IsMouseJustDown("left")) and self.grapple == nil then
-            self.grapple = Actor.Instantiate("Grapple")
-            self.gm = self.grapple:GetComponent("GrappleManager")
-            self.gm:SetTarget(self.cursor:GetPosition())
-            if self.sd.mute_mode == false then
-                Audio.PlaySound("grapple.mp3", 16, false)
-            end
-        end
+            self:Grapple()
+        end -- VALID GRAPPLE INPUT
+
+        -- Update teh player's velocity and position.
         self.rb:SetVelocity(velocity)
         self.rb:SetPosition(position)
-    end,
 
+    end, -- ON UPDATE
+
+    -- The function called when a player hits the kill blocks:
+    -- Queue player for respawning in the level loader and play death sound.
     Die = function(self)
-        if self.sd.mute_mode == false then
-            Audio.PlaySound("death.mp3", 4, false)
-        end
-        local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
-        ll:Respawn(self.original_loc, "Player_square")
-    end
+        Actor.Find("LevelLoader"):GetComponent("LevelLoader"):Respawn(self.original_loc, "Player_Square")
+        Audio.PlaySound("death.mp3", 4, false)
+    end, -- DIE
 
-}
+    -- The function called to shoot a grapple.
+    -- Update Grapple and GrappleManager variables.
+    -- Set the grapple's target and play the grapple sound.
+    Grapple = function (self)
+
+        self.grapple = Actor.Instantiate("Grapple")
+        self.gm = self.grapple:GetComponent("GrappleManager")
+
+        self.gm.target = self.cursor:GetPosition()
+        Audio.PlaySound("grapple.mp3", 16, false)
+
+    end -- GRAPPLE
+
+} -- SQUARE MANAGER

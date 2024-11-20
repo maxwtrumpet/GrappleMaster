@@ -1,36 +1,43 @@
+-- The component for the Grapple collectible in level 5.
+
 GrappleCollect = {
 
+    -- On Start function:
+    -- Get Static Data.
+    -- If player isn't starting at the beginning, immediately enable. 
     OnStart = function (self)
+
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
+
         if self.sd.level_layout[5]["location"] > 1 then
-            self:EnableGrapple()
-        elseif self.sd.mute_mode == false then
-            Audio.SetEventParameter(self.sd.square_time, "Harp", 0)
-        end
-    end,
+            self:EnableGrapple(Actor.Find("Player"):GetComponentByKey("Manager"))
+        end -- PLAYER 
 
-    EnableGrapple = function (self)
-        Actor.Find("Player"):GetComponentByKey("Manager").can_grapple = true
-        Actor.Find("Cursor"):GetComponent("SpriteRenderer").enabled = true
+    end, -- ON START
+
+    -- Enable grapple function:
+    -- Turn on player grapple ability, update music, and destroy self.
+    -- Update the music.
+    -- Destroy self.
+    EnableGrapple = function (self, pm)
+        pm.can_grapple = true
+        self.sd:UpdateMusic(5)
         Actor.Destroy(self.actor)
-    end,
+    end, -- ENABLE GRAPPPLE
 
+    -- On Trigger Enter function:
+    -- Confirm the player triggered the event.
+    -- Enable the grapple and play the collect sound.
     OnTriggerEnter = function(self, contact)
+
         local pm = contact.other:GetComponentByKey("Manager")
         if pm ~= nil then
-            self:EnableGrapple()
-            if self.sd.mute_mode == false then
-                Audio.PlaySound("pie_collect.mp3", 4, false)
-                local player_type = nil
-                if pm.actor:GetComponent("CircleManager") == nil then
-                    player_type = "Square"
-                else
-                    player_type = "Circle"
-                end
-                for parameter, values in pairs(self.sd.parameters[player_type]) do
-                    Audio.SetEventParameter(self.sd.square_time, parameter, values[5])
-                end
-            end
-        end
-    end
-}
+
+            self:EnableGrapple(pm)
+            Audio.PlaySound("pie_collect.mp3", 4, false)
+
+        end -- PLAYER TRIGGER EVENT
+
+    end -- ON TRIGGER ENTER
+
+} -- GRAPPLE COLLECT

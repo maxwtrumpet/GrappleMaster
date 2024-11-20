@@ -1,6 +1,12 @@
+-- The component that holds all the static data/functions used throughout the game.
+
 StaticData = {
 
+    -- Player death count and current type.
     deaths = 0,
+    player_type = "Square",
+
+    -- Level secrets found.
     secrets_found = {
         {Circle = false, Square = false},
         {Circle = false, Square = false},
@@ -15,6 +21,8 @@ StaticData = {
         {Circle = false, Square = false},
         {Circle = false, Square = false},
     },
+
+    -- Level progress.
     level_reached = {Circle = 1, Square = 1},
     player_progress = {
         {Circle = 1, Square = 1},
@@ -30,9 +38,8 @@ StaticData = {
         {Circle = 1, Square = 1},
         {Circle = 1, Square = 1},
     },
-    mute_mode = false,
-    controller_mode = false,
-    blank_vector = Vector3(0,0,0),
+
+    -- Music file & parameters.
     square_time = "event:/music/square_time",
     parameters = {Square = {Chords = {1,1,1,1,1,1,1,1,0,0,0,1,1},
                             ChordType = {0,0,1,1,1,1,0,0,1,1,1,1,0},
@@ -49,6 +56,24 @@ StaticData = {
                             Sustain = {0,1,1,1,1,0,1,1,0,0,1,1,0},
                             Harp = {0,0,0,1,1,1,0,0,1,1,1,1,0}}
     },
+    final_music = {
+        Square = {Chords = {1,1,1,1,1,0,0},
+                  ChordType = {1,1,1,1,1,1,1},
+                  Bass = {0,1,0,0,0,0,0},
+                  Melody = {1,1,1,1,1,1,1},
+                  Groove = {0,0,0,0,0,0,0},
+                  Sustain = {1,0,0,0,1,1,0},
+                  Harp = {1,1,1,0,0,0,0}},
+        Circle = {Chords = {1,1,1,1,0,0,0},
+                  ChordType = {1,1,1,1,1,1,0},
+                  Bass = {1,1,1,0,0,0,0},
+                  Melody = {0,0,0,0,1,0,0},
+                  Groove = {1,0,0,0,0,0,0},
+                  Sustain = {1,1,0,0,0,0,0},
+                  Harp = {1,1,1,1,1,1,0}}
+    },
+
+    -- Stage block and background layouts.
     stage_layout = {
         {Steel = {Vector2(28,-4),Vector2(28,-5),Vector2(28,-6),Vector2(28,-7),Vector2(-3,0),Vector2(-3,1),Vector2(-3,2),Vector2(-2,2),Vector2(-3,-1),Vector2(-1,2),Vector2(0,2),Vector2(1,2),Vector2(2,2),Vector2(3,2),Vector2(4,2),Vector2(5,2),Vector2(6,2),Vector2(7,2),Vector2(8,2),Vector2(9,2),Vector2(10,2),Vector2(11,2),Vector2(12,2),Vector2(13,2),Vector2(14,2),Vector2(15,2),Vector2(16,2),Vector2(17,2),Vector2(18,2),Vector2(19,2),Vector2(20,2),Vector2(21,2),Vector2(22,2),Vector2(23,2),Vector2(23,1),Vector2(23,0),Vector2(23,-1),Vector2(23,-2),Vector2(23,-3),Vector2(24,-3),Vector2(25,-3),Vector2(26,-3),Vector2(27,-3),Vector2(3,1),Vector2(28,-3),Vector2(9,0),Vector2(9,1),Vector2(10,0),Vector2(11,0),Vector2(12,0),Vector2(10,1),Vector2(11,1),Vector2(12,1),Vector2(13,1),Vector2(13,0),Vector2(14,1),Vector2(17,-1),Vector2(20,-2),Vector2(-11.5,-4),Vector2(-11.5,-3),Vector2(-11.5,-2),Vector2(-11.5,-1),Vector2(-11.5,0),Vector2(-11.5,1),Vector2(-11.5,2),Vector2(-11.5,3),Vector2(-11.5,4),Vector2(-11.5,5),Vector2(-11.5,6),Vector2(-11.5,7),Vector2(-10.5,7),Vector2(-9.5,7),Vector2(-8.5,7),Vector2(-7.5,7),Vector2(-6.5,7),Vector2(-5.5,7),Vector2(-4.5,7),Vector2(6,7),Vector2(-4.5,8),Vector2(6,8),Vector2(-4.5,9),Vector2(6,9),Vector2(-4.5,10),Vector2(6,10),Vector2(-4.5,11),Vector2(6,11),Vector2(-4.5,12),Vector2(6,12),Vector2(-4.5,13),Vector2(6,13),Vector2(-4.5,14),Vector2(6,14),Vector2(-4,18),Vector2(6,15),Vector2(6,16),Vector2(6,17),Vector2(-3,18),Vector2(-2,18),Vector2(6,18),Vector2(5,18),Vector2(4,18),Vector2(3,18),Vector2(2,18),Vector2(1,18),Vector2(0,18),Vector2(-1,18),Vector2(-5,18),Vector2(-6,18),Vector2(-7,18),Vector2(-8,18),Vector2(-8,16),Vector2(-9,18),Vector2(-10,18),Vector2(-11,18),Vector2(-12,18),Vector2(-13,18),Vector2(-13,14),Vector2(-14,18),Vector2(-15,18),Vector2(-16,18),Vector2(-17,18),Vector2(-18,18),Vector2(-18,12),Vector2(-19,18),Vector2(-20,18),Vector2(-21,18),Vector2(-22,18),Vector2(-23,18),Vector2(-23,17),Vector2(-23,16),Vector2(-23,15),Vector2(-23,14),Vector2(-23,13),Vector2(-23,12),Vector2(-23,11),Vector2(-23,10),Vector2(-24,10),Vector2(-25,10),Vector2(-26,10),Vector2(-27,10),Vector2(-28,10),Vector2(-26,9),Vector2(-26,8),Vector2(-26,7),Vector2(-29,10),Vector2(-30,10),Vector2(-31,10),Vector2(-32,10),Vector2(-32,9),Vector2(-32,8),Vector2(-32,7),Vector2(-32,6),Vector2(-32,5),Vector2(-32,4),Vector2(-32,3)},
 		Checkpoint = {Vector2(0,0)},
@@ -146,6 +171,8 @@ StaticData = {
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(2,0),Vector2(2,-1),Vector2(2,1),Vector2(3,0),Vector2(3,-1),Vector2(3,1),Vector2(4,0),Vector2(4,-1),Vector2(4,1),Vector2(4,-2),Vector2(3,-2),Vector2(2,-2),Vector2(4,-3),Vector2(3,-3),Vector2(2,-3),Vector2(0,-2),Vector2(1,-2)},
         {Vector2(0,0),Vector2(-1,0),Vector2(1,0),Vector2(0,1),Vector2(-1,1),Vector2(1,1),Vector2(0,-1),Vector2(-1,-1),Vector2(1,-1),Vector2(0,-2),Vector2(-1,-2),Vector2(1,-2),Vector2(-2,0),Vector2(-2,-1),Vector2(-2,1),Vector2(-2,-2),Vector2(-3,-1),Vector2(-3,-2),Vector2(-3,0),Vector2(-3,1),Vector2(-3,2),Vector2(-2,2),Vector2(-3,3),Vector2(-3,4),Vector2(-3,5),Vector2(-3,6),Vector2(-3,7),Vector2(-2,3),Vector2(-2,4),Vector2(-2,5),Vector2(-2,6),Vector2(-2,7)}
     },
+
+    -- Checkpoint select display and level layouts.
     checkpoint_layouts = {
         {Vector2(0,0)},
         {Vector2(-1,0),Vector2(1,0)},
@@ -174,6 +201,8 @@ StaticData = {
         {location = 1, visible = 3, total = 7},
         {location = 1, visible = 5, total = 12},
     },
+
+    -- Hint text.
     hints = {
         {{"Use a and d to move left and right, space to jump, and", "enter to reload the level from the last checkpoint.", "The longer you hold space, the higher you'll jump!"}},
         {{"Hold s to crouch. You'll be 1/4 block shorter!"},{"With precisely timed jumps, crouching allows", "you to jump into and out of one block gaps."},{"Crouching also helps you avoid kill blocks!"},{"This is pretty much a harder version of the previous jump."},{"You'll need some precisely timed jumps. Make sure to", "release a/d before you land to not hit the kill blocks!"},{"Use just enough sideways momenutm to center", "yourself on the pit. Then you'll fall straight down!"}},
@@ -188,7 +217,6 @@ StaticData = {
         {{"Fragile blocks also get broken by being touched, but you can't", "climb or grapple them. In fact, they instantly break if grappled."},{"Orange blocks can also be insantly broken with the grapple."},{"Grappling through orange blocks allows you to go", "down through them, which isn't normally possible!"},{"Going into blocks as they respawn clips you through them. This is", "easy when destroying fragile blocks with the grapple. Use the column", "at checkpoint 3 to launch yourself up. Holding space + s helps!"},{"This looks just like level 1! Use well placed", "jumps and bounces to get to the next checkpoint."},{"This looks just like level 2! Jumping through", "the 1 block gaps requires very precise timing."},{"This looks just like level 3! You'll need to launch yourself", "up fragile pillars twice to get to the end. Make sure to", "stay right in the middle to avoid clipping to the side."}},
         {{"Climb up the two walls and grapple to the final one."},{"Hold space just before  you re-grapple the blue block to maximize", "your speed. You may have to re-grapple the green block to avoid the", "kill block! Climb and immediately crouch to avoid another kill block."},{"Lightly tap the space bar to get a short hop. Do three of these", "in a row to reach the end. It helps to pause on each block."},{"When the fragile blocks are broken, jump right before the", "kill block while crouching to reach the next checkpoint."},{"First, get rid of the yellow blocks, then crouch jump to the", "white ones. When the yellow blocks respawn, hold onto them as", "you quickly break the white blocks to get to the pie piece."},{"Break the outer layer of yellow blocks. Then, quickly trigger the", "inner layer. Use the dirt block to quickly reach the top, and use", "the ice block to launch yourself through the broken inner layer."},{"Buffer a jump and grapple the bottom left of the blue block. Precisely", "time your jump to reach the orange block, and bounce off it to reach", "the fragile block. Make sure to destroy them with the grapple!"},{"Bounce off the blocks to reach the white blocks. You may have", "to re-grapple them to get the angle right. Use momentum to get", "through, or grapple a newly-respawned block just as you go past."},{"Hold space + w to get vertical momentum on the last purple block", "to reach the first green block, then take a leap of faith to reach", "the second. You will have to re-grapple to reach them."},{"The same space + w setup is needed here along with precise cursor", "placement. Then use momentum from the grapple to get to the top", "of the second block, followed by a super jump to the checkpoint."},{"Precisely timed, crouch jumps can be used to jump on kill blocks."},{"Enjoy the fall!"}}
     },
-
     secret_hints = {
         {1, {"Pressing space precisely as you land allows", "you to rebound and bounce higher. This bounce", "is easier to achieve when you are crouching."}},
         {3, {"Do a full jump off the right edge of the level."}},
@@ -204,51 +232,57 @@ StaticData = {
         {5, {"Get to the other side of the pie piece, and use", "grapple momentum from it to launch far to the left."}}
     },
 
+    -- Template vectors.
+    down = Vector2(0,1),
+    left = Vector2(-1,0),
+    right = Vector2(1,0),
+    blank_vector = Vector3(0,0,0),
+
+    -- On Start function. Tells the engine to keep this actor across scenes.
     OnStart = function(self)
         Scene.DontDestroy(self.actor)
-        if Input.NumControllersAvailable() > 0 then
-            Input.ActivateControllers(1)
-            self.controller_mode = true
-            Debug.Log("Controller detected and activated")
-        else
-            Debug.Log("No controller, keyboard mode")
-        end
-    end,
+    end, -- ON START
 
+    -- On Update function. Keeps the normal computer cursor hidden.
     OnUpdate = function(self)
         if Application.IsCursorVisible() then
             Application.HideCursor()
-        end
-    end,
+        end -- CURSOR VISIBILE
+    end, -- ON UPDATE
 
-    UpdateMusic = function (self, level, player_type)
-        if self.mute_mode == false then
-            if not Audio.IsEventPlaying(self.square_time) then
-                Audio.LoadBank("Master Bank.strings")
-                Audio.LoadBank("Master Bank")
-                Audio.LoadBank("music")
-                Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
-            end
-            for parameter, values in pairs(self.parameters[player_type]) do
-                Audio.SetEventParameter(self.square_time, parameter, values[level+1])
-            end
-        end
-    end,
+    -- Update Music function:
+    -- Load and play the track if it's not playing already.
+    -- Set all music parameters based on level and player type.
+    UpdateMusic = function (self, level)
 
-    DebugVector2 = function(self, vec, add_newline)
-        Debug.Log("(" .. vec.x .. "," .. vec.y .. ")")
-        if add_newline then
-            Debug.Log("")
-        end
-    end,
+        if not Audio.IsEventPlaying(self.square_time) then
+            Audio.LoadBank("Master Bank.strings")
+            Audio.LoadBank("Master Bank")
+            Audio.LoadBank("music")
+            Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
+        end -- MUSIC NOT INITIALIZED
 
+        for parameter, values in pairs(self.parameters[self.player_type]) do
+            Audio.SetEventParameter(self.square_time, parameter, values[level+1])
+        end -- PARAMETER LOOP
+
+    end, -- UPDATE MUSIC
+
+    -- Show the level buttons:
+    -- Get the ButtonManager, SpriteRenderer, and ButtonLevel components.
+    -- Turn on the ButtonManager and base sprite.
+    -- Toggle the button based on if the player has reached the level.
+    -- Add the secret overlay if the secret is found.
     ShowLevelButtons = function(self, levels, player_mode)
         for index, value in ipairs(levels) do
+
             local bm = value:GetComponent("ButtonManager")
-            bm.enabled = true
             local srs = value:GetComponents("SpriteRenderer")
-            srs[2].enabled = true
             local bl = value:GetComponent("ButtonLevel")
+
+            bm.enabled = true
+            srs[2].enabled = true
+
             if bl.level > self.level_reached[player_mode] then
                 srs[3].enabled = true
                 srs[5].enabled = true
@@ -257,13 +291,18 @@ StaticData = {
             else
                 bm.clickable = true
                 value:GetComponent("TextRenderer").enabled = true
-            end
+            end -- LEVEL VISIBILITY
+
             if self.secrets_found[bl.level][player_mode] then
                 srs[4].enabled = true
-            end
-        end
-    end,
+            end -- SECRET FOUND
 
+        end -- LEVEL BUTTON LOOP
+
+    end, -- SHOW LEVEL BUTTONS
+
+    -- Hide Level Buttons function:
+    -- Disable ButtonManager, TextRenderer, and all SpriteRenderers.
     HideLevelButtons = function(self, levels)
         for index, value in ipairs(levels) do
             value:GetComponent("ButtonManager").enabled = false
@@ -274,71 +313,94 @@ StaticData = {
             srs[3].enabled = false
             srs[4].enabled = false
             srs[5].enabled = false
-        end
-    end,
+        end -- BUTTON LOOP
+    end, -- HIDE LEVEL BUTTONS
 
+    -- Load Checkpoint Buttons:
+    -- Get the total number of buttons to load based on player progress.
+    -- Create each checkpoint with its respective level and position.
+    -- Toggle the checkpoint based on if the player has reached it.
     LoadCheckpointButtons = function (self, level, player_type)
-        local count
+
+        local count = self.level_layout[level]["visible"]
         if self.player_progress[level][player_type] > self.level_layout[level]["visible"] then
             count = self.level_layout[level]["total"]
-        else
-            count = self.level_layout[level]["visible"]
-        end
-        for index, value in ipairs(self.checkpoint_layouts[count]) do
-                local cur_cp = Actor.Instantiate("CheckpointButton")
-                cur_cp:GetComponent("ButtonPlay").level = level
-                cur_cp:GetComponent("Rigidbody"):SetPosition(value)
-                if index > self.player_progress[level][player_type] then
-                    cur_cp:GetComponent("TextRenderer").enabled = false
-                    cur_cp:GetComponents("SpriteRenderer")[2].sprite = "checkpoint"
-                else
-                    cur_cp:GetComponent("TextRenderer").text = tostring(index)
-                    cur_cp:GetComponents("SpriteRenderer")[2].sprite = "respawn"
-                end
-        end
-    end,
+        end -- CAN SEE SECRET CHECKPOINTS
 
+        for index, value in ipairs(self.checkpoint_layouts[count]) do
+
+            local cur_cp = Actor.Instantiate("CheckpointButton")
+            cur_cp:GetComponent("ButtonPlay").level = level
+            cur_cp:GetComponent("Rigidbody"):SetPosition(value)
+            
+            if index > self.player_progress[level][player_type] then
+                cur_cp:GetComponent("TextRenderer").enabled = false
+                cur_cp:GetComponents("SpriteRenderer")[2].sprite = "checkpoint"
+            else
+                cur_cp:GetComponent("TextRenderer").text = tostring(index)
+                cur_cp:GetComponents("SpriteRenderer")[2].sprite = "respawn"
+            end -- CHECKPOINT AVAILABILITY
+
+        end -- CHECKPOINT LOOP
+        
+    end, -- LOAD CHECKPOINT BUTTONS
+
+    -- Remove Checkpoint Buttons:
+    -- Find all existing checkpoint buttons and delete them.
     RemoveCheckpointButtons = function ()
         local buttons = Actor.FindAll("Checkpoint Button")
         for index, value in ipairs(buttons) do
             Actor.Destroy(value)
-        end
-    end,
+        end -- BUTTON LOOP
+    end, -- REMOVE CHECKPOINT BUTTONS
 
+    -- Load the File Menu:
+    -- Instantiate FileButton and FileDisplay actors for all three files.
+    -- Set the actors' positions, modes, and file number.
     LoadFileMenu = function (self, mode)
         for i = 1, 3, 1 do
-            local fd = Actor.Instantiate("FileDisplay")
-            local fb = Actor.Instantiate("FileButton")
-            fb:GetComponent("Rigidbody"):SetPosition(Vector2(-6.35,i*2-4))
-            local fb_bf = fb:GetComponent("ButtonFile")
-            fb_bf.mode = mode
-            fb_bf.file = i
-            fd:GetComponent("Rigidbody"):SetPosition(Vector2(1.95,i*2-4))
-            fd:GetComponent("FileDisplay").file = i
-        end
-    end,
 
+            local fb = Actor.Instantiate("FileButton")
+            local fb_bf = fb:GetComponent("ButtonFile")
+            local fd = Actor.Instantiate("FileDisplay")
+
+            fb:GetComponent("Rigidbody"):SetPosition(Vector2(-6.35,i*2-4))
+            fd:GetComponent("Rigidbody"):SetPosition(Vector2(1.95,i*2-4))
+            fb_bf.file = i
+            fd:GetComponent("FileDisplay").file = i
+            fb_bf.mode = mode
+
+        end -- FILE LOOP
+    end, -- LOAD FILE MENU
+
+    -- Remove the File Menu:
+    -- Find all FileButton and FileDisplay actors and delete them.
     RemoveFileMenu = function (self)
         local fbs = Actor.FindAll("FileButton")
         local fds = Actor.FindAll("File Display")
         for key, value in pairs(fbs) do
             Actor.Destroy(value)
-        end
+        end -- FILE BUTTON LOOP
         for key, value in pairs(fds) do
             Actor.Destroy(value)
-        end
-    end,
+        end -- FILE DISPLAY LOOP
+    end, -- REMOVE FILE MENU
 
+    -- Load Pause Menu function:
+    -- Instantiate all the pause menu actors.
+    -- Unrestrict the cursor and disable the player.
     LoadPauseMenu = function (self, player)
+
         Actor.Instantiate("Backdrop")
-        local cursor = Actor.Find("Cursor")
-        cursor:GetComponent("CursorManager").restricted = false
         Actor.Instantiate("Pause")
         Actor.Instantiate("ButtonResume")
         Actor.Instantiate("ButtonHint")
         Actor.Instantiate("ButtonMenu")
         Actor.Instantiate("ButtonBack")
-        player.enabled = false
-    end
 
-}
+        Actor.Find("Cursor"):GetComponent("CursorManager").restricted = false
+        player.enabled = false
+
+    end -- LOAD PAUSE MENU
+
+} -- STATIC DATA

@@ -89,7 +89,7 @@ Block = {
                     self.sr.b = 255
                 end -- FLASH ANIMATION
             end -- BREAK STATUS
-        
+
         -- Otherwise, if the block is queued to reset and the current frame exceeds the reset frame:
         -- Recreate the Rigidbody component.
         -- Reset the sprite.
@@ -106,7 +106,7 @@ Block = {
             self.reset_frame = -1
 
         end -- BREAK OR RESET
-        
+
     end, -- ON UPDATE
 
     -- The climb function:
