@@ -3,7 +3,7 @@
 	"components": {
 		"1": {
 			"type": "SpriteRenderer",
-			"sprite": "chunk",
+			"sprite": "Chunk",
 			"sorting_order": -999,
             "x_scale": 6.25,
             "y_scale": 6.25
