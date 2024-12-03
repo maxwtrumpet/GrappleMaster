@@ -313,7 +313,7 @@
                     "text": "12"
                 },
                 "3": {
-                    "sprite": "player_blank"
+                    "sprite": "Player_blank"
                 },
                 "4": {
                     "x": 3,
