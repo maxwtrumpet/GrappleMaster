@@ -60,7 +60,7 @@ ButtonCancel = {
         self.hover_sr.enabled = false
         self.buttons["Cancel"]["tr"].enabled = false
         self.buttons["Cancel"]["bm"].enabled = false
-        self.rb:SetUIPosition(Vector2(0,3.65))
+        self.rb:SetUIPosition(Vector2(0,-3.65))
         self.buttons["Toggle"]["sr"].enabled = false
         self.buttons["Toggle"]["tr"].enabled = false
         self.buttons["Toggle"]["bm"].enabled = false

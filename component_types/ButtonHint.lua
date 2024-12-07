@@ -71,6 +71,8 @@ ButtonHint = {
             tr.r = 231
             tr.g = 231
             tr.b = 231
+            tr.y_offset = -1
+            tr.size = 52
         else
             if self.sd.secret_hints[self.level][1] == self.location and self.sd.level_reached["Square"] == 13 and self.secrets_found == self.level - 1 then
                 for index, value in ipairs(self.sd.secret_hints[self.level][2]) do
@@ -80,7 +82,8 @@ ButtonHint = {
                     tr.r = 231
                     tr.g = 231
                     tr.b = 231
-                    tr.y_offset = index - 1
+                    tr.y_offset = -1
+                    tr.size = 52
                 end -- TEXT LOOP
             else
                 for index, value in ipairs(self.sd.hints[self.level][self.location]) do
@@ -90,7 +93,8 @@ ButtonHint = {
                     tr.r = 231
                     tr.g = 231
                     tr.b = 231
-                    tr.y_offset = index - 1
+                    tr.y_offset = -1
+                    tr.size = 52
                 end -- TEXT LOOP
             end -- SECRET OR NOT
         end -- TEXT FILL

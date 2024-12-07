@@ -66,7 +66,7 @@ ButtonStart = {
             self.buttons["Toggle"]["tr"].enabled = true
             self.buttons["Toggle"]["bm"].enabled = true
             self.buttons["Toggle"]["tr"].text = self.buttons["Toggle"]["bt"].text[self.buttons["Toggle"]["bt"].current]
-            self.buttons["Cancel"]["rb"]:SetUIPosition(Vector2(2, 3.65))
+            self.buttons["Cancel"]["rb"]:SetUIPosition(Vector2(2, -3.65))
         end -- ALL SQUARE SECRETS FOUND
 
         self.buttons["Toggle"]["bt"].current = 1

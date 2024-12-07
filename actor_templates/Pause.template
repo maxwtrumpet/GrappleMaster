@@ -13,7 +13,7 @@
             "type": "Rigidbody",
             "has_collider": false,
             "has_trigger": false,
-			"y": -3,
+			"y": 3,
             "gravity_scale": 0
         }
 	}

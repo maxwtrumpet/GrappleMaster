@@ -3,7 +3,7 @@
     "name": "ButtonMenu",
     "components": {
         "4": {
-            "y": 3.5
+            "y": -3.5
         },
         "5": {
             "text": "Main Menu"

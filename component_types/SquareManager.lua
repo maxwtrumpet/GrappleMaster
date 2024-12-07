@@ -199,9 +199,9 @@ SquareManager = {
         -- If current climbing and either w or s is pressed, move the player in that direction.
         if cur_grav == 0 then
             if Input.IsKeyDown("w") then
-                velocity.y = -5.5
-            elseif Input.IsKeyDown("s") then
                 velocity.y = 5.5
+            elseif Input.IsKeyDown("s") then
+                velocity.y = -5.5
             end -- W OR S PRESSED
 
         -- Otherwise:
@@ -218,7 +218,7 @@ SquareManager = {
                 self.rb:SetTriggerDimensions(Vector2(1,0.75))
 
                 self.rb:SetDensity(4.0/3.0)
-                position.y = position.y + 0.125
+                position.y = position.y - 0.125
 
                 self.crouched = true
 
@@ -229,7 +229,7 @@ SquareManager = {
                 self.rb:SetTriggerDimensions(Vector2(1,1))
 
                 self.rb:SetDensity(1)
-                position.y = position.y - 0.125
+                position.y = position.y + 0.125
 
                 self.crouched = false
 
@@ -249,7 +249,7 @@ SquareManager = {
 
                 if Input.IsKeyJustDown("space") or Input.IsMouseJustDown("right") then
 
-                    self.rb:AddForce(Vector2(0,-667))
+                    self.rb:AddForce(Vector2(0,667))
                     Audio.PlaySound("jump.mp3", 16, false)
 
                 end -- VALID JUMP INPUT
@@ -261,8 +261,8 @@ SquareManager = {
 
                 self.rb:AddForce(Vector2(-5*velocity.x,0))
 
-                if Input.IsKeyDown("space") == false and Input.IsMouseDown("right") == false and velocity.y < 0 then
-                    self.rb:AddForce(Vector2(0,30))
+                if Input.IsKeyDown("space") == false and Input.IsMouseDown("right") == false and velocity.y > 0 then
+                    self.rb:AddForce(Vector2(0,-30))
                 end -- NO LONGER JUMPING
 
             end -- VALID STATUS

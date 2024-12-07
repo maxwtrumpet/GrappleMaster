@@ -65,7 +65,7 @@ PieCollect = {
                         self.player_sr.sprite = "goal"
                     end -- SECRET STATUS
 
-                    Actor.Instantiate("ButtonMenu"):GetComponent("Rigidbody"):SetPosition(Vector2(0,2))
+                    Actor.Instantiate("ButtonMenu"):GetComponent("Rigidbody"):SetPosition(Vector2(0,-2))
                     self.enabled = false
 
                 -- Otherwise, load the next scene.
