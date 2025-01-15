@@ -9,11 +9,12 @@
             "y_scale": 6.25
         },
         "2": {
-            "type": "Rigidbody",
+            "type": "Rigidbody2D",
             "has_collider": false,
             "gravity_scale": 0,
             "trigger_width": 0.4,
-            "trigger_height": 0.4
+            "trigger_height": 0.4,
+            "ui": true
         },
         "3": {
             "type": "CursorManager"

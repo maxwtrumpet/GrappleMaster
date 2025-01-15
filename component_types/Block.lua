@@ -19,7 +19,7 @@ Block = {
         self.sr = self.actor:GetComponent("SpriteRenderer")
 
         self.name = self.actor:GetName()
-        self.position = self.actor:GetComponent("Rigidbody"):GetPosition()
+        self.position = self.actor:GetComponent("Rigidbody2D"):GetPosition()
 
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
         self.pie = Actor.Find("Pie"):GetComponent("PieCollect")
@@ -27,8 +27,8 @@ Block = {
 
     end, -- ON START
 
-    -- Collision function.
-    OnCollisionEnter = function(self, contact)
+    -- Collision 2D function.
+    OnCollisionEnter2D = function(self, contact)
 
         -- If this is a kill block:
         if self.name == "Kill" then
@@ -46,15 +46,15 @@ Block = {
             self.death_frame = Application.GetFrame() + 120
         end -- BLOCK TYPE CHECK
 
-    end, -- ON COLLISION ENTER
+    end, -- ON COLLISION ENTER 2D
 
     -- The break function:
-    -- Destroy the Rigidbody.
+    -- Destroy the Rigidbody2D.
     -- Update the sprite.
     -- Reset the death frame and update the reset frame.
     Break = function(self, cur_frame)
 
-        self.actor:RemoveComponent(self.actor:GetComponent("Rigidbody"))
+        self.actor:RemoveComponent(self.actor:GetComponent("Rigidbody2D"))
 
         self.sr.sprite = self.name .. "_broken"
         self.sr.g = 255
@@ -91,15 +91,15 @@ Block = {
             end -- BREAK STATUS
 
         -- Otherwise, if the block is queued to reset and the current frame exceeds the reset frame:
-        -- Recreate the Rigidbody component.
+        -- Recreate the Rigidbody2D component.
         -- Reset the sprite.
         -- Reset the reset frame.
         elseif self.reset_frame ~= -1 and self.reset_frame <= cur_frame then
 
-            local rb = self.actor:AddComponent("Rigidbody")
+            local rb = self.actor:AddComponent("Rigidbody2D")
             rb.body_type = "kinematic"
-            rb.x = self.position.x
-            rb.y = self.position.y
+            rb.x_position = self.position.x
+            rb.y_position = self.position.y
 
             self.sr.sprite = self.name
 

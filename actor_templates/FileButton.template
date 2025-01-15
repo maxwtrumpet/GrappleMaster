@@ -3,7 +3,7 @@
     "name": "FileButton",
     "components": {
         "4": {
-            "x": -2
+            "x_position": -2
         },
         "5": {
             "text": "File "

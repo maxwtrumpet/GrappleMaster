@@ -18,7 +18,7 @@ LevelLoader = {
 
 				-- Instantiate the block and set its position.
 				local block = Actor.Instantiate(block_type)
-				local block_rb = block:GetComponent("Rigidbody")
+				local block_rb = block:GetComponent("Rigidbody2D")
 				block_rb:SetPosition(location)
 
 				-- If this is a pie piece, rotate it based on the scene number,
@@ -52,11 +52,11 @@ LevelLoader = {
 
 		-- Instantiate all background actors.
 		for index, value in ipairs(sd.background_layout[self.current_scene + 1]) do
-			Actor.Instantiate("Background"):GetComponent("Rigidbody"):SetPosition(Vector2(value.x * 16, value.y * 9))
+			Actor.Instantiate("Background"):GetComponent("Rigidbody2D"):SetPosition(Vector2(value.x * 16, value.y * 9))
 		end -- BACKGROUND LOOP
 
 		-- Instantiate the player with the correct type and set its initial position.
-		Actor.Instantiate("Player_" .. sd.player_type):GetComponent("Rigidbody"):SetPosition(sd.stage_layout[self.current_scene + 1]["Checkpoint"][sd.level_layout[self.current_scene + 1]["location"]])
+		Actor.Instantiate("Player_" .. sd.player_type):GetComponent("Rigidbody2D"):SetPosition(sd.stage_layout[self.current_scene + 1]["Checkpoint"][sd.level_layout[self.current_scene + 1]["location"]])
 
 		-- Update the music accordingly based on the scene number.
 		if self.current_scene ~= 4 then
@@ -76,7 +76,7 @@ LevelLoader = {
 		for i, v in ipairs(self.respawn_blocks) do
 			if Application.GetFrame() >= v[1] then
 				if (v[3] ~= "Player_Square" and v[3] ~= "Player_Circle") or Actor.Find("Player") == nil then
-					Actor.Instantiate(v[3]):GetComponent("Rigidbody"):SetPosition(v[2])
+					Actor.Instantiate(v[3]):GetComponent("Rigidbody2D"):SetPosition(v[2])
 				end -- PLAYER RESPAWN
 				table.insert(to_remove, i)
 			end -- VALID RESPAWN

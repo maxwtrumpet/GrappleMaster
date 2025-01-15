@@ -21,8 +21,8 @@
                     "sprite": "hidden"
                 },
                 "2": {
-                    "x": -2,
-                    "y": 4
+                    "x_position": -2,
+                    "y_position": 4
                 },
                 "4": {
                     "type": "Level10secret"

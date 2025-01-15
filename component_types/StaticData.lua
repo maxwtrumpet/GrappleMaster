@@ -331,7 +331,7 @@ StaticData = {
 
             local cur_cp = Actor.Instantiate("CheckpointButton")
             cur_cp:GetComponent("ButtonPlay").level = level
-            cur_cp:GetComponent("Rigidbody"):SetPosition(value)
+            cur_cp:GetComponent("Rigidbody2D"):SetPosition(value)
             
             if index > self.player_progress[level][player_type] then
                 cur_cp:GetComponent("TextRenderer").enabled = false
@@ -364,8 +364,8 @@ StaticData = {
             local fb_bf = fb:GetComponent("ButtonFile")
             local fd = Actor.Instantiate("FileDisplay")
 
-            fb:GetComponent("Rigidbody"):SetPosition(Vector2(-6.35,4-i*2))
-            fd:GetComponent("Rigidbody"):SetPosition(Vector2(1.95,4-i*2))
+            fb:GetComponent("Rigidbody2D"):SetPosition(Vector2(-6.35,4-i*2))
+            fd:GetComponent("Rigidbody2D"):SetPosition(Vector2(1.95,4-i*2))
             fb_bf.file = i
             fd:GetComponent("FileDisplay").file = i
             fb_bf.mode = mode

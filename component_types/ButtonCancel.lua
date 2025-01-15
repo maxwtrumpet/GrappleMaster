@@ -7,7 +7,7 @@ ButtonCancel = {
 
     -- On Start function.
     -- Get Static Data and Title/Level/File Menu sprites.
-    -- Get SpriteRenderer and Rigidbody components.
+    -- Get SpriteRenderer and Rigidbody2D components.
     -- Get all level and menu buttons.
     -- Diable self.
     OnStart = function (self)
@@ -18,7 +18,7 @@ ButtonCancel = {
         self.file_menu = Actor.Find("File Menu"):GetComponent("SpriteRenderer")
 
         self.hover_sr = self.actor:GetComponent("SpriteRenderer")
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
 
         self.levels = Actor.FindAll("Level Button")
         local button_actors = Actor.FindAll("Button")
@@ -60,7 +60,7 @@ ButtonCancel = {
         self.hover_sr.enabled = false
         self.buttons["Cancel"]["tr"].enabled = false
         self.buttons["Cancel"]["bm"].enabled = false
-        self.rb:SetUIPosition(Vector2(0,-3.65))
+        self.rb:SetPosition(Vector2(0,-3.65))
         self.buttons["Toggle"]["sr"].enabled = false
         self.buttons["Toggle"]["tr"].enabled = false
         self.buttons["Toggle"]["bm"].enabled = false

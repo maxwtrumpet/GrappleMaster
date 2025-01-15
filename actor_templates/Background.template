@@ -10,7 +10,7 @@
             "y_scale": 1.25
         },
         "2": {
-            "type": "Rigidbody",
+            "type": "Rigidbody2D",
             "gravity_scale": 0,
             "has_collider": false,
             "has_trigger": false

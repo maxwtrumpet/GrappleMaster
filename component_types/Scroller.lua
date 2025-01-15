@@ -8,7 +8,7 @@ Scroller = {
     -- On Start function:
 
     OnStart = function(self)
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
         self.player = Actor.Find("Player")
         if self.player == nil then
             self.cam_pos = Camera.GetPosition()
@@ -21,7 +21,7 @@ Scroller = {
             end
             self.rb:SetVelocity(Vector2(0.2, 0))
         else
-            self.player_prev_pos = self.player:GetComponent("Rigidbody"):GetPosition()
+            self.player_prev_pos = self.player:GetComponent("Rigidbody2D"):GetPosition()
             local cur_pos = self.rb:GetPosition()
             self.rb:SetPosition(Vector2(cur_pos.x + self.player_prev_pos.x/2, cur_pos.y + self.player_prev_pos.y/2))
         end
@@ -40,7 +40,7 @@ Scroller = {
 
             if self.cleared == false then
                 if self.position.x - self.cam_pos.x > 0 then
-                    Actor.Instantiate("Background"):GetComponent("Rigidbody"):SetPosition(Vector2(self.position.x - 16, self.position.y))
+                    Actor.Instantiate("Background"):GetComponent("Rigidbody2D"):SetPosition(Vector2(self.position.x - 16, self.position.y))
                     self.cleared = true
                 end -- NOW CLEARED
 
@@ -58,7 +58,7 @@ Scroller = {
             self.player = Actor.Find("Player")
             if self.player ~= nil then
 
-                local player_cur_pos = self.player:GetComponent("Rigidbody"):GetPosition()
+                local player_cur_pos = self.player:GetComponent("Rigidbody2D"):GetPosition()
                 local position_dif = Vector2((player_cur_pos.x - self.player_prev_pos.x)/2, (player_cur_pos.y - self.player_prev_pos.y)/2)
 
                 local cur_pos = self.rb:GetPosition()

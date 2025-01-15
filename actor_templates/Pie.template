@@ -9,7 +9,7 @@
             "y_scale": 0.5
 		},
 		"2": {
-			"type": "Rigidbody",
+			"type": "Rigidbody2D",
 			"body_type": "kinematic",
 			"has_collider": false,
 			"trigger_type": "circle",

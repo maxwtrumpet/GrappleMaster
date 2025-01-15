@@ -9,7 +9,7 @@
             "y_scale": 0.375
         },
         "2": {
-            "type": "Rigidbody",
+            "type": "Rigidbody2D",
             "collider_type": "circle",
             "trigger_type": "circle",
             "friction": 10.0,

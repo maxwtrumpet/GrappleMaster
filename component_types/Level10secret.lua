@@ -34,7 +34,7 @@ Level10secret = {
     SpawnBlocks = function (self)
         for key, value in pairs(self.blocks) do
             for index, location in ipairs(value) do
-                Actor.Instantiate(key):GetComponent("Rigidbody"):SetPosition(location)
+                Actor.Instantiate(key):GetComponent("Rigidbody2D"):SetPosition(location)
             end -- BLOCK LOCATION LOOP
         end -- BLOCK TYPE LOOP
         self.enabled = false

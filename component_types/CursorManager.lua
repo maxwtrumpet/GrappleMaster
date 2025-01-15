@@ -8,7 +8,7 @@ CursorManager = {
     -- On Start function:
     -- Get the Rigidbody component.
     OnStart = function(self)
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
     end, -- ON START
 
     -- On Update function:
@@ -17,13 +17,13 @@ CursorManager = {
     -- Update the Rigidbody location.
     OnUpdate = function(self)
 
-        local camera_pos = Camera.GetPosition()
         local position = Input.GetMousePosition()
-        local distance = Vector2(position.x - camera_pos.x, position.y - camera_pos.y)
+        --Debug.Log("(" .. position.x .. "," .. position.y .. ")")
 
-        if self.restricted and distance:Length() > 5 then
-            distance:Normalize()
-            position = Vector2(camera_pos.x + distance.x * 5, camera_pos.y + distance.y * 5)
+        if self.restricted and Vector2.Length(position) > 5 then
+            position = Vector2.Normalize(position)
+            position.x = position.x * 5
+            position.y = position.y * 5
             Input.SetMousePosition(position)
         end -- RESTRICTED AND GOING TOO FAR
 

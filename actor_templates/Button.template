@@ -20,7 +20,7 @@
             "y_scale": 6.25
 		},
 		"4": {
-			"type": "Rigidbody",
+			"type": "Rigidbody2D",
 			"ui": true,
             "has_collider": false,
             "gravity_scale": 0,
@@ -28,6 +28,7 @@
 		},
 		"5": {
 			"type": "TextRenderer",
+            "font": "Minecraft",
 			"r": 84,
 			"g": 84,
 			"b": 84,

@@ -25,10 +25,10 @@ GrappleCollect = {
         Actor.Destroy(self.actor)
     end, -- ENABLE GRAPPPLE
 
-    -- On Trigger Enter function:
+    -- On Trigger Enter 2D function:
     -- Confirm the player triggered the event.
     -- Enable the grapple and play the collect sound.
-    OnTriggerEnter = function(self, contact)
+    OnTriggerEnter2D = function(self, contact)
 
         local pm = contact.other:GetComponentByKey("Manager")
         if pm ~= nil then
@@ -38,6 +38,6 @@ GrappleCollect = {
 
         end -- PLAYER TRIGGER EVENT
 
-    end -- ON TRIGGER ENTER
+    end -- ON TRIGGER ENTER 2D
 
 } -- GRAPPLE COLLECT

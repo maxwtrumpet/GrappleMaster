@@ -5,7 +5,7 @@
             "components":
             {
                 "2": {
-                    "x": 4
+                    "x_position": 4
                 }
             }
         },
@@ -24,12 +24,12 @@
                     "enabled": false
                 },
                 "2": {
-                    "type": "Rigidbody",
+                    "type": "Rigidbody2D",
                     "body_type": "static",
                     "has_collider": false,
                     "has_trigger": false,
                     "ui":true,
-                    "y": 3.75
+                    "y_position": 3.75
                 }
             }
         },
@@ -48,8 +48,8 @@
                     "text": "Start"
                 },
                 "4": {
-                    "x": -2,
-                    "y": 0
+                    "x_position": -2,
+                    "y_position": 0
                 },
                 "ButtonAction": {
                     "type": "ButtonStart"
@@ -63,8 +63,8 @@
                     "text": "Quit"
                 },
                 "4": {
-                    "x": -2,
-                    "y": -2
+                    "x_position": -2,
+                    "y_position": -2
                 },
                 "ButtonAction": {
                     "type": "ButtonQuit"
@@ -78,8 +78,8 @@
                     "text": "Save"
                 },
                 "4": {
-                    "x": 2,
-                    "y": 0
+                    "x_position": 2,
+                    "y_position": 0
                 },
                 "ButtonAction": {
                     "type": "ButtonFileMenu",
@@ -94,8 +94,8 @@
                     "text": "Load"
                 },
                 "4": {
-                    "x": 2,
-                    "y": -2
+                    "x_position": 2,
+                    "y_position": -2
                 },
                 "ButtonAction": {
                     "type": "ButtonFileMenu",
@@ -110,8 +110,8 @@
                     "enabled": false
                 },
                 "4": {
-                    "x": 0,
-                    "y": -3.65
+                    "x_position": 0,
+                    "y_position": -3.65
                 },
                 "5": {
                     "text": "Cancel",
@@ -129,8 +129,8 @@
                     "enabled": false
                 },
                 "4": {
-                    "x": -2,
-                    "y": -3.65
+                    "x_position": -2,
+                    "y_position": -3.65
                 },
                 "5": {
                     "text": "Circle",
@@ -148,8 +148,8 @@
                     "sprite": "Steel_blank"
                 },
                 "4": {
-                    "x": -3,
-                    "y": 2
+                    "x_position": -3,
+                    "y_position": 2
                 },
                 "5": {
                     "text": "1"
@@ -166,8 +166,8 @@
                     "sprite": "Kill_blank"
                 },
                 "4": {
-                    "x": -1,
-                    "y": 2
+                    "x_position": -1,
+                    "y_position": 2
                 }
             }
         },
@@ -181,8 +181,8 @@
                     "sprite": "Hard_blank"
                 },
                 "4": {
-                    "x": 1,
-                    "y": 2
+                    "x_position": 1,
+                    "y_position": 2
                 }
             }
         },
@@ -196,8 +196,8 @@
                     "sprite": "Brittle_blank"
                 },
                 "4": {
-                    "x": 3,
-                    "y": 2
+                    "x_position": 3,
+                    "y_position": 2
                 }
             }
         },
@@ -211,8 +211,8 @@
                     "sprite": "Rocky_blank"
                 },
                 "4": {
-                    "x": -3,
-                    "y": 0
+                    "x_position": -3,
+                    "y_position": 0
                 }
             }
         },
@@ -226,8 +226,8 @@
                     "sprite": "Ice_blank"
                 },
                 "4": {
-                    "x": -1,
-                    "y": 0
+                    "x_position": -1,
+                    "y_position": 0
                 }
             }
         },
@@ -241,8 +241,8 @@
                     "sprite": "Normal_blank"
                 },
                 "4": {
-                    "x": 1,
-                    "y": 0
+                    "x_position": 1,
+                    "y_position": 0
                 }
             }
         },
@@ -256,8 +256,8 @@
                     "sprite": "Chunk_blank"
                 },
                 "4": {
-                    "x": 3,
-                    "y": 0
+                    "x_position": 3,
+                    "y_position": 0
                 }
             }
         },
@@ -271,8 +271,8 @@
                     "sprite": "Organic_blank"
                 },
                 "4": {
-                    "x": -3,
-                    "y": -2
+                    "x_position": -3,
+                    "y_position": -2
                 }
             }
         },
@@ -286,8 +286,8 @@
                     "sprite": "Dirt_blank"
                 },
                 "4": {
-                    "x": -1,
-                    "y": -2
+                    "x_position": -1,
+                    "y_position": -2
                 }
             }
         },
@@ -301,8 +301,8 @@
                     "sprite": "Fragile_blank"
                 },
                 "4": {
-                    "x": 1,
-                    "y": -2
+                    "x_position": 1,
+                    "y_position": -2
                 }
             }
         },
@@ -316,8 +316,8 @@
                     "sprite": "Player_blank"
                 },
                 "4": {
-                    "x": 3,
-                    "y": -2
+                    "x_position": 3,
+                    "y_position": -2
                 }
             }
         },
@@ -333,12 +333,12 @@
                     "enabled": false
                 },
                 "2": {
-                    "type": "Rigidbody",
+                    "type": "Rigidbody2D",
                     "body_type": "static",
                     "has_collider": false,
                     "has_trigger": false,
                     "ui":true,
-                    "y": 3.75
+                    "y_position": 3.75
                 }
             }
         }

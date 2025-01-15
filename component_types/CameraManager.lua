@@ -18,13 +18,17 @@ CameraManager = {
 
 		elseif self.tracking_player == false then
 			self.tracking_player = true
-			Camera.SetPosition(player_actor:GetComponent("Rigidbody"):GetPosition())
+			local pos = player_actor:GetComponent("Rigidbody2D"):GetPosition()
+			Camera.SetPosition(Vector3(pos.x, pos.y, 0))
+			Camera.SetDirection(Vector3(pos.x, pos.y, -1))
 
 		else
-			local desired_position = player_actor:GetComponent("Rigidbody"):GetPosition()
+			local desired_position = player_actor:GetComponent("Rigidbody2D"):GetPosition()
 			local current_position = Camera.GetPosition()
-			local new_position = current_position + (desired_position - current_position) * self.EASE_FACTOR
-			Camera.SetPosition(new_position)
+			local new_position = Vector2(current_position.x + (desired_position.x - current_position.x) * self.EASE_FACTOR,
+										 current_position.y + (desired_position.y - current_position.y) * self.EASE_FACTOR)
+			Camera.SetPosition(Vector3(new_position.x, new_position.y, 0))
+			Camera.SetDirection(Vector3(new_position.x, new_position.y, -1))
 		end -- PLAYER STATUS
 
 	end -- ON UPDATE

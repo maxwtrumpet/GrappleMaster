@@ -9,24 +9,24 @@ GrappleManager = {
 
     -- On Start function:
     -- Get Ridibody component and player actor, confirming it exists.
-    -- Get player Rigidbody and set own position to player's position.
+    -- Get player Rigidbody2D and set own position to player's position.
     -- Get direction to target unit vector and use it to set velocity.
     OnStart = function(self)
 
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
         self.player = Actor.Find("Player")
         if self.player == nil then
             Actor.Destroy(self.actor)
             return
         end -- PLAYER DOES NOT EXIST
 
-        self.player_rb = self.player:GetComponent("Rigidbody")
+        self.player_rb = self.player:GetComponent("Rigidbody2D")
         local init_pos = self.player_rb:GetPosition()
         self.rb:SetPosition(init_pos)
 
         local direction = Vector2(self.target.x - init_pos.x, self.target.y - init_pos.y)
-        direction:Normalize()
-        self.rb:SetVelocity(direction * 7.5)
+        direction = Vector2.Normalize(direction)
+        self.rb:SetVelocity(Vector2(direction.x * 7.5, direction.y * 7.5))
 
     end, -- ON START
 
@@ -39,7 +39,7 @@ GrappleManager = {
         local cur_pos = self.rb:GetPosition()
         if self.returning == false then
             local distance = Vector2(self.target.x - cur_pos.x, self.target.y - cur_pos.y)
-            if distance:Length() < 0.1 and self.attached == nil then
+            if Vector2.Length(distance) < 0.1 and self.attached == nil then
                 self.returning = true
             end -- CLOSE TO TARGET AND NOT ATTACHED
         end -- NOT ALREADY RETURNING
@@ -47,11 +47,11 @@ GrappleManager = {
         if self.returning == true then
             local player_pos = self.player_rb:GetPosition()
             local to_player = Vector2(player_pos.x - cur_pos.x, player_pos.y - cur_pos.y)
-            if to_player:Length() < 0.6 then
+            if Vector2.Length(to_player) < 0.6 then
                 Actor.Destroy(self.actor)
             else
-                to_player:Normalize()
-                self.rb:SetVelocity(to_player * 7.5)
+                to_player = Vector2.Normalize(to_player)
+                self.rb:SetVelocity(Vector2(to_player.x * 7.5, to_player.y * 7.5))
             end -- DISTANCE TO PLAYER CHECK
         end -- RETURNING
 
@@ -67,11 +67,11 @@ GrappleManager = {
             Actor.Destroy(self.actor)
 
         elseif self.attached ~= nil then
-            local player_rb = self.player:GetComponent("Rigidbody")
+            local player_rb = self.player:GetComponent("Rigidbody2D")
             local player_pos = player_rb:GetPosition()
             local cur_pos = self.rb:GetPosition()
             local distance = Vector2(cur_pos.x - player_pos.x, cur_pos.y - player_pos.y)
-            distance:Normalize()
+            distance = Vector2.Normalize(distance)
             player_rb:SetVelocity(Vector2(distance.x * 7.5, distance.y * 7.5))
             if self.attached.countdown ~= -1 and self.attached.reset_frame ~= -1 then
                 Actor.Destroy(self.actor)
@@ -89,10 +89,10 @@ GrappleManager = {
         local player = Actor.Find("Player")
         if player ~= nil then
 
-            -- Get player Rigidbody. If it was climbing:
+            -- Get player Rigidbody2D. If it was climbing:
             -- Reset its gravity scale.
             -- Reset its sprite and hitboxes based on player type.
-            local player_rb = player:GetComponent("Rigidbody")
+            local player_rb = player:GetComponent("Rigidbody2D")
             if player_rb:GetGravityScale() == 0 then
 
                 player_rb:SetGravityScale(1)
@@ -113,8 +113,8 @@ GrappleManager = {
 
     end, -- ATTACH
 
-    -- On Trigger Enter function:
-    OnTriggerEnter = function(self, contact)
+    -- On Trigger Enter 2D function:
+    OnTriggerEnter2D = function(self, contact)
 
         -- Confirm the grapple is not already attached to something nor returning.
         if self.attached == nil and self.returning == false then
@@ -147,6 +147,6 @@ GrappleManager = {
 
         end -- NOT ALREADY ATTACHED
 
-    end -- ON TRIGGER ENTER
+    end -- ON TRIGGER ENTER 2D
 
 } -- GRAPPLE MANAGER

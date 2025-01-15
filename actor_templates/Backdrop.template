@@ -9,8 +9,8 @@
             "y_scale": 135
 		},
         "2": {
+            "type": "Rigidbody2D",
             "ui": true,
-            "type": "Rigidbody",
             "has_collider": false,
             "has_trigger": false,
             "gravity_scale": 0

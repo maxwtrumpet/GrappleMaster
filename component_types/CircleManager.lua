@@ -11,16 +11,16 @@ CircleManager = {
 
     -- On Start function:
     -- Get Static Data and Cursor.
-    -- Get SpriteRenderer and Rigidbody components.
+    -- Get SpriteRenderer and Rigidbody2D components.
     -- Set original location and grapple status.
     -- Disable self if in the pause menu.
     OnStart = function(self)
 
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
-        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
+        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody2D")
 
         self.sr = self.actor:GetComponent("SpriteRenderer")
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
 
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
@@ -47,7 +47,7 @@ CircleManager = {
             return
         end -- ENTER DOWN
 
-        -- Initialize grapple actor and Rigidbody properties.
+        -- Initialize grapple actor and Rigidbody2D properties.
         self.grapple = Actor.Find("Grapple")
         local velocity = self.rb:GetVelocity()
         local position = self.rb:GetPosition()
@@ -81,9 +81,9 @@ CircleManager = {
 
             -- Raycast twice equidistant from the player center.
             position.y = position.y - 0.15
-            local top_hit = Physics.Raycast(position, direction, .55)
+            local top_hit = Physics.Raycast2D(position, direction, .55)
             position.y = position.y + 0.3
-            local bottom_hit = Physics.Raycast(position, direction, .55)
+            local bottom_hit = Physics.Raycast2D(position, direction, .55)
             position.y = position.y - 0.15
 
             -- If either is a hit, attempt to get its block component.
@@ -136,15 +136,15 @@ CircleManager = {
                 local bottom_hit = nil
                 if self.crouched then
                     position.y = position.y - 0.15
-                    top_hit = Physics.Raycast(position, direction, .435)
+                    top_hit = Physics.Raycast2D(position, direction, .435)
                     position.y = position.y + 0.3
-                    bottom_hit = Physics.Raycast(position, direction, .435)
+                    bottom_hit = Physics.Raycast2D(position, direction, .435)
                     position.y = position.y - 0.15
                 else
                     position.y = position.y - 0.15
-                    top_hit = Physics.Raycast(position, direction, .55)
+                    top_hit = Physics.Raycast2D(position, direction, .55)
                     position.y = position.y + 0.3
-                    bottom_hit = Physics.Raycast(position, direction, .55)
+                    bottom_hit = Physics.Raycast2D(position, direction, .55)
                     position.y = position.y - 0.15
                 end -- CROUCH STATUS
 
@@ -206,9 +206,9 @@ CircleManager = {
                 velocity.y = 6.5
 
                 if self.left_hold then
-                    self.rb:SetRotation(self.rb:GetRotation() - 5)
-                else
                     self.rb:SetRotation(self.rb:GetRotation() + 5)
+                else
+                    self.rb:SetRotation(self.rb:GetRotation() - 5)
                 end -- DIRECTION CHECK
 
             elseif Input.IsKeyDown("s") then
@@ -216,9 +216,9 @@ CircleManager = {
                 velocity.y = -6.5
 
                 if self.left_hold then
-                    self.rb:SetRotation(self.rb:GetRotation() + 5)
-                else
                     self.rb:SetRotation(self.rb:GetRotation() - 5)
+                else
+                    self.rb:SetRotation(self.rb:GetRotation() + 5)
                 end -- DIRECTION CHECK
 
             end -- W OR S PRESSED
@@ -256,9 +256,9 @@ CircleManager = {
 
             -- Raycast twice equidistant from the player center.
             position.x = position.x + 0.15
-            local right_hit = Physics.RaycastAll(position, self.sd.down, .555)
+            local right_hit = Physics.RaycastAll2D(position, self.sd.down, .555)
             position.x = position.x - 0.3
-            local left_hit = Physics.RaycastAll(position, self.sd.down, .555)
+            local left_hit = Physics.RaycastAll2D(position, self.sd.down, .555)
             position.x = position.x + 0.15
 
             -- Loop through all raycast hits, and a single valid one is found, note it.
@@ -331,7 +331,9 @@ CircleManager = {
         self.grapple = Actor.Instantiate("Grapple")
         self.gm = self.grapple:GetComponent("GrappleManager")
 
-        self.gm.target = self.cursor:GetPosition()
+        local cursor_pos = self.cursor:GetPosition()
+        local camera_pos = Camera.GetPosition()
+        self.gm.target = Vector2(cursor_pos.x + camera_pos.x, cursor_pos.y + camera_pos.y)
         Audio.PlaySound("grapple.mp3", 16, false)
 
     end -- GRAPPLE

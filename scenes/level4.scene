@@ -18,11 +18,11 @@
             "name": "GrappleCollect",
             "components": {
                 "1": {
-                    "type": "Rigidbody",
+                    "type": "Rigidbody2D",
                     "body_type": "static",
                     "has_collider": false,
-                    "x": -4,
-                    "y": 0,
+                    "x_position": -4,
+                    "y_position": 0,
                     "trigger_width": 0.5,
                     "trigger_height": 0.5
                 },

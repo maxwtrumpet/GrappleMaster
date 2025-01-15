@@ -10,12 +10,12 @@
             "a": 0
 		},
 		"2": {
-			"type": "Rigidbody",
+			"type": "Rigidbody2D",
 			"body_type": "static",
             "has_collider": false,
             "has_trigger": false,
 			"ui": true,
-            "y": 3
+            "y_position": 3
 		},
 		"3": {
 			"type": "TitleFade"

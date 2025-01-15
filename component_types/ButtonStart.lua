@@ -27,7 +27,7 @@ ButtonStart = {
             self.buttons[text]["bm"] = value:GetComponent("ButtonManager")
         end -- BUTTON LOOP
         self.hover_sr = self.actor:GetComponent("SpriteRenderer")
-        self.buttons["Cancel"]["rb"] = self.buttons["Cancel"]["bm"].actor:GetComponent("Rigidbody")
+        self.buttons["Cancel"]["rb"] = self.buttons["Cancel"]["bm"].actor:GetComponent("Rigidbody2D")
         self.buttons["Cancel"]["bc"] = self.buttons["Cancel"]["bm"].actor:GetComponent("ButtonCancel")
         self.buttons["Toggle"]["bt"] = self.buttons["Toggle"]["bm"].actor:GetComponent("ButtonToggle")
 
@@ -66,7 +66,7 @@ ButtonStart = {
             self.buttons["Toggle"]["tr"].enabled = true
             self.buttons["Toggle"]["bm"].enabled = true
             self.buttons["Toggle"]["tr"].text = self.buttons["Toggle"]["bt"].text[self.buttons["Toggle"]["bt"].current]
-            self.buttons["Cancel"]["rb"]:SetUIPosition(Vector2(2, -3.65))
+            self.buttons["Cancel"]["rb"]:SetPosition(Vector2(2, -3.65))
         end -- ALL SQUARE SECRETS FOUND
 
         self.buttons["Toggle"]["bt"].current = 1

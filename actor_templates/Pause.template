@@ -10,10 +10,10 @@
 		},
         "2": {
             "ui": true,
-            "type": "Rigidbody",
+            "type": "Rigidbody2D",
             "has_collider": false,
             "has_trigger": false,
-			"y": 3,
+			"y_position": 3,
             "gravity_scale": 0
         }
 	}

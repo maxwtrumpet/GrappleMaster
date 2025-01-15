@@ -65,7 +65,7 @@ PieCollect = {
                         self.player_sr.sprite = "goal"
                     end -- SECRET STATUS
 
-                    Actor.Instantiate("ButtonMenu"):GetComponent("Rigidbody"):SetPosition(Vector2(0,-2))
+                    Actor.Instantiate("ButtonMenu"):GetComponent("Rigidbody2D"):SetPosition(Vector2(0,-2))
                     self.enabled = false
 
                 -- Otherwise, load the next scene.
@@ -111,14 +111,14 @@ PieCollect = {
 
     end, -- ON UPDATE
 
-    -- On Trigger enter function:
+    -- On Trigger enter 2D function:
     -- Confirm the trigger was caused by the player and they still exist.
     -- Update the level reached and secrets found if applicable.
     -- Set the countdown frame and turn off pie sprite.
     -- Immobilize player and get their SpriteRenderer.
     -- Destroy grapple and pause menu actors if applicable.
     -- Play the collect sound.
-    OnTriggerEnter = function(self, contact)
+    OnTriggerEnter2D = function(self, contact)
 
         if contact.other:GetName() == "Player" and Actor.Find("Player") ~= nil then
 
@@ -133,7 +133,7 @@ PieCollect = {
             self.actor:GetComponent("SpriteRenderer").enabled = false
 
             contact.other:GetComponentByKey("Manager").enabled = false
-            local player_rb = contact.other:GetComponent("Rigidbody")
+            local player_rb = contact.other:GetComponent("Rigidbody2D")
             player_rb:SetGravityScale(0)
             player_rb:SetVelocity(Vector2(0,0))
             self.player_sr = contact.other:GetComponent("SpriteRenderer")
@@ -160,6 +160,6 @@ PieCollect = {
 
         end -- PLAYER TRIGGER THAT EXISTS
 
-    end -- ON TRIGGER ENTER
+    end -- ON TRIGGER ENTER 2D
 
 } -- PIE COLLECT

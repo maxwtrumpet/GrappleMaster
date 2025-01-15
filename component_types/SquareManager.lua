@@ -11,16 +11,16 @@ SquareManager = {
 
     -- On Start function:
     -- Get Static Data and Cursor.
-    -- Get SpriteRenderer and Rigidbody components.
+    -- Get SpriteRenderer and Rigidbody2D components.
     -- Set original location and grapple status.
     -- Disable self if in the pause menu.
     OnStart = function(self)
 
         self.sd = Actor.Find("StaticData"):GetComponent("StaticData")
-        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody")
+        self.cursor = Actor.Find("Cursor"):GetComponent("Rigidbody2D")
 
         self.sr = self.actor:GetComponent("SpriteRenderer")
-        self.rb = self.actor:GetComponent("Rigidbody")
+        self.rb = self.actor:GetComponent("Rigidbody2D")
 
         self.original_loc = self.rb:GetPosition()
         local ll = Actor.Find("LevelLoader"):GetComponent("LevelLoader")
@@ -47,7 +47,7 @@ SquareManager = {
             return
         end -- ENTER DOWN
 
-        -- Initialize grapple actor and Rigidbody properties.
+        -- Initialize grapple actor and Rigidbody2D properties.
         self.grapple = Actor.Find("Grapple")
         local velocity = self.rb:GetVelocity()
         local position = self.rb:GetPosition()
@@ -79,9 +79,9 @@ SquareManager = {
 
             -- Raycast twice equidistant from the player center.
             position.y = position.y - 0.5
-            local top_hit = Physics.Raycast(position, direction, .585)
+            local top_hit = Physics.Raycast2D(position, direction, .585)
             position.y = position.y + 1
-            local bottom_hit = Physics.Raycast(position, direction, .585)
+            local bottom_hit = Physics.Raycast2D(position, direction, .585)
             position.y = position.y - 0.5
 
              -- If either is a hit, attempt to get its block component.
@@ -135,15 +135,15 @@ SquareManager = {
                 local bottom_hit = nil
                 if self.crouched then
                     position.y = position.y - 0.375
-                    top_hit = Physics.Raycast(position, direction, .555)
+                    top_hit = Physics.Raycast2D(position, direction, .555)
                     position.y = position.y + .75
-                    bottom_hit = Physics.Raycast(position, direction, .555)
+                    bottom_hit = Physics.Raycast2D(position, direction, .555)
                     position.y = position.y - 0.375
                 else
                     position.y = position.y - 0.5
-                    top_hit = Physics.Raycast(position, direction, .555)
+                    top_hit = Physics.Raycast2D(position, direction, .555)
                     position.y = position.y + 1
-                    bottom_hit = Physics.Raycast(position, direction, .555)
+                    bottom_hit = Physics.Raycast2D(position, direction, .555)
                     position.y = position.y - 0.5
                 end -- CROUCH STATUS
 
@@ -237,9 +237,9 @@ SquareManager = {
 
             -- Raycast twice equidistant from the player center.
             position.x = position.x + 0.5
-            local right_hit = Physics.Raycast(position, self.sd.down, .555)
+            local right_hit = Physics.Raycast2D(position, self.sd.down, .555)
             position.x = position.x - 1
-            local left_hit = Physics.Raycast(position, self.sd.down, .555)
+            local left_hit = Physics.Raycast2D(position, self.sd.down, .555)
             position.x = position.x + 0.5
 
             -- If a valid jumping block was hit:
@@ -295,7 +295,9 @@ SquareManager = {
         self.grapple = Actor.Instantiate("Grapple")
         self.gm = self.grapple:GetComponent("GrappleManager")
 
-        self.gm.target = self.cursor:GetPosition()
+        local cursor_pos = self.cursor:GetPosition()
+        local camera_pos = Camera.GetPosition()
+        self.gm.target = Vector2(cursor_pos.x + camera_pos.x, cursor_pos.y + camera_pos.y)
         Audio.PlaySound("grapple.mp3", 16, false)
 
     end -- GRAPPLE
