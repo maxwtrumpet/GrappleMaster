@@ -240,7 +240,7 @@ StaticData = {
 
     -- On Start function. Tells the engine to keep this actor across scenes.
     OnStart = function(self)
-        Scene.DontDestroy(self.actor)
+        Actor.DontDestroy(self.actor)
     end, -- ON START
 
     -- On Update function. Keeps the normal computer cursor hidden.
