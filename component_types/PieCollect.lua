@@ -122,6 +122,8 @@ PieCollect = {
 
         if contact.other:GetName() == "Player" and Actor.Find("Player") ~= nil then
 
+            Event.Publish("Win", {secret = self.is_secret, level = self.current_scene})
+
             if self.current_scene + 1 == self.sd.level_reached[self.sd.player_type] then
                 self.sd.level_reached[self.sd.player_type] = self.sd.level_reached[self.sd.player_type] + 1
             end -- FIRST TIME COLLECTING PIE PIECE

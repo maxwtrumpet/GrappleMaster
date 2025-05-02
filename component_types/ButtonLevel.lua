@@ -16,11 +16,11 @@ ButtonLevel = {
         tr.enabled = false
 
         self.levels = Actor.FindAll("Level Button")
-        self.toggle_bt = Actor.FindAll("Button")[6]:GetComponent("ButtonToggle")
+        self.toggle_bt = Actor.FindAll("Button")[8]:GetComponent("ButtonToggle")
         self.toggle_bm = self.toggle_bt.actor:GetComponent("ButtonManager")
         self.toggle_tr = self.toggle_bt.actor:GetComponent("TextRenderer")
         self.toggle_sr = self.toggle_bt.actor:GetComponents("SpriteRenderer")[2]
-        self.cancel_bc = Actor.FindAll("Button")[5]:GetComponent("ButtonCancel")
+        self.cancel_bc = Actor.FindAll("Button")[7]:GetComponent("ButtonCancel")
 
     end, -- ON START
 
@@ -32,6 +32,9 @@ ButtonLevel = {
 
         -- Load the level if there's only one visible checkpoint.
         if self.sd.player_progress[self.level][player_type] == 1 then
+            self.sd.current_deaths = 0
+            self.sd.total_deaths = 0
+            self.sd.valid_level = true
             Scene.Load("level" .. tostring(self.level - 1))
 
         -- Otherwise:

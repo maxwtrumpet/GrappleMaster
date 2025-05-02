@@ -22,6 +22,12 @@ ButtonPlay = {
     -- Update the starting location and load the level.
     OnClick = function (self)
         self.sd.level_layout[self.level]["location"] = self.checkpoint
+        self.sd.current_time = 0
+        self.sd.current_deaths = 0
+        self.sd.total_deaths = 0
+        if self.checkpoint == 1 then
+            self.sd.valid_level = true
+        end
         Scene.Load("level" .. tostring(self.level - 1))
     end -- ON CLICK
 

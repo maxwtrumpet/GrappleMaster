@@ -48,8 +48,8 @@
                     "text": "Start"
                 },
                 "4": {
-                    "x_position": -2,
-                    "y_position": 0
+                    "x_position": -4.5,
+                    "y_position": -0.25
                 },
                 "ButtonAction": {
                     "type": "ButtonStart"
@@ -63,8 +63,8 @@
                     "text": "Quit"
                 },
                 "4": {
-                    "x_position": -2,
-                    "y_position": -2
+                    "x_position": -4.5,
+                    "y_position": -2.75
                 },
                 "ButtonAction": {
                     "type": "ButtonQuit"
@@ -75,11 +75,39 @@
             "template": "Button",
             "components": {
                 "5": {
+                    "text": "Settings"
+                },
+                "4": {
+                    "y_position": -0.25
+                },
+                "ButtonAction": {
+                    "type": "ButtonSettings"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
+                    "text": "Records"
+                },
+                "4": {
+                    "y_position": -2.75
+                },
+                "ButtonAction": {
+                    "type": "ButtonRecords"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "5": {
                     "text": "Save"
                 },
                 "4": {
-                    "x_position": 2,
-                    "y_position": 0
+                    "x_position": 4.5,
+                    "y_position": -0.25
                 },
                 "ButtonAction": {
                     "type": "ButtonFileMenu",
@@ -94,8 +122,8 @@
                     "text": "Load"
                 },
                 "4": {
-                    "x_position": 2,
-                    "y_position": -2
+                    "x_position": 4.5,
+                    "y_position": -2.75
                 },
                 "ButtonAction": {
                     "type": "ButtonFileMenu",
@@ -339,6 +367,73 @@
                     "has_trigger": false,
                     "ui":true,
                     "y_position": 3.75
+                }
+            }
+        },
+        {
+            "name": "Records",
+            "components": {
+                "1": {
+                    "type": "SpriteRenderer",
+                    "sprite": "records",
+                    "sorting_order": 999,
+                    "x_scale": 0.5,
+                    "y_scale": 0.5,
+                    "enabled": false
+                },
+                "2": {
+                    "type": "Rigidbody2D",
+                    "body_type": "static",
+                    "has_collider": false,
+                    "has_trigger": false,
+                    "ui":true,
+                    "y_position": 3.75
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "name": "Return",
+            "components": {
+                "3": {
+                    "enabled": false
+                },
+                "4": {
+                    "x_position": 0,
+                    "y_position": -4
+                },
+                "5": {
+                    "text": "Back",
+                    "enabled": false
+                },
+                "ButtonAction": {
+                    "type": "ButtonReturn"
+                }
+            }
+        },
+        {
+            "template": "Display"
+        },
+        {
+            "template": "Display"
+        },
+        {
+            "template": "Button",
+            "name": "Switch",
+            "components": {
+                "3": {
+                    "enabled": false
+                },
+                "4": {
+                    "x_position": -2,
+                    "y_position": -4
+                },
+                "5": {
+                    "text": "Circle",
+                    "enabled": false
+                },
+                "ButtonAction": {
+                    "type": "ButtonSwitch"
                 }
             }
         }

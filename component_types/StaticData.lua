@@ -5,6 +5,15 @@ StaticData = {
     -- Player death count and current type.
     deaths = 0,
     player_type = "Square",
+    show_time = true,
+    valid_level = false,
+    full_run = false,
+    current_time = 0,
+    total_time = 0,
+    current_deaths = 0,
+    total_deaths = 0,
+    best_time = {Circle = math.maxinteger, Square = math.maxinteger},
+    fewest_death = {Circle = math.maxinteger, Square = math.maxinteger},
 
     -- Level secrets found.
     secrets_found = {
@@ -37,6 +46,36 @@ StaticData = {
         {Circle = 1, Square = 1},
         {Circle = 1, Square = 1},
         {Circle = 1, Square = 1},
+    },
+
+    best_times = {
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+    },
+
+    fewest_deaths = {
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
+        {Circle = math.maxinteger, Square = math.maxinteger},
     },
 
     -- Music file & parameters.
@@ -241,13 +280,30 @@ StaticData = {
     -- On Start function. Tells the engine to keep this actor across scenes.
     OnStart = function(self)
         Actor.DontDestroy(self.actor)
+        Event.Subscribe("Win", self, self._OnWin)
     end, -- ON START
+
+    _OnWin = function (self, event)
+        if event.level == 11 and self.full_run then
+            self.full_run = false
+            if self.fewest_death[self.player_type] > self.total_deaths then
+                self.fewest_death[self.player_type] = self.total_deaths
+            end
+            if self.best_time[self.player_type] > self.total_time then
+                self.best_time[self.player_type] = self.total_time
+            end
+        end
+    end,
 
     -- On Update function. Keeps the normal computer cursor hidden.
     OnUpdate = function(self)
         if Application.IsCursorVisible() then
             Application.HideCursor()
         end -- CURSOR VISIBILE
+        self.current_time = self.current_time + 1
+        if self.full_run then
+            self.total_time = self.total_time + 1
+        end
     end, -- ON UPDATE
 
     -- Update Music function:
@@ -259,7 +315,7 @@ StaticData = {
             Audio.LoadBank("Master Bank.strings")
             Audio.LoadBank("Master Bank")
             Audio.LoadBank("music")
-            Audio.PlayEvent(self.square_time, self.blank_vector, self.blank_vector, true)
+            Audio.PlayEvent(self.square_time, 1, self.blank_vector, self.blank_vector, true)
         end -- MUSIC NOT INITIALIZED
 
         for parameter, values in pairs(self.parameters[self.player_type]) do

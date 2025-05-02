@@ -43,6 +43,9 @@
                     "type": "GrappleCollect"
                 }
             }
+        },
+        {
+            "template": "Timer"
         }
     ]
 }

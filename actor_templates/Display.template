@@ -1,0 +1,175 @@
+{
+    "name": "Display",
+    "components": {
+        "Manager": {
+            "type": "Display"
+        },
+        "RB2D": {
+            "type": "Rigidbody2D",
+			"body_type": "static",
+            "has_collider": false,
+            "has_trigger": false,
+            "y_position": -0.2,
+			"ui": true
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+			"sprite": "display",
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "enabled": false
+        },
+        "TR1": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 1: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "y_position_offset": 2,
+            "enabled": false
+        },
+        "TR2": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 2: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "y_position_offset": 1.333,
+            "enabled": false
+        },
+        "TR3": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 3: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "y_position_offset": 0.667,
+            "enabled": false
+        },
+        "TR4": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 4: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "enabled": false
+        },
+        "TR5": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 5: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "y_position_offset": -0.667,
+            "enabled": false
+        },
+        "TR6": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 6: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": -7.65,
+            "y_position_offset": -1.333,
+            "enabled": false
+        },
+        "TR7": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 7: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "y_position_offset": 2,
+            "enabled": false
+        },
+        "TR8": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 8: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "y_position_offset": 1.333,
+            "enabled": false
+        },
+        "TR9": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 9: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "y_position_offset": 0.667,
+            "enabled": false
+        },
+        "TR:": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 10: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "enabled": false
+        },
+        "TR;": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 11: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "y_position_offset": -0.667,
+            "enabled": false
+        },
+        "TR<": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Level 12: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "x_alignment": 0.0,
+            "x_position_offset": 0.5,
+            "y_position_offset": -1.333,
+            "enabled": false
+        },
+        "TROverall": {
+            "type": "TextRenderer",
+            "font": "Minecraft",
+            "text": "Full Playthrough: -- Deaths, --:--:---",
+			"r": 84,
+			"g": 84,
+			"b": 84,
+            "y_position_offset": -2.15,
+            "enabled": false
+        }
+    }
+}

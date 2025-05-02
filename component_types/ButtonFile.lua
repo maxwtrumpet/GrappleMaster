@@ -35,10 +35,18 @@ ButtonFile = {
 
             io.write("Deaths: " .. self.sd.deaths .. "\n")
             for i = 1, 2, 1 do
-                io.write(self.player_types[i] .. ":\n    Reached: " .. self.sd.level_reached[self.player_types[i]] .. "\n    Progress:")
+                io.write(self.player_types[i] .. ":\n    Reached: " .. self.sd.level_reached[self.player_types[i]] .. "\n    Best Time: " .. self.sd.best_time[self.player_types[i]] .. "\n    Fewest Deaths: " .. self.sd.fewest_death[self.player_types[i]] .. "\n    Progress:")
                 for index, value in ipairs(self.sd.player_progress) do
                     io.write(" " .. tostring(value[self.player_types[i]]))
                 end -- PLAYER PROGRESS LOOP
+                io.write("\n    Times:")
+                for index, value in ipairs(self.sd.best_times) do
+                    io.write(" " .. tostring(value[self.player_types[i]]))
+                end -- TIME LOOP
+                io.write("\n    Deaths:")
+                for index, value in ipairs(self.sd.fewest_deaths) do
+                    io.write(" " .. tostring(value[self.player_types[i]]))
+                end -- DEATH LOOP
                 io.write("\n    Secrets:")
                 for index, value in ipairs(self.sd.secrets_found) do
                     io.write(" " .. tostring(value[self.player_types[i]]))
@@ -64,10 +72,22 @@ ButtonFile = {
                 self.sd.deaths = self.display.deaths
                 self.sd.level_reached["Square"] = self.display.level_reached["Square"]
                 self.sd.level_reached["Circle"] = self.display.level_reached["Circle"]
+                self.sd.best_time["Square"] = self.display.best_time["Square"]
+                self.sd.best_time["Circle"] = self.display.best_time["Circle"]
+                self.sd.fewest_death["Square"] = self.display.fewest_death["Square"]
+                self.sd.fewest_death["Circle"] = self.display.fewest_death["Circle"]
                 for index, value in ipairs(self.sd.player_progress) do
                     value["Square"] = self.display.player_progress[index]["Square"]
                     value["Circle"] = self.display.player_progress[index]["Circle"]
                 end -- PLAYER PROGRESS LOOP
+                for index, value in ipairs(self.sd.best_times) do
+                    value["Square"] = self.display.best_times[index]["Square"]
+                    value["Circle"] = self.display.best_times[index]["Circle"]
+                end -- BEST TIMES LOOP
+                for index, value in ipairs(self.sd.fewest_deaths) do
+                    value["Square"] = self.display.fewest_deaths[index]["Square"]
+                    value["Circle"] = self.display.fewest_deaths[index]["Circle"]
+                end -- FEWEST DEATHS LOOP
                 for index, value in ipairs(self.sd.secrets_found) do
                     value["Square"] = self.display.secrets_found[index]["Square"]
                     value["Circle"] = self.display.secrets_found[index]["Circle"]

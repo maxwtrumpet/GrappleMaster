@@ -37,6 +37,8 @@ Block = {
             local player = Actor.Find("Player")
             if player ~= nil and self.pie.countdown == -1 and self.secret.countdown == -1 then
                 self.sd.deaths = self.sd.deaths + 1
+                self.sd.current_deaths = self.sd.current_deaths + 1
+                self.sd.total_deaths = self.sd.total_deaths + 1
                 player:GetComponentByKey("Manager"):Die()
                 Actor.Destroy(player)
             end -- PLAYER EXISTS

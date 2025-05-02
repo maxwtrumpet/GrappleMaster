@@ -11,6 +11,13 @@ LevelLoader = {
 
 		-- Get static data.
 		local sd = Actor.Find("StaticData"):GetComponent("StaticData")
+		if sd.level_layout[self.current_scene + 1]["location"] == 1 then
+			sd.current_time = 0
+			if self.current_scene == 0 then
+				sd.full_run = true
+				sd.total_time = 0
+			end
+		end
 
 		-- For every block to be spawned in this scene:
 		for block_type, loc_list in pairs(sd.stage_layout[self.current_scene + 1]) do

@@ -10,6 +10,7 @@ This file, located as `resources/game.config`, modifies certain aspects of the g
 
 * `"Initial Scene"`: the initial scene as a string with no .scene extension. Looks in `resources/scenes`.
 * `"Smooth Audio Transitions"`: A boolean notating whether or not the audio transitions smoothly between scenes. Defaults to true.
+* `"Joystick Dead Zone"`: What magnitude below which joystick inputs will be ignored. Joystick deltas range from -32768 to 32767. Defaults to 8000.
 
 ### Rendering Config
 
@@ -57,12 +58,23 @@ A scene is a JSON object that contains actors. The format is as follows:
 
 ```
 {
+    // Configurations
+    "Camera X Position" : 0,
+    ...
     "actors": {
         // Your actor JSON object here
         ...
     }
 }
 ```
+
+There are a couple of configurations that can be set immedaitely within the scene:
+* `"Camera X Position"`: The starting x position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Y Position"`: The starting y position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Z Position"`: The starting z position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera X Direction"`: What x coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Y Direction"`: What y coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Z Direction"`: What z coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at -1 (looking "into" the screen).
 
 ## Provided Life Cycle Functions
 
@@ -209,7 +221,7 @@ The Rigidbody3D class has many variables that are important to Bullet physics ca
 * `body_type (string)`: Whether this is a collider or trigger. Defaults to "collider".
 * `actor (Actor *)`: The actor this component belongs to.
 * `x_position (float)`: The initial x position of the Rigidbody3D. Defaults to 0.
-* `x_position (float)`: The initial y position of the Rigidbody3D. Defaults to 0.
+* `y_position (float)`: The initial y position of the Rigidbody3D. Defaults to 0.
 * `z_position (float)`: The initial z position of the Rigidbody3D. Defaults to 0.
 * `x_rotation (float)`: The initial x rotation of the Rigidbody3D, in degrees. Defaults to 0.
 * `y_rotation (float)`: The initial y rotation of the Rigidbody3D, in degrees. Defaults to 0.
@@ -268,6 +280,10 @@ This is a built in C++ component for rendering images. This component automatica
 * `z_rotation_offset`: The z offset from the initial rotation. Only relevant if there is a matching Rigidbody component. Defaults to 0.
 * `x_scale`: The width scale of the image. Note that 100 pixels = 1 in-game unit. Defaults to 1.
 * `y_scale`: The height scale of the image. Note that 100 pixels = 1 in-game unit. Defaults to 1.
+* `x_begin`: What fraction of the original image width the sprite starts at. 0 means left edge, 1 means right edge. Defaults to 0.
+* `x_end`: What fraction of the original image width the sprite ends at. 0 means left edge, 1 means right edge. Defaults to 1.
+* `y_begin`: What fraction of the original image height the sprite starts at. 0 means top edge, 1 means bottom edge. Defaults to 0.
+* `y_end`: What fraction of the original image height the sprite starts at. 0 means top edge, 1 means bottom edge. Defaults to 1.
 * `r`: The red color mod (0-255) from the initial image. Defaults to 255.
 * `g`: The green color mod (0-255) from the initial image. Defaults to 255.
 * `b`: The blue color mod (0-255) from the initial image. Defaults to 255.
@@ -355,7 +371,7 @@ This contains all audio utility functions. This engine integrates FMOD studio, s
 
 Functions:
 
-* `PlaySound(string file, float volume, bool loops)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. This is not spatial audio and will sound the same everywhere. Returns an integer indicating which channel the sound is being played on.
+* `PlaySound(string file, float volume, bool loops, bool persists)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. `persists`, when true, allows the sound to continue playing between scenes, This is not spatial audio and will sound the same everywhere. Returns an integer indicating which channel the sound is being played on.
 * `Play3DSound(string file, float volume, bool loops, Vector3 position, Vector3 velocity)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. This is spatial audio, and the position and velocity are initialized to the given values. Returns an integer indicating which channel the sound is being played on.
 * `StopSound(int channel)`: Stops the sound being played on the given channel, if there one.
 * `IsChannelLive(int channel)`: Returns a bool indicating whether or not there is a sound currently playing on the given channel.
@@ -363,7 +379,7 @@ Functions:
 * `GetChannelVolume(int channel)`: Gets the volume of the given channel.
 * `StopAllSounds(bool persistent)`: Stops all currently playing sounds, including ones that persist across scenes if given a `true` value.
 * `LoadBank(string bank)`: Loads the FMOD bank with the given name (extension not included, assuming it is located in the banks folder).
-* `PlayEvent(string event, Vector3 position, Vector3 velocity)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect.
+* `PlayEvent(string event, float volume, Vector3 position, Vector3 velocity, bool persists)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect. `persists`, when true, allows the sound to continue playing between scenes. A volume of 1 means original volume and 0 means muted.
 * `StopEvent(string event, bool fade)`: Stops the given effect and fades it based on the given boolean.
 * `IsEventPlaying(string event)`: Returns a boolean indicating whether or not the event with the given name is currently playing.
 * `GetEventParameter(string event, string parameter)`: Returns a float correlating the to the value of the given parameter on the given event. 
@@ -423,11 +439,13 @@ This is used to detect all kinds of keyboard, mouse, and controller inputs.
 * `GetMouseScrollDelta()`: Returns a float measuring how much the mouse wheel was scrolled.
 * `NumControllersAvailable()`: Returns the number of game controllers connected at the time of game launch.
 * `ActivateControllers(int number)`: Activates the given number of game controllers. Cannot be more than the number of game controllers connected at game launch.
-* `IsJoyconDown(string key)`: Returns whether or not the given joycon button was pressed this frame.
-* `IsJoyconJustDown(string key)`: Returns whether or not the given joycon button was just pressed this frame.
-* `IsJoyconJustUp(string key)`: Returns whether or not the given joycon button was just released this frame.
+* `IsButtonDown(string key)`: Returns whether or not the given button was pressed this frame. Also includes joystick presses and cardinal directions.
+* `IsButtonJustDown(string key)`: Returns whether or not the given button was just pressed this frame. Also includes joystick presses and cardinal directions.
+* `IsButtonJustUp(string key)`: Returns whether or not the given button was just released this frame. Also includes joystick presses and cardinal directions.
 * `GetPrimaryJoystickDelta()`: Returns a Vector2 measuring how much the primary joystick was pushed this frame.
+* `GetPrimaryJoystickPosition()`: Returns a Vector2 measuring the current primary joystick location.
 * `GetSecondaryJoystickDelta()`: Returns a Vector2 measuring how much the secondary joystick was pushed this frame.
+* `GetSecondaryJoystickPosition()`: Returns a Vector2 measuring the current secondary joystick location.
 
 ### The Physics Namespace
 
